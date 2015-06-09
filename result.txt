@@ -1,0 +1,3546 @@
+Pages: 14
+CHECK!!!
+Reddy
+...andscape of DNS Allen T. Webb A. L. Narasima Reddy Dept. of ECE Texas A&M University Dept. of E...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+allenwebb@tamu
+...University Dept. of ECE Texas A&M University allenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. ...
+                                                ^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+edu
+.... of ECE Texas A&M University allenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. DNS ...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+reddy@ece
+... ECE Texas A&M University allenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. DNS traffic is...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tamu
+... A&M University allenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. DNS traffic is typi...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+edu
+...University allenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. DNS traffic is typicall...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+lar
+...lenwebb@tamu.edu reddy@ece.tamu.edu ABSTRACT lar domain. DNS traffic is typically allowed thr...
+                                                ^^^                                             
+*** 0, 5
+CHECK!!!
+infras
+...walls; thus, many new services are using DNS infras- tructure as a means of communicating inform...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tructure
+...hus, many new services are using DNS infras- tructure as a means of communicating information. DNS...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+DNS
+...died to understand network traffic at large. DNS traffic provides a view into traffic pattern...
+                                                ^^^                                             
+*** 5, 28
+CHECK!!!
+DNS
+... into traffic patterns [7], popular domains. DNS responses give a view into the mechanisms of...
+                                                ^^^                                             
+*** 6, 28
+CHECK!!!
+CDNs
+...ctioning of Content Distribution Net- works (CDNs) [27]. DNS traffic has recently been used to...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+DNS
+...Content Distribution Net- works (CDNs) [27]. DNS traffic has recently been used to provide a ...
+                                                ^^^                                             
+*** 7, 28
+CHECK!!!
+botnet
+...as recently been used to provide a view into botnet behavior, by distinguish- ing the botnet gen...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+ing
+...a view into botnet behavior, by distinguish- ing the botnet generated DNS query traffic from ...
+                                                ^^^                                             
+*** 6, 23
+CHECK!!!
+botnet
+...nto botnet behavior, by distinguish- ing the botnet generated DNS query traffic from human gener...
+                                                ^^^^^^                                             
+*** 1, 2
+CHECK!!!
+scalable
+...Collecting and analyzing DNS traffic is more scalable than carrying out similar analysis on the en...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+less
+...first is the growing use of mobile and wire- less devices. Users have started replacing deskto...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+puters
+...s. Users have started replacing desktop com- puters with laptops and other devices; the widespre...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+smartphones
+...nd other devices; the widespread adoption of smartphones with Wi-Fi capabilities is chang- ing the ne...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+chang
+...on of smartphones with Wi-Fi capabilities is chang- ing the network usage patterns. The introdu...
+                                                ^^^^^                                             
+*** 0, 3
+CHECK!!!
+ing
+...martphones with Wi-Fi capabilities is chang- ing the network usage patterns. The introduction...
+                                                ^^^                                             
+*** 12, 23
+CHECK!!!
+applica
+... the different resources in the devices. The applica- tion usage on mobile devices may include mo...
+                                                ^^^^^^^                                             
+*** 1, 8
+CHECK!!!
+tion
+...erent resources in the devices. The applica- tion usage on mobile devices may include more fre...
+                                                ^^^^                                             
+*** 6, 23
+CHECK!!!
+less
+...social networking and video sites. The wire- less devices on a campus that has wide Wi-Fi cove...
+                                                ^^^^                                             
+*** 1, 3
+CHECK!!!
+chan
+...e second trend is the usage of DNS as a side chan- nel by many applications. Most campus and e...
+                                                ^^^^                                             
+*** 2, 6
+CHECK!!!
+nel
+...nd trend is the usage of DNS as a side chan- nel by many applications. Most campus and enterp...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+appli
+... firewalls. DNS is being used by a number of appli- cations from spam checkers to anti virus so...
+                                                ^^^^^                                             
+*** 4, 9
+CHECK!!!
+ing
+...se the Internet change, the impact on exist- ing network utilities and services need to be co...
+                                                ^^^                                             
+*** 19, 23
+CHECK!!!
+traf
+...and evaluated. We present a study of the DNS traf- fic on a large campus network and investiga...
+                                                ^^^^                                             
+*** 15, 20
+CHECK!!!
+fic
+...aluated. We present a study of the DNS traf- fic on a large campus network and investigate th...
+                                                ^^^                                             
+*** 15, 21
+CHECK!!!
+sponses
+...ally the various sources of DNS NXDOMAIN re- sponses. In addition, we look into the differences i...
+                                                ^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+sult
+...ligible fraction (10-15%) of DNS queries re- sult in NXDOMAIN responses, many new applications...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+ing
+...etworks]: Network OperationsNetwork monitor- ing; C.2.5 [Communication Networks]: Local and W...
+                                                ^^^                                             
+*** 21, 23
+CHECK!!!
+Proto
+...ay to map human readable names into Internet Proto- col address which can be routed to specific...
+                                                ^^^^^                                             
+*** 1, 2
+CHECK!!!
+www
+... to specific endpoints on the Internet (e.g. www.domain.tld). It serves as a dis- tributed da...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+tld
+...c endpoints on the Internet (e.g. www.domain.tld). It serves as a dis- tributed database for ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+tributed
+...t (e.g. www.domain.tld). It serves as a dis- tributed database for records which are identified wi...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+multi-part
+...base for records which are identified with a multi-part name. DNS servers have authority over subset...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ministrative
+...names delegated to them. In this way the ad- ministrative burden of updating records is spread across ...
+                                                ^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+particu
+...he organizations which have authority over a particu- 1 cu- 1 side channel to contact outside ser...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+new new
+...side servers to provide their service. Other new new services we observed are ENUM over DNS (subs...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lision
+...NS (subsection 5.6), and the ICANN name col- lision block list. New services which make use of t...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+A
+... to understand the nature of network traffic.A better un- derstanding of what is implied by...
+                                                ^                                             
+*** 1, 9
+CHECK!!!
+un
+...stand the nature of network traffic.A better un- derstanding of what is implied by DNS traff...
+                                                ^^                                             
+*** 2, 9
+CHECK!!!
+derstanding
+...d the nature of network traffic.A better un- derstanding of what is implied by DNS traffic improves d...
+                                                ^^^^^^^^^^^                                             
+*** 0, 3
+CHECK!!!
+un
+...icture of DNS traffic will also help gain an un- derstanding of scalability and other issues...
+                                                ^^                                             
+*** 3, 9
+CHECK!!!
+derstanding
+...re of DNS traffic will also help gain an un- derstanding of scalability and other issues. For example...
+                                                ^^^^^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+scalability
+...ic will also help gain an un- derstanding of scalability and other issues. For example, DNS traffic h...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+iden
+...traffic has been recently used as a means to iden- tify botnet C&C (command and control) [33],...
+                                                ^^^^                                             
+*** 0, 9
+CHECK!!!
+tify
+...c has been recently used as a means to iden- tify botnet C&C (command and control) [33], [34],...
+                                                ^^^^                                             
+*** 0, 8
+CHECK!!!
+botnet
+... been recently used as a means to iden- tify botnet C&C (command and control) [33], [34], and [3...
+                                                ^^^^^^                                             
+*** 0, 5
+CHECK!!!
+po
+...NXDOMAIN responses as a means of identifying po- tential botnet traffic. Many new applicatio...
+                                                ^^                                             
+*** 1, 13
+CHECK!!!
+tential
+...MAIN responses as a means of identifying po- tential botnet traffic. Many new applications such a...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+botnet
+...ponses as a means of identifying po- tential botnet traffic. Many new applications such as spam ...
+                                                ^^^^^^                                             
+*** 1, 5
+CHECK!!!
+antivirus
+...y new applications such as spam checkers and antivirus tools that use DNS as a side channel generat...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Un
+...sponses as part of their legitimate service. Un- derstanding and separating this traffic is ...
+                                                ^^                                             
+*** 0, 1
+CHECK!!!
+derstanding
+...ses as part of their legitimate service. Un- derstanding and separating this traffic is important for...
+                                                ^^^^^^^^^^^                                             
+*** 2, 3
+CHECK!!!
+contribu
+...s. The paper makes the following significant contribu- tions: balancing performance from using a s...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tions
+...er makes the following significant contribu- tions: balancing performance from using a single D...
+                                                ^^^^^                                             
+*** 1, 4
+CHECK!!!
+DNS
+... to measure delays across the internet [18]. DNS measurement studies have been conducted in t...
+                                                ^^^                                             
+*** 13, 40
+CHECK!!!
+possibil
+...Domain registration has been studied for the possibil- ity of identifying spammers early in [12]. ...
+                                                ^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+ity
+...istration has been studied for the possibil- ity of identifying spammers early in [12]. DNS b...
+                                                ^^^                                             
+*** 2, 5
+CHECK!!!
+botnet
+...as recently been used to provide a view into botnet behavior, by distinguishing the botnet gen- ...
+                                                ^^^^^^                                             
+*** 2, 5
+CHECK!!!
+botnet
+... into botnet behavior, by distinguishing the botnet gen- erated DNS query traffic from human gen...
+                                                ^^^^^^                                             
+*** 3, 5
+CHECK!!!
+erated
+... behavior, by distinguishing the botnet gen- erated DNS query traffic from human generated query...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+botnets
+...existent domain queries are used to identify botnets which use domain generation algorithms (DGA)...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+chan
+...ration algorithms (DGA) for locating the C&C chan- nel. The query rates for bots were observed...
+                                                ^^^^                                             
+*** 3, 6
+CHECK!!!
+nel
+... algorithms (DGA) for locating the C&C chan- nel. The query rates for bots were observed to b...
+                                                ^^^                                             
+*** 2, 4
+CHECK!!!
+period of time
+... observed to be high, occurring over a short period of time, and generating NXDOMAIN responses in [31]. ...
+                                                ^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+thoritative
+...umber of requests per local resolver and au- thoritative name server, and query content in [16]. They...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+devel
+... focusing on DGA, a classification scheme is devel- oped for malicious domains. [5] makes use o...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+investi
+...tering to identify interesting traffic to be investi- gated. Their final detection is based on a ...
+                                                ^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+Sev
+...s and timing of DNS traffic after filtering. Sev- eral services now use DNS for purposes beyo...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+eral
+... timing of DNS traffic after filtering. Sev- eral services now use DNS for purposes beyond loo...
+                                                ^^^^                                             
+*** 2, 4
+CHECK!!!
+ar
+...ustive survey of DNS traffic to identify new ar- eas of usage. In addition to intentional le...
+                                                ^^                                             
+*** 11, 22
+CHECK!!!
+eas
+...ve survey of DNS traffic to identify new ar- eas of usage. In addition to intentional leakage...
+                                                ^^^                                             
+*** 3, 6
+CHECK!!!
+resolvers
+...S servers which are forwarders, or recursive resolvers, direct recursive resolvers, and hidden DNS ...
+                                                ^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+resolvers
+...rs, or recursive resolvers, direct recursive resolvers, and hidden DNS servers. They perform this c...
+                                                ^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+operat
+... DNS traffic can be analyzed to identify the operat- ing systems of hosts. DNS query traffic has...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ing
+...ffic can be analyzed to identify the operat- ing systems of hosts. DNS query traffic has been...
+                                                ^^^                                             
+*** 37, 47
+CHECK!!!
+domi
+...Shows that wireless networks are starting to domi- nate the campus traffic, leading to implica...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+nate
+...that wireless networks are starting to domi- nate the campus traffic, leading to implications ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+scalability
+...e campus traffic, leading to implications on scalability and throughput of these networks.  Shows tha...
+                                                ^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+sults
+...at a significant fraction of DNS traffic re- sults in failures, much of this traffic originatin...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+chan
+...g from new services exploiting DNS as a side chan- nel. These increased failure traffic increa...
+                                                ^^^^                                             
+*** 4, 6
+CHECK!!!
+nel
+... new services exploiting DNS as a side chan- nel. These increased failure traffic increase th...
+                                                ^^^                                             
+*** 3, 4
+CHECK!!!
+cesses
+...ired networks leads to different network ac- cesses. 2. RELATED WORK DNS traffic has been widely...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+balanc
+...responses a view into the mechanisms of load balanc- ing [29, 23] and the functioning of Content...
+                                                ^^^^^^                                             
+*** 2, 3
+CHECK!!!
+ing
+...s a view into the mechanisms of load balanc- ing [29, 23] and the functioning of Content Dist...
+                                                ^^^                                             
+*** 45, 47
+CHECK!!!
+CDNs
+...unctioning of Content Distribution Networks (CDNs) [27]. DNS traffic in cellular networks has ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Dataset
+...stigate the impact on CDN load 2  CDN load 2 Dataset 1 Dataset 2 Time Period Summer Fall Semester...
+                                                ^^^^^^^                                             
+*** 0, 6
+CHECK!!!
+Dataset
+...e impact on CDN load 2  CDN load 2 Dataset 1 Dataset 2 Time Period Summer Fall Semester Start Dat...
+                                                ^^^^^^^                                             
+*** 1, 6
+CHECK!!!
+IPs
+...e % Resolved Domains % Not Res. Total Unique IPs % Wired % Wi-Fi June 19, 2014 13.07 2.02E+09...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+Sep
+....22E+06 47.10% 52.90% 1.77E+05 42.96% 57.04% Sep. 9, 2014 10.26 2.57E+09 92.02% 7.43% 9.08E+0...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Dataset
+....08E+06 57.72% 42.28% 1.66E+05 29.63% 70.37% Dataset 3 Spring Sem. Weekend Jan. 16, 2015 2.26 2.3...
+                                                ^^^^^^^                                             
+*** 2, 6
+CHECK!!!
+Sem
+....28% 1.66E+05 29.63% 70.37% Dataset 3 Spring Sem. Weekend Jan. 16, 2015 2.26 2.36E+08 86.35% ...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+Dataset
+....08E+06 76.67% 23.33% 9.65E+04 24.74% 75.26% Dataset 4 Spring Sem. Week Jan. 22, 2015 7.02 1.82E+...
+                                                ^^^^^^^                                             
+*** 3, 6
+CHECK!!!
+Sem
+....33% 9.65E+04 24.74% 75.26% Dataset 4 Spring Sem. Week Jan. 22, 2015 7.02 1.82E+09 91.10% 7.9...
+                                                ^^^                                             
+*** 2, 3
+CHECK!!!
+datasets
+...% Table 1: Volume of traffic present in each datasets. It should be noted that for both Dataset 1 ...
+                                                ^^^^^^^^                                             
+*** 0, 7
+CHECK!!!
+Dataset
+...h datasets. It should be noted that for both Dataset 1 and Dataset 3 and weekend dataset there ar...
+                                                ^^^^^^^                                             
+*** 4, 6
+CHECK!!!
+Dataset
+... should be noted that for both Dataset 1 and Dataset 3 and weekend dataset there are fewer studen...
+                                                ^^^^^^^                                             
+*** 5, 6
+CHECK!!!
+dataset
+...for both Dataset 1 and Dataset 3 and weekend dataset there are fewer students on campus than the ...
+                                                ^^^^^^^                                             
+*** 1, 13
+CHECK!!!
+datasets
+... are fewer students on campus than the other datasets. This provides a variety of different condit...
+                                                ^^^^^^^^                                             
+*** 1, 7
+CHECK!!!
+datasets
+...ve the unique and common features across the datasets. domain, . These made up 0.05% to 0.18% of t...
+                                                ^^^^^^^^                                             
+*** 2, 7
+CHECK!!!
+domain
+...que and common features across the datasets. domain, . These made up 0.05% to 0.18% of the total...
+                                                ^^^^^^                                             
+*** 0, 5
+CHECK!!!
+Warning: index mismatch with find text (0,0):  .
+271, 8, "Don't put a space before the full stop", ".", "... common features across the datasets. domain, . These made up 0.05% to 0.18% of the total re...", " ."
+... common features across the datasets. domain, . These made up 0.05% to 0.18% of the total re...
+                                                ^^                                             
+CHECK!!!
+datasets
+...29.89% of the DNS requests failed across the datasets. The DNS failure rates were higher during th...
+                                                ^^^^^^^^                                             
+*** 3, 7
+CHECK!!!
+gener
+...ends. The hosts which filter out Spam emails gener- ate a higher ratio of failed to successful ...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+traf
+...the relative contribution of the Spam filter traf- fic is less. In dataset 1 the hosts which a...
+                                                ^^^^                                             
+*** 1, 8
+CHECK!!!
+fic
+...lative contribution of the Spam filter traf- fic is less. In dataset 1 the hosts which access...
+                                                ^^^                                             
+*** 1, 9
+CHECK!!!
+dataset
+...ion of the Spam filter traf- fic is less. In dataset 1 the hosts which accessed Spam blacklists h...
+                                                ^^^^^^^                                             
+*** 5, 13
+CHECK!!!
+respon
+...acklists had a 50.7% DNS error rate and were respon- sible for 37.5% of the total DNS responses....
+                                                ^^^^^^                                             
+*** 1, 10
+CHECK!!!
+sible
+... had a 50.7% DNS error rate and were respon- sible for 37.5% of the total DNS responses. In the...
+                                                ^^^^^                                             
+*** 0, 3
+CHECK!!!
+datasets
+....5% of the total DNS responses. In the other datasets these hosts were responsible for 13-18% of t...
+                                                ^^^^^^^^                                             
+*** 4, 7
+CHECK!!!
+dataset
+...much larger nonexistent domain percentage in dataset 1. For datasets 2 and 4 the error rates of h...
+                                                ^^^^^^^                                             
+*** 7, 13
+CHECK!!!
+datasets
+...existent domain percentage in dataset 1. For datasets 2 and 4 the error rates of hosts accessing S...
+                                                ^^^^^^^^                                             
+*** 5, 7
+CHECK!!!
+dataset
+...ists were between 16.4% and 19.0%, while for dataset 3 the error rate was 29.4%. The higher error...
+                                                ^^^^^^^                                             
+*** 9, 13
+CHECK!!!
+dataset
+...or rate was 29.4%. The higher error rate for dataset 3 is likely due to the volume of DNS errors ...
+                                                ^^^^^^^                                             
+*** 10, 13
+CHECK!!!
+atively
+...e to the volume of DNS errors remaining rel- atively flat across the week while the successful tr...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Also
+...me of day and day of the week, see Figure 4. Also of note, is the difference in percentages of...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+ful
+...ins which resolved had at least one success- ful DNS response while domains which didnt resol...
+                                                ^^^                                             
+*** 2, 5
+CHECK!!!
+Warning: index mismatch with find text (0,0): didnt
+298, 38, "Possible spelling mistake found", "didn't", "...uccess- ful DNS response while domains which didnt resolve had no successful DNS responses. The...", "didnt"
+...uccess- ful DNS response while domains which didnt resolve had no successful DNS responses. The...
+                                                ^^^^^                                             
+CHECK!!!
+sponses
+...age, 70.11% to 92.02%, of successful DNS re- sponses than resolved domains, 47.10% to 76.66%. The...
+                                                ^^^^^^^                                             
+*** 4, 6
+CHECK!!!
+IPs
+...solved domains, 47.10% to 76.66%. The unique IPs in Table 1 show the change in relative perce...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+ployed
+...ks during the summer when students were away ployed to carry out passive OS fingerprinting in [2...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ing
+...ry out passive OS fingerprinting in [20] us- ing OS-specific DNS queries and timing of DNS qu...
+                                                ^^^                                             
+*** 10, 18
+CHECK!!!
+lected
+...in [15]. In their study DNS traffic was col- lected along with TCP SYN, FIN, and RST packets. Th...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+tion
+... mobile devices [9]. This work makes no men- tion of DNS but instead relies on other measureme...
+                                                ^^^^                                             
+*** 5, 7
+CHECK!!!
+ity
+... campus DNS servers are the start of author- ity (SOA) and also local queries which were recu...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+datasets
+...h were recursively resolved. The size of the datasets and some basic statis- tics about their cons...
+                                                ^^^^^^^^                                             
+*** 6, 7
+CHECK!!!
+statis
+...ved. The size of the datasets and some basic statis- tics about their constituents can be found ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+resolvers
+...apped DNS traffic directed to the campus DNS resolvers. We excluded traffic involved in the process...
+                                                ^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+dataset
+...cess of recursive DNS resolution. Thus, each dataset contains those DNS requests made to the loca...
+                                                ^^^^^^^                                             
+*** 12, 13
+CHECK!!!
+resolvers
+... those DNS requests made to the local campus resolvers, as well as the corresponding responses from...
+                                                ^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+suc
+...sts and these accounted for 1.70% of all the suc- cessful DNS requests. This shows that a sma...
+                                                ^^^                                             
+*** 1, 11
+CHECK!!!
+cessful
+...nd these accounted for 1.70% of all the suc- cessful DNS requests. This shows that a small subset...
+                                                ^^^^^^^                                             
+*** 1, 9
+CHECK!!!
+ond
+... DNS requests which match the specified sec- ond level domain. The Wi-Fi % column is the frac...
+                                                ^^^                                             
+*** 1, 8
+CHECK!!!
+The
+...ain which originate from Wi-Fi IP addresses. The Rank column shows the rank of that domain in...
+                                                ^^^                                             
+*** 2, 9
+CHECK!!!
+Alexa
+...shows the rank of that domain in the top 500 Alexa list. The Time to Live (TTL) value of a DNS ...
+                                                ^^^^^                                             
+*** 0, 8
+CHECK!!!
+The
+...nk of that domain in the top 500 Alexa list. The Time to Live (TTL) value of a DNS record con...
+                                                ^^^                                             
+*** 3, 9
+CHECK!!!
+veys
+...ime to Live (TTL) value of a DNS record con- veys how long the record should be cached before ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+piring
+... long the record should be cached before ex- piring. More information can be inferred from the T...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+TTLs
+...of-service such as video streaming use small TTLs to allow for faster con- trol over which ser...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+trol
+...ming use small TTLs to allow for faster con- trol over which servers receive new clients. Cont...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+tribution
+...ch servers receive new clients. Content dis- tribution networks (CDN) also use small TTL values. Fa...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+botnets
+... also use small TTL values. Fast-fluxing DNS botnets use small TTL values to make it more difficu...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Alexa
+... for different subsets of domains grouped by Alexa rank are shown in Figure 1. More than 80% of...
+                                                ^^^^^                                             
+*** 1, 8
+CHECK!!!
+ues
+...mains ranked 51st through 500th had TTL val- ues of 60 seconds or less. For the top 50 domain...
+                                                ^^^                                             
+*** 13, 25
+CHECK!!!
+less
+...ough 500th had TTL val- ues of 60 seconds or less. For the top 50 domains almost half of the r...
+                                                ^^^^                                             
+*** 1, 3
+CHECK!!!
+less
+...h about half having TTL values 60 seconds or less. Figure 1 shows the CDF of the TTL values of...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+Wi
+...CDF of the TTL values of address records for Wi- Fi and wired devices. We saw that more of t...
+                                                ^^                                             
+*** 3, 7
+CHECK!!!
+Fi
+...of the TTL values of address records for Wi- Fi and wired devices. We saw that more of the T...
+                                                ^^                                             
+*** 7, 12
+CHECK!!!
+TTLs
+... more of the TTL Figure 2: CDF of DNS Record TTLs Grouped by Alexa Rank versus during the seme...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+Alexa
+... Figure 2: CDF of DNS Record TTLs Grouped by Alexa Rank versus during the semesters when studen...
+                                                ^^^^^                                             
+*** 2, 8
+CHECK!!!
+datasets
+...emesters when students were present. Between datasets 1 and 2 this difference was 13.33%. 4. WIRED...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+duced
+...aptops, smart phones, and tablets has intro- duced new variation into the way networks are used...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Alexa
+...quests made by different classes of devices. Alexa is an analytics company which provides rank-...
+                                                ^^^^^                                             
+*** 3, 8
+CHECK!!!
+analytics
+...by different classes of devices. Alexa is an analytics company which provides rank- ings for the mo...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ings
+...is an analytics company which provides rank- ings for the most popular websites on the Interne...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Alexa
+...t [1]. We compared the ranking of domains on Alexa with the ranking of domains by volume of DNS...
+                                                ^^^^^                                             
+*** 4, 8
+CHECK!!!
+Alexa
+...rovide a summary here: The top 50 domains on Alexa were responsible for 34.69% of the successfu...
+                                                ^^^^^                                             
+*** 5, 8
+CHECK!!!
+IPs
+...34.69% of the successful requests from Wi-Fi IPs and 16.59% on wired IPs. The top 500 domains...
+                                                ^^^                                             
+*** 0, 4
+CHECK!!!
+IPs
+... requests from Wi-Fi IPs and 16.59% on wired IPs. The top 500 domains on Alexa were responsib...
+                                                ^^^                                             
+*** 1, 4
+CHECK!!!
+Alexa
+... 16.59% on wired IPs. The top 500 domains on Alexa were responsible for 48.63% of the successfu...
+                                                ^^^^^                                             
+*** 6, 8
+CHECK!!!
+IPs
+...48.63% of the successful requests from Wi-Fi IPs and 27.01% on wired IPs. Of the top 500 doma...
+                                                ^^^                                             
+*** 2, 4
+CHECK!!!
+IPs
+... requests from Wi-Fi IPs and 27.01% on wired IPs. Of the top 500 domains on Alexa: Four sec- ...
+                                                ^^^                                             
+*** 3, 4
+CHECK!!!
+Alexa
+....01% on wired IPs. Of the top 500 domains on Alexa: Four sec- ond level domains were responsibl...
+                                                ^^^^^                                             
+*** 7, 8
+CHECK!!!
+ond
+.... Of the top 500 domains on Alexa: Four sec- ond level domains were responsible for 21.93% of...
+                                                ^^^                                             
+*** 6, 8
+CHECK!!!
+Warning: index mismatch with find text (0,0): 60 60
+410, 1, "Possible typo: you repeated a word", "60", "...ated from Wi-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 ...", "60 60"
+...ated from Wi-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 ...
+                                                ^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): 40 40
+411, 1, "Possible typo: you repeated a word", "40", "...rom Wi-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 83 80 ...", "40 40"
+...rom Wi-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 83 80 ...
+                                                ^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): 20 20
+412, 1, "Possible typo: you repeated a word", "20", "...-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 83 80 76.74%...", "20 20"
+...-Fi IP addresses. 97 second 4 80 60 60 40 40 20 20 0 0 59 425 7 12 3 345 27 409 39 83 80 76.74%...
+                                                ^^^^^                                             
+CHECK!!!
+google
+...1.54% 1.33% 1.29% 2nd Level Domain apple.com google.com facebook.com amazonaws.com akamaihd.net ...
+                                                ^^^^^^                                             
+*** 0, 4
+CHECK!!!
+facebook
+... 1.29% 2nd Level Domain apple.com google.com facebook.com amazonaws.com akamaihd.net instagram.com...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+amazonaws
+...vel Domain apple.com google.com facebook.com amazonaws.com akamaihd.net instagram.com yahoo.com icl...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+akamaihd
+...le.com google.com facebook.com amazonaws.com akamaihd.net instagram.com yahoo.com icloud.com twitt...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+instagram
+....com facebook.com amazonaws.com akamaihd.net instagram.com yahoo.com icloud.com twitter.com googlea...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+icloud
+...aws.com akamaihd.net instagram.com yahoo.com icloud.com twitter.com googleapis.com microsoft.com...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+googleapis
+...stagram.com yahoo.com icloud.com twitter.com googleapis.com microsoft.com bing.com cloudfront.net go...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+microsoft
+...oo.com icloud.com twitter.com googleapis.com microsoft.com bing.com cloudfront.net googleuserconten...
+                                                ^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+bing
+...com twitter.com googleapis.com microsoft.com bing.com cloudfront.net googleusercontent .com ne...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+cloudfront
+...er.com googleapis.com microsoft.com bing.com cloudfront.net googleusercontent .com netflix.com fbcdn...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+googleusercontent
+...is.com microsoft.com bing.com cloudfront.net googleusercontent .com netflix.com fbcdn.net amazon.com live.c...
+                                                ^^^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+505, 18, "Don't put a space before the full stop", ".", "...com bing.com cloudfront.net googleusercontent .com netflix.com fbcdn.net amazon.com live.com...", "
+."
+...com bing.com cloudfront.net googleusercontent .com netflix.com fbcdn.net amazon.com live.com...
+                                                ^^                                             
+CHECK!!!
+netflix
+...ng.com cloudfront.net googleusercontent .com netflix.com fbcdn.net amazon.com live.com youtube.co...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+fbcdn
+...front.net googleusercontent .com netflix.com fbcdn.net amazon.com live.com youtube.com spotify....
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+youtube
+...om netflix.com fbcdn.net amazon.com live.com youtube.com spotify.com msn.com twimg.com tumblr.com...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+spotify
+...om fbcdn.net amazon.com live.com youtube.com spotify.com msn.com twimg.com tumblr.com dropbox.com...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+msn
+... amazon.com live.com youtube.com spotify.com msn.com twimg.com tumblr.com dropbox.com Oper at...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+twimg
+...com live.com youtube.com spotify.com msn.com twimg.com tumblr.com dropbox.com Oper at ing Syst ...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+tumblr
+...om youtube.com spotify.com msn.com twimg.com tumblr.com dropbox.com Oper at ing Syst em s Br ow ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+dropbox
+...com spotify.com msn.com twimg.com tumblr.com dropbox.com Oper at ing Syst em s Br ow ser s Figure...
+                                                ^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Oper
+...com msn.com twimg.com tumblr.com dropbox.com Oper at ing Syst em s Br ow ser s Figure 5: Perce...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+ing
+...com twimg.com tumblr.com dropbox.com Oper at ing Syst em s Br ow ser s Figure 5: Percent of T...
+                                                ^^^                                             
+*** 1, 9
+CHECK!!!
+Syst
+...twimg.com tumblr.com dropbox.com Oper at ing Syst em s Br ow ser s Figure 5: Percent of Total ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+ser
+....com dropbox.com Oper at ing Syst em s Br ow ser s Figure 5: Percent of Total DNS Requests fr...
+                                                ^^^                                             
+*** 1, 4
+CHECK!!!
+Dataset
+...Fi hosts for Software Specific Domain Names (Dataset 4) Figure 4 shows the number of DNS response...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+The
+... are related to the volume of email traffic. The Wi-Fi hosts are respon- sible for more succe...
+                                                ^^^                                             
+*** 4, 12
+CHECK!!!
+respon
+...volume of email traffic. The Wi-Fi hosts are respon- sible for more successful DNS responses tha...
+                                                ^^^^^^                                             
+*** 3, 9
+CHECK!!!
+sible
+...f email traffic. The Wi-Fi hosts are respon- sible for more successful DNS responses than the w...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+The
+... less failed responses than the wired hosts. The spikes in Wi-Fi error re- sponses on Figure ...
+                                                ^^^                                             
+*** 5, 12
+CHECK!!!
+sponses
+...e wired hosts. The spikes in Wi-Fi error re- sponses on Figure 4 result from anomalous traffic wh...
+                                                ^^^^^^^                                             
+*** 4, 8
+CHECK!!!
+rors
+...peaks on the Wi-Fi DNS responses without er- rors in Figure 4 during the breaks between classe...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+Alexa
+... 2: Most Requested Second Level Domains from Alexa Top 500 values of DNS address records reques...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+less
+...ted by Wi-Fi de- vices were sixty seconds or less than 5 minutes. Other common TTL values incl...
+                                                ^^^^                                             
+*** 4, 5
+CHECK!!!
+google
+...irst two second level domains, apple.com and google.com, both make up a very large percentage of...
+                                                ^^^^^^                                             
+*** 3, 4
+CHECK!!!
+synchroniza
+...of the DNS traffic. This can be explained by synchroniza- tion or other mobile device features on dev...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tion
+...affic. This can be explained by synchroniza- tion or other mobile device features on devices r...
+                                                ^^^^                                             
+*** 1, 5
+CHECK!!!
+iOS
+...er mobile device features on devices running iOS and Android. Also, small TTL values introduc...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+microsoft
+...ns with smaller TTL values. In Table 2 only, microsoft.com and dropbox.com, have more DNS requests ...
+                                                ^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+dropbox
+...L values. In Table 2 only, microsoft.com and dropbox.com, have more DNS requests from wired hosts...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+tribution
+...ear on a log-log plot. This resembles a dis- tribution following a power law [15]. However, there i...
+                                                ^^^^^^^^^                                             
+*** 0, 3
+CHECK!!!
+Wir
+...than from Wi-Fi devices. 5 3 2 Wi-Fi Er r or Wir ed Er r or 1 10 10 4 10 5 10 Wir ed N o Er r...
+                                                ^^^                                             
+*** 0, 7
+CHECK!!!
+Warning: index mismatch with find text (0,0): 10
+10
+586, 1, "Possible typo: you repeated a word", "10", "...evices. 5 3 2 Wi-Fi Er r or Wir ed Er r or 1 10 10 4 10 5 10 Wir ed N o Er r or 10 Wi-Fi N o Er...", "10
+10"
+...evices. 5 3 2 Wi-Fi Er r or Wir ed Er r or 1 10 10 4 10 5 10 Wir ed N o Er r or 10 Wi-Fi N o Er...
+                                                ^^^^^                                             
+CHECK!!!
+Wir
+...-Fi Er r or Wir ed Er r or 1 10 10 4 10 5 10 Wir ed N o Er r or 10 Wi-Fi N o Er r or 6 10 7 R...
+                                                ^^^                                             
+*** 1, 7
+CHECK!!!
+ar
+... o Er r or 6 10 7 Responses 10 Days Fr om St ar t of Capt ur e (5-m inut e bins) Figure 4: W...
+                                                ^^                                             
+*** 0, 19
+CHECK!!!
+ur
+...10 7 Responses 10 Days Fr om St ar t of Capt ur e (5-m inut e bins) Figure 4: Wired vs. Wi-F...
+                                                ^^                                             
+*** 0, 2
+CHECK!!!
+inut
+...nses 10 Days Fr om St ar t of Capt ur e (5-m inut e bins) Figure 4: Wired vs. Wi-Fi DNS Respon...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+much
+...gure 4: Wired vs. Wi-Fi DNS Response Volume. much now that smart phones can handle HTML which ...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+account
+...irements but requires more processing power. account synchronization. An example software specifi...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+google
+... software specific domain is android.clients.google.com which is used by android to download app...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+iOS
+...the Google Play API. As expected Android and iOS DNS requests predominately originated from W...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+IPs
+...toward mobile traffic originating from Wi-Fi IPs, so by observing the Wi-Fi tendencies we can...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+iOS
+...i-Fi IP addresses. Safari is closely tied to iOS and Mac OS so its percentage lied between th...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+xhtml
+...formats are associated with mobile devices:  xhtml.* subdomain used for an xhtml mobile site wh...
+                                                ^^^^^                                             
+*** 0, 3
+CHECK!!!
+subdomain
+...are associated with mobile devices:  xhtml.* subdomain used for an xhtml mobile site which is both ...
+                                                ^^^^^^^^^                                             
+*** 0, 6
+CHECK!!!
+an
+... mobile devices:  xhtml.* subdomain used for an xhtml mobile site which is both HTML and XML...
+                                                ^^                                             
+*** 12, 26
+CHECK!!!
+xhtml
+...bile devices:  xhtml.* subdomain used for an xhtml mobile site which is both HTML and XML compl...
+                                                ^^^^^                                             
+*** 1, 3
+CHECK!!!
+requir
+...le site which is both HTML and XML compliant requir- ing less processing power. The api. subdoma...
+                                                ^^^^^^                                             
+*** 2, 3
+CHECK!!!
+ing
+...which is both HTML and XML compliant requir- ing less processing power. The api. subdomains m...
+                                                ^^^                                             
+*** 7, 12
+CHECK!!!
+api
+...liant requir- ing less processing power. The api. subdomains made up the largest percentage o...
+                                                ^^^                                             
+*** 0, 4
+CHECK!!!
+subdomains
+... requir- ing less processing power. The api. subdomains made up the largest percentage of the respon...
+                                                ^^^^^^^^^^                                             
+*** 0, 4
+CHECK!!!
+subdomains
+... requir- ing less processing power. The api. subdomains made up the largest percentage of the respon...
+                                                ^^^^^^^^^^                                             
+*** 0, 4
+CHECK!!!
+api
+...e up less than 0.005% of the total requests. api.* m.* mobile.* *.mobi Dataset Wi-Fi Wired Wi...
+                                                ^^^                                             
+*** 1, 4
+CHECK!!!
+api
+...e up less than 0.005% of the total requests. api.* m.* mobile.* *.mobi Dataset Wi-Fi Wired Wi...
+                                                ^^^                                             
+*** 1, 4
+CHECK!!!
+mobi
+... of the total requests. api.* m.* mobile.* *.mobi Dataset Wi-Fi Wired Wi-Fi Wired Wi-Fi Wired ...
+                                                ^^^^                                             
+*** 6, 17
+CHECK!!!
+Dataset
+...he total requests. api.* m.* mobile.* *.mobi Dataset Wi-Fi Wired Wi-Fi Wired Wi-Fi Wired Wi-Fi Wi...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+mobi
+...: Successful Mobile Related DNS Responses  *.mobi TLD dedicated to mobile websites  api.* subd...
+                                                ^^^^                                             
+*** 7, 17
+CHECK!!!
+api
+...es  *.mobi TLD dedicated to mobile websites  api.* subdomain frequently used for web and mo- ...
+                                                ^^^                                             
+*** 2, 4
+CHECK!!!
+subdomain
+...mobi TLD dedicated to mobile websites  api.* subdomain frequently used for web and mo- bile applica...
+                                                ^^^^^^^^^                                             
+*** 2, 6
+CHECK!!!
+nec
+...ble 3 shows that the mobile handsets are not nec- essarily always visiting mobile domains. Th...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+essarily
+... shows that the mobile handsets are not nec- essarily always visiting mobile domains. The api.* do...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+api
+...essarily always visiting mobile domains. The api.* do- main group is commonly used with mobil...
+                                                ^^^                                             
+*** 3, 4
+CHECK!!!
+many web
+...as the website formatted for desktops. Also, many web- sites are designed using a responsive desig...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+pda
+...older style mobile do- mains such as palm.*, pda.*, wap.*, and xhtml.*, these  m.*, mini.*, a...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+wap
+...tyle mobile do- mains such as palm.*, pda.*, wap.*, and xhtml.*, these  m.*, mini.*, and mobi...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+xhtml
+... do- mains such as palm.*, pda.*, wap.*, and xhtml.*, these  m.*, mini.*, and mobile.* subdomai...
+                                                ^^^^^                                             
+*** 2, 3
+CHECK!!!
+subdomains
+...nd xhtml.*, these  m.*, mini.*, and mobile.* subdomains used for websites formated for mobile device...
+                                                ^^^^^^^^^^                                             
+*** 1, 4
+CHECK!!!
+formated
+...*, and mobile.* subdomains used for websites formated for mobile devices.  palm.*, pda.* subdomain...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+palm
+...d for websites formated for mobile devices.  palm.*, pda.* subdomains used to host websites fo...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+pda
+...bsites formated for mobile devices.  palm.*, pda.* subdomains used to host websites formatted...
+                                                ^^^                                             
+*** 2, 3
+CHECK!!!
+subdomains
+... formated for mobile devices.  palm.*, pda.* subdomains used to host websites formatted for personal...
+                                                ^^^^^^^^^^                                             
+*** 2, 4
+CHECK!!!
+mOS
+...tted for personal digital assistants or Pal- mOS devices.  wap.*, wireless.* subdomains used ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+wap
+...nal digital assistants or Pal- mOS devices.  wap.*, wireless.* subdomains used for a wireless...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+wap
+...nal digital assistants or Pal- mOS devices.  wap.*, wireless.* subdomains used for a wireless...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+subdomains
+...ants or Pal- mOS devices.  wap.*, wireless.* subdomains used for a wireless application protocol bro...
+                                                ^^^^^^^^^^                                             
+*** 3, 4
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+708, 2, "Don't put a space before the full stop", ".", "...ation protocol browser. This is not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 T...", "
+."
+...ation protocol browser. This is not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 T...
+                                                ^^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): 10
+10
+711, 1, "Possible typo: you repeated a word", "10", "...his is not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV ...", "10
+10"
+...his is not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV ...
+                                                ^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (1,0): 10
+10
+713, 1, "Possible typo: you repeated a word", "10", "... not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV WPAD B...", "10
+10"
+... not used as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV WPAD B...
+                                                ^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (2,0): 10
+10
+715, 1, "Possible typo: you repeated a word", "10", "...sed as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV WPAD Bugs TL...", "10
+10"
+...sed as 6 . This is not used as 6 10 10 10 10 10 10 -7 Total -8 ARPA DNS-SD Spam AV WPAD Bugs TL...
+                                                ^^^^^                                             
+CHECK!!!
+Wir
+... Traffic Wi-Fi -12 5. CLASSES OF DNS TRAFFIC Wir ed This paper looks at the considerable numb...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+nt
+...shown in Figure 7. In this figure Aver age I nt er -pack et Ar r ival Tim e (seconds) each c...
+                                                ^^                                             
+*** 3, 19
+CHECK!!!
+ival
+...n this figure Aver age I nt er -pack et Ar r ival Tim e (seconds) each class of traffic, repre...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+ets
+...keep the categories mutually exclusive pack- ets were assigned to the first category they mat...
+                                                ^^^                                             
+*** 0, 4
+CHECK!!!
+or
+...DNS requests for domains reserved responses. or commonly used for local networks such as .la...
+                                                ^^                                             
+*** 10, 40
+CHECK!!!
+ .
+.... or commonly used for local networks such as .lan, Besides differences in the domains being...
+                                                ^^                                             
+*** 0, 2
+CHECK!!!
+lan
+...or commonly used for local networks such as .lan, Besides differences in the domains being qu...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+788, 56, "Don't put a space before the full stop", ".", "...fferences in the domains being queried, there .local, .localdomain, etc. See subsection 5.1....", "
+."
+...fferences in the domains being queried, there .local, .localdomain, etc. See subsection 5.1....
+                                                ^^                                             
+CHECK!!!
+ .
+...s in the domains being queried, there .local, .localdomain, etc. See subsection 5.1. were al...
+                                                ^^                                             
+*** 1, 2
+CHECK!!!
+localdomain
+...in the domains being queried, there .local, .localdomain, etc. See subsection 5.1. were also rate dif...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+were
+...ocal, .localdomain, etc. See subsection 5.1. were also rate differences between wired and Wi-F...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+rate
+...aldomain, etc. See subsection 5.1. were also rate differences between wired and Wi-Fi hosts. 9...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+sep
+... hosts based sessions defined by a 15 minute sep- aration between packets for a given IP addr...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+aration
+...s based sessions defined by a 15 minute sep- aration between packets for a given IP address shown...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+the the
+...ulated the mean time be- tween packets to be the the time of the last packet minus the time to th...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+the the
+...ulated the mean time be- tween packets to be the the time of the last packet minus the time to th...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+num
+...ime to the first packet divided by the total num- ber of packets minus one. Wi-Fi IP addresse...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+ber
+...o the first packet divided by the total num- ber of packets minus one. Wi-Fi IP addresses had...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+is comprised of
+...etect DNS hijacking.  SD, Service Discovery, is comprised of any domain lookup with one domain level star...
+                                                ^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookup
+...ervice Discovery, is comprised of any domain lookup with one domain level starting with an un- d...
+                                                ^^^^^^                                             
+*** 0, 5
+CHECK!!!
+un
+...ookup with one domain level starting with an un- derscore, [8]. These domains are used in th...
+                                                ^^                                             
+*** 2, 5
+CHECK!!!
+derscore
+...p with one domain level starting with an un- derscore, [8]. These domains are used in the DNS serv...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+denotes
+...e DNS protocol. See subsection 5.2.  Intern. denotes DNS traffic for which the start of authority...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...ing Parameter Area [13], includes reverse IP lookups providing a DNS name record. A DNS lookup to...
+                                                ^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+lookup
+...P lookups providing a DNS name record. A DNS lookup to the name returned by this record should b...
+                                                ^^^^^^                                             
+*** 2, 5
+CHECK!!!
+lookup
+...sarily match the IP address with the reverse lookup. It also includes other ARPA services such a...
+                                                ^^^^^^                                             
+*** 3, 5
+CHECK!!!
+lookups
+...It also includes other ARPA services such as lookups for E.164 numbers using e164.arpa. See subse...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+arpa
+...such as lookups for E.164 numbers using e164.arpa. See subsection 5.3.  Spam and AV includes D...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+whitelists
+...d AV includes DNS traffic for blacklists and whitelists used by Spam filters and anti-virus software...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+bogons
+... Spam originates, unregistered IP addresses (bogons), and URIs (uniform resource 7 orm resource ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+URIs
+...tes, unregistered IP addresses (bogons), and URIs (uniform resource 7 orm resource 7 n. er t I...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (1,1): orm
+843, 1, "Possible spelling mistake found", "or; form; arm; norm; worm; dorm; orb; ohm; Ora; ore; OR; Ore; Orr; corm; om; org; rm; or m", "...esses (bogons), and URIs (uniform resource 7 orm resource 7 n. er t In LA Bugs i i-F W AV Wir...", "orm"
+...esses (bogons), and URIs (uniform resource 7 orm resource 7 n. er t In LA Bugs i i-F W AV Wir...
+                                                ^^^                                             
+CHECK!!!
+rror
+...n. er t In LA Bugs i i-F W AV Wired Requests rror No E Error Responses Spam Wi- Fi PA AR N TLD...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+Wi
+...ired Requests rror No E Error Responses Spam Wi- Fi PA AR N TLD ARPA Spam AV Sus Bu p. gs d ...
+                                                ^^                                             
+*** 1, 5
+CHECK!!!
+Fi
+... Requests rror No E Error Responses Spam Wi- Fi PA AR N TLD ARPA Spam AV Sus Bu p. gs d ire ...
+                                                ^^                                             
+*** 0, 4
+CHECK!!!
+Sus
+...sponses Spam Wi- Fi PA AR N TLD ARPA Spam AV Sus Bu p. gs d ire W N Inte rn. LA (a) Total Req...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Inte
+...AR N TLD ARPA Spam AV Sus Bu p. gs d ire W N Inte rn. LA (a) Total Requests (b) DNS Failures F...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+rn
+...TLD ARPA Spam AV Sus Bu p. gs d ire W N Inte rn. LA (a) Total Requests (b) DNS Failures Figu...
+                                                ^^                                             
+*** 0, 2
+CHECK!!!
+lookups
+...DNS Traffic Volume by Domain Category  Other lookups which do not fit into the preced- ing catego...
+                                                ^^^^^^^                                             
+*** 0, 7
+CHECK!!!
+preced
+...ory  Other lookups which do not fit into the preced- ing categories are discussed in subsection ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ing
+...er lookups which do not fit into the preced- ing categories are discussed in subsection 5.7. ...
+                                                ^^^                                             
+*** 0, 12
+CHECK!!!
+identifiers
+...C traffic by it being filtered in this step. identifiers) commonly included in Spam. Often DNS traffi...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+localhost
+...ins which only have one domain level such as localhost. Ran- domized TLD requests are used by some ...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+domized
+...ave one domain level such as localhost. Ran- domized TLD requests are used by some browsers to de...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ISPs
+... by some browsers to detect DNS hijacking by ISPs (Internet service providers). See subsection...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+wpad
+...otocol [24], requests are made to either the wpad top level domain or the domain a machine bel...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+wpad
+...main or the domain a machine belongs to with wpad as the last level domain. See subsection 5.2...
+                                                ^^^^                                             
+*** 1, 3
+CHECK!!!
+wpad
+...last level domain. See subsection 5.2. (e.g. wpad.mydomain.tld). In revisiting the DNS usage l...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+mydomain
+...level domain. See subsection 5.2. (e.g. wpad.mydomain.tld). In revisiting the DNS usage landscape ...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tld
+...ain. See subsection 5.2. (e.g. wpad.mydomain.tld). In revisiting the DNS usage landscape thes...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+datasets
+... In revisiting the DNS usage landscape these datasets contain some familiar categories of traffic....
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+whitelists
+...egorizes traffic as being from blacklists or whitelists, reverse lookups, lookups for top level doma...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...being from blacklists or whitelists, reverse lookups, lookups for top level domains, lookups for ...
+                                                ^^^^^^^                                             
+*** 1, 7
+CHECK!!!
+lookups
+...m blacklists or whitelists, reverse lookups, lookups for top level domains, lookups for WPAD doma...
+                                                ^^^^^^^                                             
+*** 2, 7
+CHECK!!!
+lookups
+...erse lookups, lookups for top level domains, lookups for WPAD domains, lookups for domains which ...
+                                                ^^^^^^^                                             
+*** 3, 7
+CHECK!!!
+lookups
+...top level domains, lookups for WPAD domains, lookups for domains which our DNS servers is the SOA...
+                                                ^^^^^^^                                             
+*** 4, 7
+CHECK!!!
+lookups
+...he SOA for, local domains, and all other DNS lookups. These categories were selected by seeking t...
+                                                ^^^^^^^                                             
+*** 5, 7
+CHECK!!!
+lookup
+...lected by seeking to explain the bulk of DNS lookup failures and inves- tigate any distinguishin...
+                                                ^^^^^^                                             
+*** 6, 8
+CHECK!!!
+inves
+... explain the bulk of DNS lookup failures and inves- tigate any distinguishing characteristics t...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+tigate
+...n the bulk of DNS lookup failures and inves- tigate any distinguishing characteristics to provid...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+nonex
+...ed some domain levels and had both valid and nonex- istent domain responses. In [33] domains of...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+istent
+... domain levels and had both valid and nonex- istent domain responses. In [33] domains of this ty...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+botnet
+... In [33] domains of this type were linked to botnet command and control (C&C) traf- fic. The new...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+traf
+...e linked to botnet command and control (C&C) traf- fic. The new traces we collected had domain...
+                                                ^^^^                                             
+*** 9, 10
+CHECK!!!
+fic
+...ed to botnet command and control (C&C) traf- fic. The new traces we collected had domains tha...
+                                                ^^^                                             
+*** 10, 11
+CHECK!!!
+misconfiguration
+...hat they resulted from an application bug or misconfiguration. For example many of these lookups contained...
+                                                ^^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+... misconfiguration. For example many of these lookups contained an en- tire URI or parts of a URI ...
+                                                ^^^^^^^                                             
+*** 6, 7
+CHECK!!!
+html
+...col (e.g. http://), port (:80), path (/index.html). There were DNS requests for domain names o...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+sembled
+...m as valid IPv4 and IPv6 addresses. Some re- sembled file paths and or terminated with com- mon f...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+mon
+...mbled file paths and or terminated with com- mon file extensions. Others contained null, or u...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+un
+...n file extensions. Others contained null, or un- defined which suggests a software error suc...
+                                                ^^                                             
+*** 0, 3
+CHECK!!!
+vari
+...concatenating a null or undefined JavaScript vari- able to a URI which then is interpreted as ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+encodings
+...s, spaces, or URL (uniform resource locator) encodings (e.g. %20). See subsection 5.5. 8 . See subs...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+945, 2, "Don't put a space before the full stop", ".", "...) encodings (e.g. %20). See subsection 5.5. 8 . See subsection 5.5. 8 whitelist services are...", "
+."
+...) encodings (e.g. %20). See subsection 5.5. 8 . See subsection 5.5. 8 whitelist services are...
+                                                ^^                                             
+CHECK!!!
+whitelist
+...ee subsection 5.5. 8 . See subsection 5.5. 8 whitelist services are hosted using the DNS infrastruc...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+infrastruc
+... whitelist services are hosted using the DNS infrastruc- ture and are discussed in a later section. ...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ture
+...ervices are hosted using the DNS infrastruc- ture and are discussed in a later section. 5.1 ni...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+nique
+...re and are discussed in a later section. 5.1 nique for enumerating the services available on a ...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+ing
+... capabilities of zero configuration network- ing beyond IP address allocation and host resolu...
+                                                ^^^                                             
+*** 2, 17
+CHECK!!!
+Bon
+...Well known implementations of DNS-SD include Bon- jour, and Avahi. Examples of auto configura...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+jour
+...known implementations of DNS-SD include Bon- jour, and Avahi. Examples of auto configuration d...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+Avahi
+...ementations of DNS-SD include Bon- jour, and Avahi. Examples of auto configuration domains we s...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+clude
+...les of auto configuration domains we saw in- clude requests for Active Directory, and WPAD. Act...
+                                                ^^^^^                                             
+*** 2, 4
+CHECK!!!
+tld
+...ad as the last level domain, (i.e. ad.domain.tld ). It makes use of Kerberos and LDAP. Non-ex...
+                                                ^^^                                             
+*** 0, 3
+CHECK!!!
+ )
+...as the last level domain, (i.e. ad.domain.tld ). It makes use of Kerberos and LDAP. Non-exis...
+                                                ^^                                             
+*** 0, 1
+CHECK!!!
+Kerberos
+...main, (i.e. ad.domain.tld ). It makes use of Kerberos and LDAP. Non-existent domain responses for ...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+misconfiguration
+...s for Active Di- rectory domains point out a misconfiguration or service outage. We observed that only 0.1...
+                                                ^^^^^^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+po
+...ts failed. Identifying these can help remove po- tential abuse of any misconfiguration by so...
+                                                ^^                                             
+*** 2, 14
+CHECK!!!
+tential
+...ailed. Identifying these can help remove po- tential abuse of any misconfiguration by someone try...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+misconfiguration
+...ese can help remove po- tential abuse of any misconfiguration by someone trying to compromise an Active Di...
+                                                ^^^^^^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+datasets
+... DNS error responses across each of the four datasets, were comparable between the set of wired ho...
+                                                ^^^^^^^^                                             
+*** 0, 7
+CHECK!!!
+tocol
+...c for the Web Proxy Auto-Discovery [24] pro- tocol (WPAD) made up between 1.07% and 3.96% of th...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+dataset
+...% and 3.96% of the total DNS errors for each dataset. All the DNS responses in the datasets for W...
+                                                ^^^^^^^                                             
+*** 1, 8
+CHECK!!!
+datasets
+...r each dataset. All the DNS responses in the datasets for WPAD domains were fail- ures. WPAD allow...
+                                                ^^^^^^^^                                             
+*** 1, 7
+CHECK!!!
+ures
+... in the datasets for WPAD domains were fail- ures. WPAD allows network administrators to distr...
+                                                ^^^^                                             
+*** 0, 4
+CHECK!!!
+Config
+...rk administrators to distribute a Proxy Auto Config (PAC) file, usually Internal and Local Domai...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+organi
+...uthority is local or that belong to the same organi- zation as the network. This group of traffi...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+zation
+... is local or that belong to the same organi- zation as the network. This group of traffic was si...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+datasets
+...ts own category of DNS traffic. For all four datasets the number of error responses for domains as...
+                                                ^^^^^^^^                                             
+*** 2, 7
+CHECK!!!
+ .
+...omains associated with local networks such as .lan, .local, and .localdomain was low for wir...
+                                                ^^                                             
+*** 0, 3
+CHECK!!!
+lan
+...ains associated with local networks such as .lan, .local, and .localdomain was low for wired ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+989, 57, "Don't put a space before the full stop", ".", "... associated with local networks such as .lan, .local, and .localdomain was low for wired hos...", "
+."
+... associated with local networks such as .lan, .local, and .localdomain was low for wired hos...
+                                                ^^                                             
+CHECK!!!
+ .
+...with local networks such as .lan, .local, and .localdomain was low for wired hosts 0.40%, 0....
+                                                ^^                                             
+*** 1, 3
+CHECK!!!
+localdomain
+...th local networks such as .lan, .local, and .localdomain was low for wired hosts 0.40%, 0.71%, 0.76% ...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+datasets
+..., and 45.65%. Notice that for Wi-Fi hosts in datasets 3 and 4 these responses are a much larger pe...
+                                                ^^^^^^^^                                             
+*** 3, 7
+CHECK!!!
+ume
+...re a much larger percentage. The actual vol- ume of responses was about 2.04 million for Data...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+Dataset
+... ume of responses was about 2.04 million for Dataset 2, but for Dataset 3 was 20.6 million. These...
+                                                ^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Dataset
+...as about 2.04 million for Dataset 2, but for Dataset 3 was 20.6 million. These datasets were take...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+datasets
+...2, but for Dataset 3 was 20.6 million. These datasets were taken over about the same amount of tim...
+                                                ^^^^^^^^                                             
+*** 4, 7
+CHECK!!!
+datasets
+...ifferent in this category from the first two datasets from the second two is that there are a larg...
+                                                ^^^^^^^^                                             
+*** 5, 7
+CHECK!!!
+a large number of
+...tasets from the second two is that there are a large number of requests from Wi-Fi IP addresses for the dom...
+                                                ^^^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+with out
+...es for the domain local. There are responses with out the error flag set in the later datasets but...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+datasets
+...ses with out the error flag set in the later datasets but no IP address is provided in the answers...
+                                                ^^^^^^^^                                             
+*** 6, 7
+CHECK!!!
+Bonjour
+...OS X issues SOA queries for local as part of Bonjour [4]. Ubuntu issues these queries as well, bu...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+hosts
+...res were repeated queries which appended the hosts domain to a failed TLD query. For Wi-Fi host...
+                                                ^^^^^                                             
+*** 8, 10
+CHECK!!!
+lacxspgdze
+...example if the Google Chrome browser queries lacxspgdze and the host belongs to do- main.tld once th...
+                                                ^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+tld
+... lacxspgdze and the host belongs to do- main.tld once the first query fails another query wil...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+lacxspgdze
+...query fails another query will be issued for lacxspgdze.domain.tld. These failures can be explained ...
+                                                ^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+tld
+...r query will be issued for lacxspgdze.domain.tld. These failures can be explained by hosts ap...
+                                                ^^^                                             
+*** 2, 3
+CHECK!!!
+sociated
+...s there were more than one parent domain as- sociated with a single IP address. This can be explai...
+                                                ^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Warning: index mismatch with find text (0,0): (
+
+1025, 52, "Don't put a space after the opening parenthesis", "(", "...defines a JavaScript function FindProxyForURL( url, host). This protocol also checks each le...", "(
+"
+...defines a JavaScript function FindProxyForURL( url, host). This protocol also checks each le...
+                                                ^^                                             
+CHECK!!!
+url
+...fines a JavaScript function FindProxyForURL( url, host). This protocol also checks each level...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+der
+...ree which the host machine belongs to in or- der to automatically determine the proxy setting...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+behav
+... names being used or exploits can cause this behav- ior. DNS-SD is used to enumerate services. ...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+ior
+...being used or exploits can cause this behav- ior. DNS-SD is used to enumerate services. When ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+multicast
+...sts are issued through normal (as opposed to multicast) DNS, it is expected that these requests wou...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ .
+...to list these services. 5.3 ARPA Although the .arpa top level domain originally was related ...
+                                                ^^                                             
+*** 2, 3
+CHECK!!!
+arpa
+... list these services. 5.3 ARPA Although the .arpa top level domain originally was related to t...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+repurposed
+...the ARPANET created by DARPA it now has been repurposed to be Address and Routing Parameter Area Dom...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookup
+...for IPv4 and IPv6 addresses. An IP version 4 lookup for 127.0.0.1 would have the form, 1.0.0.127...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookup
+...for IPv4 and IPv6 addresses. An IP version 4 lookup for 127.0.0.1 would have the form, 1.0.0.127...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+in-addr
+...for 127.0.0.1 would have the form, 1.0.0.127.in-addr.arpa. The result is a name record with the v...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+arpa
+...0.0.1 would have the form, 1.0.0.127.in-addr.arpa. The result is a name record with the value ...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+localhost
+.... The result is a name record with the value localhost. Notice that Auto-configuration Domains and ...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Ser
+...tice that Auto-configuration Domains and DNS Ser- vice Discovery Auto-configuration domains f...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+infor
+...ontain a record containing the configuration infor- mation. DNS service discovery (DNS-SD) is a...
+                                                ^^^^^                                             
+*** 2, 3
+CHECK!!!
+mation
+...a record containing the configuration infor- mation. DNS service discovery (DNS-SD) is a tech- 9...
+                                                ^^^^^^                                             
+*** 2, 3
+CHECK!!!
+Warning: index mismatch with find text (6,6): )
+1058, 7, "Unpaired symbol: '(' seems to be missing", "", "...ervice discovery (DNS-SD) is a tech- 9 DNS-SD) is a tech- 9 the order of the octets is reve...", ")"
+...ervice discovery (DNS-SD) is a tech- 9 DNS-SD) is a tech- 9 the order of the octets is reve...
+                                                ^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): 
+.
+1062, 46, "Don't put a space before the full stop", ".", "...The wired hosts had between 12.67% and 28.98% .arpa DNS error responses across all the datas...", "
+."
+...The wired hosts had between 12.67% and 28.98% .arpa DNS error responses across all the datas...
+                                                ^^                                             
+CHECK!!!
+arpa
+...e wired hosts had between 12.67% and 28.98% .arpa DNS error responses across all the datasets,...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+datasets
+...98% .arpa DNS error responses across all the datasets, and the Wi-Fi hosts had between 3.90% and 6...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+cluded
+...Fi hosts had between 3.90% and 6.15%. We in- cluded lookups to the deprecated ip6.int domain [14...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...s had between 3.90% and 6.15%. We in- cluded lookups to the deprecated ip6.int domain [14] in cou...
+                                                ^^^^^^^                                             
+*** 0, 5
+CHECK!!!
+ .
+...eprecated ip6.int domain [14] in counting the .arpa traffic. Hosts associated with Spam filt...
+                                                ^^                                             
+*** 0, 2
+CHECK!!!
+arpa
+...recated ip6.int domain [14] in counting the .arpa traffic. Hosts associated with Spam filterin...
+                                                ^^^^                                             
+*** 1, 3
+CHECK!!!
+lookups
+...raffic. Hosts associated with Spam filtering lookups also had a higher number of re- verse resolu...
+                                                ^^^^^^^                                             
+*** 1, 5
+CHECK!!!
+associa
+...- confirmed reverse DNS method for verifying associa- tions between IP addresses and domains. Oth...
+                                                ^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+tions
+...ed reverse DNS method for verifying associa- tions between IP addresses and domains. Other sour...
+                                                ^^^^^                                             
+*** 1, 3
+CHECK!!!
+ .
+...en IP addresses and domains. Other sources of .arpa traffic include logging services such as...
+                                                ^^                                             
+*** 1, 2
+CHECK!!!
+arpa
+... IP addresses and domains. Other sources of .arpa traffic include logging services such as rsy...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+rsyslog
+...rpa traffic include logging services such as rsyslog and packet capture software such as tcpdump ...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tcpdump
+... rsyslog and packet capture software such as tcpdump and wire- shark. 5.4 of local databases used...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tld
+...92a55f6e0e 42968c19a3f00f96.57ce.list.domain.tld where the first two levels of the domain is ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+cessing
+...g blacklisted domains. We did find hosts ac- cessing domains listed on the URI blacklists. In man...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+amples
+...ontent or provides a legitimate service (ex- amples: Tiny URL, YouTube, etc). The percentages of...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+dataset
+...lacklisted successful DNS responses for each dataset is 3.79%, 0.08%, 0.10%, and 0.20%. Those hos...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+ent
+...d a random component along with a valid par- ent domain. We believe these requests were gener...
+                                                ^^^                                             
+*** 9, 16
+CHECK!!!
+reso
+... when there is agreement between the reverse reso- lution and the forward resolution of a doma...
+                                                ^^^^                                             
+*** 1, 4
+CHECK!!!
+lution
+...there is agreement between the reverse reso- lution and the forward resolution of a domain name....
+                                                ^^^^^^                                             
+*** 1, 4
+CHECK!!!
+subdomains
+...n of a domain name. Spammers likely use fake subdomains of valid domains to try to evade Spam filter...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+URIs
+...that if spammers randomize the origin of and URIs contained within their emails, a Spam email ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Whitelists
+...e for visiting a single page. Blacklists and Whitelists Blacklists and whitelists over DNS leverage ...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+whitelists
+...ge. Blacklists and Whitelists Blacklists and whitelists over DNS leverage the in- frastructure of DN...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+frastructure
+...sts and whitelists over DNS leverage the in- frastructure of DNS to provide cached lookups to dy- nami...
+                                                ^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...he in- frastructure of DNS to provide cached lookups to dy- namically changing information. Some ...
+                                                ^^^^^^^                                             
+*** 2, 5
+CHECK!!!
+dy
+...tructure of DNS to provide cached lookups to dy- namically changing information. Some Spam d...
+                                                ^^                                             
+*** 0, 1
+CHECK!!!
+namically
+...ture of DNS to provide cached lookups to dy- namically changing information. Some Spam detection so...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...n. Some Spam detection solutions rely on DNS lookups to determine:  If the sender of an email is ...
+                                                ^^^^^^^                                             
+*** 3, 5
+CHECK!!!
+from
+...es to the domain of the email address in the from field  If there are blacklisted URLs in the ...
+                                                ^^^^                                             
+*** 6, 9
+CHECK!!!
+rea
+...addresses may be blacklisted for a number of rea- sons such as being a known source of Spam. ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+identi
+...are one way IP addresses of Spam senders are identi- fied. There are blacklists for open proxy s...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+fied
+...way IP addresses of Spam senders are identi- fied. There are blacklists for open proxy servers...
+                                                ^^^^                                             
+*** 1, 3
+CHECK!!!
+botnet
+...ing behavior associated with being part of a botnet. These IP ad- dresses can be identified by l...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+bogons
+... IP address ranges which are not registered, bogons, since there should not be emails originatin...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...ponses to responses with no error because of lookups which are not listed. Spam related black and...
+                                                ^^^^^^^                                             
+*** 4, 5
+CHECK!!!
+amples
+...ti-virus tools use hash based DNS lists. Ex- amples include McAfee and Sophos. It should be note...
+                                                ^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Sophos
+...sed DNS lists. Ex- amples include McAfee and Sophos. It should be noted that although this may a...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+some of the
+... Bugs We observed distinguishing features in some of the DNS Error responses. One category of nonexis...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (2,2): xistent
+1169, 1, "Possible spelling mistake found", "existent; xis tent", "...esponses. One category of nonexistent do- 10 xistent do- 10 main requests we observed had the pre...", "xistent"
+...esponses. One category of nonexistent do- 10 xistent do- 10 main requests we observed had the pre...
+                                                ^^^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): shouldnt
+1173, 1, "Possible spelling mistake found", "shouldn't", "...col prefixes such as http://. These prefixes shouldnt occur in DNS requests and indicate the pres-...", "shouldnt"
+...col prefixes such as http://. These prefixes shouldnt occur in DNS requests and indicate the pres-...
+                                                ^^^^^^^^                                             
+CHECK!!!
+ence
+...occur in DNS requests and indicate the pres- ence of buggy applications. However, we did find ...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+ples
+...ggy applications. However, we did find exam- ples of valid DNS responses for domains of this f...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+lookup
+...uded a port specification in the domain name lookup something.com:8080, included the relative pa...
+                                                ^^^^^^                                             
+*** 0, 7
+CHECK!!!
+these re
+...the relative path, or the entire URI. All of these re- quests resulted in errors. Javascript bugs ...
+                                                ^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Javascript
+... All of these re- quests resulted in errors. Javascript bugs which ap- pended an undefined variable ...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ap
+...ts resulted in errors. Javascript bugs which ap- pended an undefined variable to a domain na...
+                                                ^^                                             
+*** 2, 8
+CHECK!!!
+comundefined
+...efined variable to a domain name some- thing.comundefined or something.comnull. There were also cases ...
+                                                ^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+comnull
+...n name some- thing.comundefined or something.comnull. There were also cases where lookups were pe...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...mething.comnull. There were also cases where lookups were performed for strings that were likely ...
+                                                ^^^^^^^                                             
+*** 0, 6
+CHECK!!!
+filenames
+... were performed for strings that were likely filenames because they ended with common file extensio...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+html
+...nded with common file extensions (e.g. index.html, image.jpg, script.js). A simple mistake on ...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+jpg
+...mmon file extensions (e.g. index.html, image.jpg, script.js). A simple mistake on a web page ...
+                                                ^^^                                             
+*** 0, 3
+CHECK!!!
+js
+...tensions (e.g. index.html, image.jpg, script.js). A simple mistake on a web page such as: to...
+                                                ^^                                             
+*** 0, 3
+CHECK!!!
+Dataset
+...ly a top level which returned an IP address. Dataset 1 was taken in June and predates the roll ou...
+                                                ^^^^^^^                                             
+*** 0, 3
+CHECK!!!
+Dataset
+...f this feature explaining the lower numbers. Dataset 2 had a large amount of requests to a partic...
+                                                ^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+partic
+...ataset 2 had a large amount of requests to a partic- ular second level domain returning 127.0.53...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ular
+... had a large amount of requests to a partic- ular second level domain returning 127.0.53.53. T...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+datasets
+... 127.0.53.53. These requests were present in datasets 1, and 4 but were all nonexistent domains. O...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+dom
+...ervation we made was queries requesting ran- dom top level domains. The source of these queri...
+                                                ^^^                                             
+*** 8, 35
+CHECK!!!
+ISPs
+...owser [35]. Some Internet service providers (ISPs) hijack DNS responses and Comcast has submit...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+Comcast
+...ce providers (ISPs) hijack DNS responses and Comcast has submitted an Internet draft on DNS redir...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+iframe
+...[30]. Although this technique might be used <iframe src="http://index.html"></iframe> to offer s...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+src
+...lthough this technique might be used <iframe src="http://index.html"></iframe> to offer servi...
+                                                ^^^                                             
+*** 0, 3
+CHECK!!!
+"
+...ugh this technique might be used <iframe src="http://index.html"></iframe> to offer service...
+                                                ^                                             
+*** 0, 10
+CHECK!!!
+img
+...ffer services, ICANN has forbidden NXDOMAIN <img src="http://image.jpg" /> substitution by gT...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+src
+... services, ICANN has forbidden NXDOMAIN <img src="http://image.jpg" /> substitution by gTLD r...
+                                                ^^^                                             
+*** 1, 3
+CHECK!!!
+"
+...vices, ICANN has forbidden NXDOMAIN <img src="http://image.jpg" /> substitution by gTLD reg...
+                                                ^                                             
+*** 2, 10
+CHECK!!!
+gTLD
+...mg src="http://image.jpg" /> substitution by gTLD registrars for several reasons in- <script s...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+src
+...D registrars for several reasons in- <script src="http://script.js"></script> cluding but not...
+                                                ^^^                                             
+*** 2, 3
+CHECK!!!
+"
+...gistrars for several reasons in- <script src="http://script.js"></script> cluding but not l...
+                                                ^                                             
+*** 4, 10
+CHECK!!!
+cluding
+...in- <script src="http://script.js"></script> cluding but not limited to privacy and user experien...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+some of the
+...rom a web page results in is a dependency of some of the browsers features. The a DNS query for index...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): The
+a
+1210, 51, "Maybe you need to remove one determiner so that only 'The' or 'a' is left.", "The; A", "...dependency of some of the browsers features. The a DNS query for index.html, image.jpg, and scr...", "The
+a"
+...dependency of some of the browsers features. The a DNS query for index.html, image.jpg, and scr...
+                                                ^^^^^                                             
+CHECK!!!
+html
+...browsers features. The a DNS query for index.html, image.jpg, and script.js, Google Chrome web...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+jpg
+...tures. The a DNS query for index.html, image.jpg, and script.js, Google Chrome web browser is...
+                                                ^^^                                             
+*** 2, 3
+CHECK!!!
+js
+... query for index.html, image.jpg, and script.js, Google Chrome web browser issues domain req...
+                                                ^^                                             
+*** 2, 3
+CHECK!!!
+ei
+...y intended to make HTTP requests which would ei- ing. These random strings are effectively r...
+                                                ^^                                             
+*** 0, 4
+CHECK!!!
+ing
+...tended to make HTTP requests which would ei- ing. These random strings are effectively random...
+                                                ^^^                                             
+*** 12, 24
+CHECK!!!
+TLDs
+... These random strings are effectively random TLDs ther include the domain name along with the ...
+                                                ^^^^                                             
+*** 0, 6
+CHECK!!!
+ther
+...e random strings are effectively random TLDs ther include the domain name along with the path ...
+                                                ^^^^                                             
+*** 2, 4
+CHECK!!!
+When
+...e along with the path or which do not exist. When an ISP hijacks nonexistent leave the protoco...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...ses, an address record to an ISP search main lookups had spaces, commas or asterisks. In these en...
+                                                ^^^^^^^                                             
+*** 1, 6
+CHECK!!!
+Warning: index mismatch with find text (0,0): these
+engine
+1221, 50, "Did you mean 'this engine' or 'these engines'?", "this engine; these engines", "... lookups had spaces, commas or asterisks. In these engine is returned instead of the error response. T...", "these
+engine"
+... lookups had spaces, commas or asterisks. In these engine is returned instead of the error response. T...
+                                                ^^^^^^^^^^^^                                             
+CHECK!!!
+lookups
+...instead of the error response. The cases the lookups appeared to be related to improperly Chrome ...
+                                                ^^^^^^^                                             
+*** 2, 6
+CHECK!!!
+it
+...ee if the random queries configured servers. it issued result in an address record instead o...
+                                                ^^                                             
+*** 7, 18
+CHECK!!!
+nonexis
+...ssued result in an address record instead of nonexis- Some domain lookups contained URL encoded s...
+                                                ^^^^^^^                                             
+*** 2, 3
+CHECK!!!
+lookups
+...dress record instead of nonexis- Some domain lookups contained URL encoded strings tent domain re...
+                                                ^^^^^^^                                             
+*** 3, 6
+CHECK!!!
+encodings
+... requests are directed to such as %20. These encodings allow special characters the same IP address...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+an
+...OST and GET data used in HTTP interpreted as an non-existent domain response. With- lookups....
+                                                ^^                                             
+*** 20, 33
+CHECK!!!
+lookups
+...ed as an non-existent domain response. With- lookups. These are used heavily in web applications ...
+                                                ^^^^^^^                                             
+*** 4, 6
+CHECK!!!
+botnet
+...er. If a buggy web application neglects from botnet C&C traffic because botnets have not used to...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+botnets
+...ion neglects from botnet C&C traffic because botnets have not used to delimit the URL path from t...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+TLDs
+...it the URL path from the domain, these char- TLDs as their C&C domains. At first glance this l...
+                                                ^^^^                                             
+*** 1, 6
+CHECK!!!
+acters
+...heir C&C domains. At first glance this looks acters can end up in a query. Also if a users brows...
+                                                ^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Also
+...nce this looks acters can end up in a query. Also if a users browser like a category of traffi...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): users
+1241, 41, "Possible typo: apostrophe is missing. Did you mean 'users'' or 'user's'?", "users'; user's", "...ooks acters can end up in a query. Also if a users browser like a category of traffic attackers...", "users"
+...ooks acters can end up in a query. Also if a users browser like a category of traffic attackers...
+                                                ^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (0,0): isnt
+1244, 24, "Possible spelling mistake found", "isn't", "...r search query may be quests in; however, it isnt trivial to create a new top interpreted as a...", "isnt"
+...r search query may be quests in; however, it isnt trivial to create a new top interpreted as a...
+                                                ^^^^                                             
+CHECK!!!
+dom
+...d queries. Bugs which show up in client-side dom TLDs for detection is the possibility that D...
+                                                ^^^                                             
+*** 26, 35
+CHECK!!!
+TLDs
+...eries. Bugs which show up in client-side dom TLDs for detection is the possibility that DNS hi...
+                                                ^^^^                                             
+*** 2, 6
+CHECK!!!
+cer
+...ipt may only show up for certain versions of cer- jackers like ISPs may leave TLDs untouched ...
+                                                ^^^                                             
+*** 2, 4
+CHECK!!!
+jackers
+...ay only show up for certain versions of cer- jackers like ISPs may leave TLDs untouched and hijac...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ISPs
+...up for certain versions of cer- jackers like ISPs may leave TLDs untouched and hijack tain bro...
+                                                ^^^^                                             
+*** 1, 2
+CHECK!!!
+TLDs
+...versions of cer- jackers like ISPs may leave TLDs untouched and hijack tain browsers or under ...
+                                                ^^^^                                             
+*** 3, 6
+CHECK!!!
+tain
+...ike ISPs may leave TLDs untouched and hijack tain browsers or under certain circumstances limi...
+                                                ^^^^                                             
+*** 2, 4
+CHECK!!!
+subdomains
+.... Bugs in mobile systems causes requests for subdomains of the domain applications may trigger looku...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookups
+...mains of the domain applications may trigger lookups periodically. a hosts belongs to (see subsec...
+                                                ^^^^^^^                                             
+*** 5, 6
+CHECK!!!
+a
+...plications may trigger lookups periodically. a hosts belongs to (see subsection 5.1). We fo...
+                                                ^                                             
+*** 259, 294
+CHECK!!!
+a hosts
+...plications may trigger lookups periodically. a hosts belongs to (see subsection 5.1). We found an...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+belongs
+...ns may trigger lookups periodically. a hosts belongs to (see subsection 5.1). We found another cl...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Dataset
+...another class of non-existent domain queries Dataset 1 2 3 4 generated by the Google Chrome web-b...
+                                                ^^^^^^^                                             
+*** 2, 3
+CHECK!!!
+Specifi
+... generated by the Google Chrome web-browser. Specifi- Number of blocked domains 1 772 45 427 call...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+cally
+...cifi- Number of blocked domains 1 772 45 427 cally this browser has a DNS prefetching feature w...
+                                                ^^^^^                                             
+*** 1, 2
+CHECK!!!
+prefetching
+...ns 1 772 45 427 cally this browser has a DNS prefetching feature which Number of blocked TLDs 0 24 7 ...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+TLDs
+... prefetching feature which Number of blocked TLDs 0 24 7 39 is enabled by default. This class ...
+                                                ^^^^                                             
+*** 4, 6
+CHECK!!!
+TLDs
+... default. This class of traffic was observed TLDs with any DNS record 420 354 132 335 in [17] ...
+                                                ^^^^                                             
+*** 5, 6
+CHECK!!!
+than
+... and is discussed in [11]. This is different than HTML5 prefetching which requests domains for...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+prefetching
+...cussed in [11]. This is different than HTML5 prefetching which requests domains for links Table 5: IC...
+                                                ^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+"
+...dresses we found some with records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 ...
+                                                ^                                             
+*** 6, 10
+CHECK!!!
+dns-prefetch
+...resses we found some with records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" h...
+                                                ^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+"
+...und some with records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" hr...
+                                                ^                                             
+*** 7, 10
+CHECK!!!
+href
+...d some with records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="/...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+"
+...e with records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//w...
+                                                ^                                             
+*** 8, 10
+CHECK!!!
+www
+...ith records <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.do...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+tld
+... <link rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+"
+...nk rel="dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" />...
+                                                ^                                             
+*** 9, 10
+CHECK!!!
+Warning: index mismatch with find text (1,1): -prefetch
+1294, 1, "Possible spelling mistake found", "", "...dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user ...", "-prefetch"
+...dns-prefetch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user ...
+                                                ^^^^^^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (10,10): "
+1294, 10, "Use a smart closing quote here: '”'.", "”", "...tch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user i...", """
+...tch" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user i...
+                                                ^                                             
+CHECK!!!
+Warning: index mismatch with find text (1,1): href
+1295, 1, "Possible spelling mistake found", "ref; pref; xref", "...h" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typ...", "href"
+...h" href="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typ...
+                                                ^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (11,10): "
+1295, 6, "Use a smart closing quote here: '”'.", "”", "...ef="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typin...", """
+...ef="//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typin...
+                                                ^                                             
+CHECK!!!
+Warning: index mismatch with find text (1,1): www
+1295, 9, "Possible spelling mistake found", "WWW; WWI; wow; WNW; WSW; WW", "..."//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a d...", "www"
+..."//www.domain.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a d...
+                                                ^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (1,1): tld
+1295, 20, "Possible spelling mistake found", "old; told; Ted; TLC; Tod; TDD; tad; ted; TD; LLD; Tad; Tl; ltd", "...in.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a domain in th...", "tld"
+...in.tld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a domain in th...
+                                                ^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (12,10): "
+1295, 24, "Use a smart closing quote here: '”'.", "”", "...ld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a domain in the ...", """
+...ld/" /> 11 -prefetch" href="//www.domain.tld/" /> 11 When a user is typing a domain in the ...
+                                                ^                                             
+CHECK!!!
+lookup
+...as actually submitted a search query or page lookup. There were DNS lookups for valid IPv4 and I...
+                                                ^^^^^^                                             
+*** 0, 4
+CHECK!!!
+lookups
+... search query or page lookup. There were DNS lookups for valid IPv4 and IPv6 ad- dresses. These s...
+                                                ^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+gethostname
+...without checking if it is an IP address. The gethostname() library function does not have this issue....
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+tentionally
+...served some domains which appeared to be in- tentionally used to get nonexistent domain responses. Th...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Mbps
+...f the requests and responses was less than 1 Mbps which is not close enough to the link capaci...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+sus
+... did observe fast fluxing DNS responses, and sus- picious DNS traffic likely related to botne...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+picious
+...observe fast fluxing DNS responses, and sus- picious DNS traffic likely related to botnets. Some ...
+                                                ^^^^^^^                                             
+*** 0, 3
+CHECK!!!
+botnets
+...d sus- picious DNS traffic likely related to botnets. Some of the suspicious traffic appeared to ...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): Some of
+the
+1322, 48, "Simply use 'some'.", "Some", "...cious DNS traffic likely related to botnets. Some of the suspicious traffic appeared to be aggregated...", "Some of
+the"
+...cious DNS traffic likely related to botnets. Some of the suspicious traffic appeared to be aggregated...
+                                                ^^^^^^^^^^^                                             
+CHECK!!!
+maining
+...han two to the nearest valid domain. The re- maining percentage includes those typos where in one...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+malware
+...we identified which indicate the presence of malware include: bvkaymxoioe.www.game499.com. 2014-1...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+bvkaymxoioe
+...ch indicate the presence of malware include: bvkaymxoioe.www.game499.com. 2014-12-30.pw bvkcrzkdcsb.w...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+www
+...the presence of malware include: bvkaymxoioe.www.game499.com. 2014-12-30.pw bvkcrzkdcsb.www.g...
+                                                ^^^                                             
+*** 0, 2
+CHECK!!!
+pw
+...ude: bvkaymxoioe.www.game499.com. 2014-12-30.pw bvkcrzkdcsb.www.gannme499.com loooplollokp80...
+                                                ^^                                             
+*** 0, 1
+CHECK!!!
+bvkcrzkdcsb
+...: bvkaymxoioe.www.game499.com. 2014-12-30.pw bvkcrzkdcsb.www.gannme499.com loooplollokp80.com musechi...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+www
+...e.www.game499.com. 2014-12-30.pw bvkcrzkdcsb.www.gannme499.com loooplollokp80.com musechizewr...
+                                                ^^^                                             
+*** 1, 2
+CHECK!!!
+no-ip
+...nme499.com loooplollokp80.com musechizewrt40.no-ip.info ENUM For VOIP One source of a large vol...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+nrenum
+... large volume of nonexistent domains was the nrenum.net second level domain. Nrenum pro- vides a...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Nrenum
+...ains was the nrenum.net second level domain. Nrenum pro- vides an ENUM database over DNS for par...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+vides
+... nrenum.net second level domain. Nrenum pro- vides an ENUM database over DNS for participating ...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+Dataset
+...o- main responses were for a single host. In Dataset 4 for every successful lookup this host had ...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+lookup
+...ngle host. In Dataset 4 for every successful lookup this host had 9.67 failures, but the next mo...
+                                                ^^^^^^                                             
+*** 2, 4
+CHECK!!!
+lookups
+...ommon requester had more than 350 successful lookups for every failure. This appears to be a brut...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+asso
+...ults of this kind of search could be used to asso- ciate IP addresses with VOIP phone numbers,...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+ciate
+...f this kind of search could be used to asso- ciate IP addresses with VOIP phone numbers, or det...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+robo
+...ne what numbers are active for purposes like robo- callers, etc. One technique to mitigate thi...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+impose
+...chnique to mitigate this kind of at- tack is impose rate limiting per IP by the number of unique...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+ENUMs
+...rate limiting per IP by the number of unique ENUMs requested with a higher penalty for non- exi...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+several re
+...n. The last two examples were accompanied by several re- quests to the same prefix with different nu...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+fered
+...e Internet is used and what services are of- fered have changed rapidly with the introduction o...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+the Inter
+...chnology. DNS is a critical service enabling the Inter- net to function. We collected DNS traffic f...
+                                                ^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+applica
+...affic. We have investigated network sources, applica- tion sources, and sources of NXDOMAIN respo...
+                                                ^^^^^^^                                             
+*** 1, 3
+CHECK!!!
+tion
+... have investigated network sources, applica- tion sources, and sources of NXDOMAIN responses, ...
+                                                ^^^^                                             
+*** 10, 16
+CHECK!!!
+respon
+...red and Wi-Fi hosts. The wireless hosts were respon- sible for close to two thirds of the DNS tr...
+                                                ^^^^^^                                             
+*** 6, 10
+CHECK!!!
+sible
+...Wi-Fi hosts. The wireless hosts were respon- sible for close to two thirds of the DNS traffic. ...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+chan
+...sted by applications which use DNS as a side chan- nel through network firewalls. This increas...
+                                                ^^^^                                             
+*** 2, 3
+CHECK!!!
+nel
+...y applications which use DNS as a side chan- nel through network firewalls. This increase in ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+these re
+...were larger than the width of the spike, and these re- sponses were answered from the local DNS re...
+                                                ^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+sponses
+...r than the width of the spike, and these re- sponses were answered from the local DNS resolvers c...
+                                                ^^^^^^^                                             
+*** 8, 10
+CHECK!!!
+Warning: index mismatch with find text (0,0): resolvers
+1393, 42, "Possible spelling mistake found", "resolves; revolvers; resolver; re solvers; resolve rs; resolver s", "...re- sponses were answered from the local DNS resolvers cache rather than generating a large volume ...", "resolvers"
+...re- sponses were answered from the local DNS resolvers cache rather than generating a large volume ...
+                                                ^^^^^^^^^                                             
+CHECK!!!
+misconfiguration
+...bserved were the result of a software bug or misconfiguration. One bug on one machine caused a more than t...
+                                                ^^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0): 12
+12
+1405, 1, "Possible typo: you repeated a word", "12", "...64] from the Qatar National Re- search Fund. 12 12 8. REFERENCES [13] G. Huston. Management Gui...", "12
+12"
+...64] from the Qatar National Re- search Fund. 12 12 8. REFERENCES [13] G. Huston. Management Gui...
+                                                ^^^^^                                             
+CHECK!!!
+arpa
+...e Address and Routing Parameter Area Domain (arpa). RFC 3172 (Best Current Practice), Sept. 20...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Balakrishnan
+...actice), Aug. 2005. [15] J. Jung, E. Sit, H. Balakrishnan, and R. Morris. Dns performance and the effe...
+                                                ^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Dns
+...ung, E. Sit, H. Balakrishnan, and R. Morris. Dns performance and the effectiveness of caching...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Netw
+...he effectiveness of caching. IEEE/ACM Trans. Netw., 10(5):589603, Oct. 2002. [16] Y. Kazato, K...
+                                                ^^^^                                             
+*** 0, 2
+CHECK!!!
+Kazato
+...ans. Netw., 10(5):589603, Oct. 2002. [16] Y. Kazato, K. Fukuda, and T. Sugawara. Towards classif...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Fukuda
+... 10(5):589603, Oct. 2002. [16] Y. Kazato, K. Fukuda, and T. Sugawara. Towards classification of ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Sugawara
+...Oct. 2002. [16] Y. Kazato, K. Fukuda, and T. Sugawara. Towards classification of DNS erroneous que...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Krishnan
+... 2532, New York, NY, USA, 2013. ACM. [17] S. Krishnan and F. Monrose. DNS prefetching and its priv...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Monrose
+... NY, USA, 2013. ACM. [17] S. Krishnan and F. Monrose. DNS prefetching and its privacy implication...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+prefetching
+...3. ACM. [17] S. Krishnan and F. Monrose. DNS prefetching and its privacy implications: When good thin...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Botnets
+...n Large-scale Exploits and Emergent Threats: Botnets, Spyware, Worms, and More, LEET10, pages 101...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Spyware
+...cale Exploits and Emergent Threats: Botnets, Spyware, Worms, and More, LEET10, pages 1010, Berkel...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Loguinov
+.... USENIX Association. [18] D. Leonard and D. Loguinov. Turbo king: Framework for large-scale inter...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Marcotte
+... Phoenix, AZ, USA, pages 3135, 2008. [19] E. Marcotte. Responsive Web Design. http://alistapart.co...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Matsunaka
+....com/article/ responsive-web-design. [20] T. Matsunaka, A. Yamada, and A. Kubota. Passive OS finger...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Yamada
+...responsive-web-design. [20] T. Matsunaka, A. Yamada, and A. Kubota. Passive OS fingerprinting by...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kubota
+...design. [20] T. Matsunaka, A. Yamada, and A. Kubota. Passive OS fingerprinting by DNS traffic an...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Mockapetris
+...C, USA, 2013. IEEE Computer Society. [21] P. Mockapetris. Domain names - concepts and facilities. RFC...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Mockapetris
+...1034 (INTERNET STANDARD), Nov. 1987. [22] P. Mockapetris. Domain names - implementation and specifica...
+                                                ^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Snchez
+...STANDARD), Nov. 1987. [23] J. S. Otto, M. A. Snchez, J. P. Rula, and F. E. Bustamante. Content d...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Rula
+.... 1987. [23] J. S. Otto, M. A. Snchez, J. P. Rula, and F. E. Bustamante. Content delivery and ...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Bustamante
+...S. Otto, M. A. Snchez, J. P. Rula, and F. E. Bustamante. Content delivery and the natural evolution ...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+dns
+...ontent delivery and the natural evolution of dns - remote dns trends, performance issues and ...
+                                                ^^^                                             
+*** 0, 4
+CHECK!!!
+dns
+...ry and the natural evolution of dns - remote dns trends, performance issues and alternative s...
+                                                ^^^                                             
+*** 1, 4
+CHECK!!!
+Proc
+...erformance issues and alternative solutions. Proc. of Internet Measurement Conf., Nov. 2012. [...
+                                                ^^^^                                             
+*** 3, 9
+CHECK!!!
+of
+...ance issues and alternative solutions. Proc. of Internet Measurement Conf., Nov. 2012. [24] ...
+                                                ^^                                             
+*** 8, 17
+CHECK!!!
+Conf
+...ive solutions. Proc. of Internet Measurement Conf., Nov. 2012. [24] M. D. P. Gauthier, J. Cohe...
+                                                ^^^^                                             
+*** 5, 11
+CHECK!!!
+Gauthier
+... Measurement Conf., Nov. 2012. [24] M. D. P. Gauthier, J. Cohen and C. Perkins. Web Proxy Auto-Dis...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0):   
+1461, 6, "Possible typo: you repeated a whitespace", " ", "... Auto-Discovery Protocol. IETF Internet Draft  work in progress 00, IETF, November 2000. [1]...", "  "
+... Auto-Discovery Protocol. IETF Internet Draft  work in progress 00, IETF, November 2000. [1]...
+                                                ^^                                             
+CHECK!!!
+Alexa
+...ork in progress 00, IETF, November 2000. [1] Alexa Internet, Inc. The top 500 sites on the web....
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Antonakakis
+...e web. http://www.alexa.com/topsites. [2] M. Antonakakis, R. Perdisci, W. Lee, N. Vasiloglou, II, and...
+                                                ^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Perdisci
+...w.alexa.com/topsites. [2] M. Antonakakis, R. Perdisci, W. Lee, N. Vasiloglou, II, and D. Dagon. De...
+                                                ^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Vasiloglou
+... [2] M. Antonakakis, R. Perdisci, W. Lee, N. Vasiloglou, II, and D. Dagon. Detecting malware domains...
+                                                ^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Dagon
+... Perdisci, W. Lee, N. Vasiloglou, II, and D. Dagon. Detecting malware domains at the upper DNS ...
+                                                ^^^^^                                             
+*** 0, 2
+CHECK!!!
+malware
+..., N. Vasiloglou, II, and D. Dagon. Detecting malware domains at the upper DNS hierarchy. In Proce...
+                                                ^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Antonakakis
+...y, CA, USA, 2011. USENIX Association. [3] M. Antonakakis, R. Perdisci, Y. Nadji, N. Vasiloglou, S. Ab...
+                                                ^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Perdisci
+.... USENIX Association. [3] M. Antonakakis, R. Perdisci, Y. Nadji, N. Vasiloglou, S. Abu-Nimeh, W. L...
+                                                ^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Nadji
+...ciation. [3] M. Antonakakis, R. Perdisci, Y. Nadji, N. Vasiloglou, S. Abu-Nimeh, W. Lee, and D....
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Vasiloglou
+...3] M. Antonakakis, R. Perdisci, Y. Nadji, N. Vasiloglou, S. Abu-Nimeh, W. Lee, and D. Dagon. From th...
+                                                ^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Dagon
+... N. Vasiloglou, S. Abu-Nimeh, W. Lee, and D. Dagon. From throw-away traffic to bots: Detecting ...
+                                                ^^^^^                                             
+*** 1, 2
+CHECK!!!
+malware
+...fic to bots: Detecting the rise of DGA-based malware. In Proceedings of the 21st USENIX Conferenc...
+                                                ^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Multicast
+... Association. [4] Apple Inc. Mac OS X: About Multicast DNS. https://support.apple.com/kb/TA20999? l...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+locale
+...t DNS. https://support.apple.com/kb/TA20999? locale=en US. [5] L. Bilge, S. Sen, D. Balzarotti, ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Balzarotti
+...0999? locale=en US. [5] L. Bilge, S. Sen, D. Balzarotti, E. Kirda, and C. Kruegel. Exposure: A passi...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kirda
+... US. [5] L. Bilge, S. Sen, D. Balzarotti, E. Kirda, and C. Kruegel. Exposure: A passive DNS ana...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kruegel
+...lge, S. Sen, D. Balzarotti, E. Kirda, and C. Kruegel. Exposure: A passive DNS analysis service to...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Syst
+...nd report malicious domains. ACM Trans. Inf. Syst. Secur., 16(4):14:114:28, Apr. 2014. [6] S. ...
+                                                ^^^^                                             
+*** 0, 3
+CHECK!!!
+Secur
+...ort malicious domains. ACM Trans. Inf. Syst. Secur., 16(4):14:114:28, Apr. 2014. [6] S. Bradner...
+                                                ^^^^^                                             
+*** 3, 4
+CHECK!!!
+Bradner
+.... Secur., 16(4):14:114:28, Apr. 2014. [6] S. Bradner, L. Conroy, and K. Fujiwara. The E.164 to Un...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Conroy
+...(4):14:114:28, Apr. 2014. [6] S. Bradner, L. Conroy, and K. Fujiwara. The E.164 to Uniform Resou...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Brownlee
+... 6116 (Proposed Standard), Mar. 2011. [7] N. Brownlee, K. Claffy, and E. Nemeth. DNS measurements ...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Claffy
+...ed Standard), Mar. 2011. [7] N. Brownlee, K. Claffy, and E. Nemeth. DNS measurements at a root s...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Nemeth
+...ar. 2011. [7] N. Brownlee, K. Claffy, and E. Nemeth. DNS measurements at a root server. In Globa...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Krochmal
+...16721676 vol.3, 2001. [8] S. Cheshire and M. Krochmal. DNS-Based Service Discovery. RFC 6763 (Prop...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Falaki
+... 6763 (Proposed Standard), Feb. 2013. [9] H. Falaki, R. Mahajan, S. Kandula, D. Lymberopoulos, R...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Mahajan
+...osed Standard), Feb. 2013. [9] H. Falaki, R. Mahajan, S. Kandula, D. Lymberopoulos, R. Govindan, ...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kandula
+...d), Feb. 2013. [9] H. Falaki, R. Mahajan, S. Kandula, D. Lymberopoulos, R. Govindan, and D. Estri...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Lymberopoulos
+...3. [9] H. Falaki, R. Mahajan, S. Kandula, D. Lymberopoulos, R. Govindan, and D. Estrin. Diversity in sm...
+                                                ^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Govindan
+...R. Mahajan, S. Kandula, D. Lymberopoulos, R. Govindan, and D. Estrin. Diversity in smartphone usag...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Estrin
+...ndula, D. Lymberopoulos, R. Govindan, and D. Estrin. Diversity in smartphone usage. In Proceedin...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+smartphone
+...os, R. Govindan, and D. Estrin. Diversity in smartphone usage. In Proceedings of the 8th Internation...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Gao
+...79194, New York, NY, USA, 2010. ACM. [10] H. Gao, V. Yegneswaran, Y. Chen, P. Porras, S. Ghos...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Yegneswaran
+...ew York, NY, USA, 2010. ACM. [10] H. Gao, V. Yegneswaran, Y. Chen, P. Porras, S. Ghosh, J. Jiang, and...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Porras
+...CM. [10] H. Gao, V. Yegneswaran, Y. Chen, P. Porras, S. Ghosh, J. Jiang, and H. Duan. An empiric...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Ghosh
+... Gao, V. Yegneswaran, Y. Chen, P. Porras, S. Ghosh, J. Jiang, and H. Duan. An empirical reexami...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Jiang
+...egneswaran, Y. Chen, P. Porras, S. Ghosh, J. Jiang, and H. Duan. An empirical reexamination of ...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Duan
+... Chen, P. Porras, S. Ghosh, J. Jiang, and H. Duan. An empirical reexamination of global dns be...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+dns
+.... Duan. An empirical reexamination of global dns behavior. Proc. of ACM SIGCOMM, Aug. 2013. [...
+                                                ^^^                                             
+*** 2, 4
+CHECK!!!
+Proc
+...irical reexamination of global dns behavior. Proc. of ACM SIGCOMM, Aug. 2013. [11] Google Inc....
+                                                ^^^^                                             
+*** 7, 9
+CHECK!!!
+of
+... reexamination of global dns behavior. Proc. of ACM SIGCOMM, Aug. 2013. [11] Google Inc. DNS...
+                                                ^^                                             
+*** 14, 17
+CHECK!!!
+Prefetching
+...ACM SIGCOMM, Aug. 2013. [11] Google Inc. DNS Prefetching. http://www.chromium.org/developers/ design-...
+                                                ^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+dns-prefetching
+...ww.chromium.org/developers/ design-documents/dns-prefetching. [12] S. Hao, M. Thomas, V. Paxson, N. Feams...
+                                                ^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Hao
+...s/ design-documents/dns-prefetching. [12] S. Hao, M. Thomas, V. Paxson, N. Feamster, C. Kreib...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Paxson
+.../dns-prefetching. [12] S. Hao, M. Thomas, V. Paxson, N. Feamster, C. Kreibich, C. Grier, and S. ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Feamster
+...ching. [12] S. Hao, M. Thomas, V. Paxson, N. Feamster, C. Kreibich, C. Grier, and S. Hollenbeck. U...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kreibich
+.... Hao, M. Thomas, V. Paxson, N. Feamster, C. Kreibich, C. Grier, and S. Hollenbeck. Understanding ...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Grier
+...mas, V. Paxson, N. Feamster, C. Kreibich, C. Grier, and S. Hollenbeck. Understanding the domain...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Hollenbeck
+..., N. Feamster, C. Kreibich, C. Grier, and S. Hollenbeck. Understanding the domain registration behav...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Proc
+...he domain registration behavior of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 1...
+                                                ^^^^                                             
+*** 8, 9
+CHECK!!!
+of
+...ain registration behavior of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 r ...
+                                                ^^                                             
+*** 16, 17
+CHECK!!!
+Conf
+...r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 r of spammers. Proc. of Inte...
+                                                ^^^^                                             
+*** 10, 11
+CHECK!!!
+Warning: index mismatch with find text (9,9): Proc
+1519, 14, "Possible spelling mistake found", "Pro; PRC; Prop; Prof; Prom; Pros; Prod; Prow; Kroc; Prov; PRO; Prob; Pron", "...surement Conf., Oct. 2013. 13 r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 1...", "Proc"
+...surement Conf., Oct. 2013. 13 r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 1...
+                                                ^^^^                                             
+CHECK!!!
+Warning: index mismatch with find text (18,17): of
+1519, 20, "This sentence does not start with an uppercase letter", "Of", "...nt Conf., Oct. 2013. 13 r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 [2...", "of"
+...nt Conf., Oct. 2013. 13 r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 [2...
+                                                ^^                                             
+CHECK!!!
+Warning: index mismatch with find text (11,11): Conf
+1520, 1, "Possible spelling mistake found", "Cone; Con; Cong; Coif; Cont; Conk; Conj; Conn; Cons; Cony", "...r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 [25] A. Pashalidis. A cautio...", "Conf"
+...r of spammers. Proc. of Internet Measurement Conf., Oct. 2013. 13 [25] A. Pashalidis. A cautio...
+                                                ^^^^                                             
+CHECK!!!
+Pashalidis
+...net Measurement Conf., Oct. 2013. 13 [25] A. Pashalidis. A cautionary note on automatic proxy config...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Paxson
+...nd Information Security, CNIS, 2003. [26] V. Paxson, M. Christodorescu, M. Javed, J. Rao, R. Sai...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Christodorescu
+...ion Security, CNIS, 2003. [26] V. Paxson, M. Christodorescu, M. Javed, J. Rao, R. Sailer, D. Schales, M....
+                                                ^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Javed
+... 2003. [26] V. Paxson, M. Christodorescu, M. Javed, J. Rao, R. Sailer, D. Schales, M. P. Stoeck...
+                                                ^^^^^                                             
+*** 0, 1
+CHECK!!!
+Rao
+...] V. Paxson, M. Christodorescu, M. Javed, J. Rao, R. Sailer, D. Schales, M. P. Stoecklin, K. ...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Sailer
+...son, M. Christodorescu, M. Javed, J. Rao, R. Sailer, D. Schales, M. P. Stoecklin, K. Thomas, W. ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Schales
+...istodorescu, M. Javed, J. Rao, R. Sailer, D. Schales, M. P. Stoecklin, K. Thomas, W. Venema, and ...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Stoecklin
+... Javed, J. Rao, R. Sailer, D. Schales, M. P. Stoecklin, K. Thomas, W. Venema, and N. Weaver. Practi...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Venema
+..., D. Schales, M. P. Stoecklin, K. Thomas, W. Venema, and N. Weaver. Practical comprehensive boun...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Rula
+..., CA, USA, 2013. USENIX Association. [27] J. Rula and F. Bustamante. Behind the curtain cellul...
+                                                ^^^^                                             
+*** 0, 1
+CHECK!!!
+Bustamante
+...013. USENIX Association. [27] J. Rula and F. Bustamante. Behind the curtain cellular dns and content...
+                                                ^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+dns
+...d F. Bustamante. Behind the curtain cellular dns and content replica selection. Proc. of Inte...
+                                                ^^^                                             
+*** 0, 1
+CHECK!!!
+Proc
+... cellular dns and content replica selection. Proc. of Internet Measurement Conf., Nov. 2014. [...
+                                                ^^^^                                             
+*** 2, 6
+CHECK!!!
+of
+...lar dns and content replica selection. Proc. of Internet Measurement Conf., Nov. 2014. [28] ...
+                                                ^^                                             
+*** 2, 8
+CHECK!!!
+Conf
+...ica selection. Proc. of Internet Measurement Conf., Nov. 2014. [28] K. Schomp, T. Callahan, M....
+                                                ^^^^                                             
+*** 2, 9
+CHECK!!!
+Schomp
+...ternet Measurement Conf., Nov. 2014. [28] K. Schomp, T. Callahan, M. Rabinovich, and M. Allman. ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Rabinovich
+..., Nov. 2014. [28] K. Schomp, T. Callahan, M. Rabinovich, and M. Allman. On measuring the client-side...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Allman
+.... Schomp, T. Callahan, M. Rabinovich, and M. Allman. On measuring the client-side DNS infrastruc...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Su
+...90, New York, NY, USA, 2013. ACM. [29] A.-J. Su, D. R. Choffnes, A. Kuzmanovic, and F. E. Bu...
+                                                ^^                                             
+*** 0, 1
+CHECK!!!
+Choffnes
+...rk, NY, USA, 2013. ACM. [29] A.-J. Su, D. R. Choffnes, A. Kuzmanovic, and F. E. Bustamante. Drafti...
+                                                ^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Kuzmanovic
+...2013. ACM. [29] A.-J. Su, D. R. Choffnes, A. Kuzmanovic, and F. E. Bustamante. Drafting behind akama...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Bustamante
+...Su, D. R. Choffnes, A. Kuzmanovic, and F. E. Bustamante. Drafting behind akamai (travelocity-based d...
+                                                ^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+akamai
+...novic, and F. E. Bustamante. Drafting behind akamai (travelocity-based detouring). Proc. of ACM ...
+                                                ^^^^^^                                             
+*** 0, 1
+CHECK!!!
+travelocity-based
+...nd F. E. Bustamante. Drafting behind akamai (travelocity-based detouring). Proc. of ACM SIGCOMM, 2006. [30]...
+                                                ^^^^^^^^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Proc
+...behind akamai (travelocity-based detouring). Proc. of ACM SIGCOMM, 2006. [30] J. L. T. Creight...
+                                                ^^^^                                             
+*** 4, 6
+CHECK!!!
+of
+... akamai (travelocity-based detouring). Proc. of ACM SIGCOMM, 2006. [30] J. L. T. Creighton, ...
+                                                ^^                                             
+*** 5, 8
+CHECK!!!
+Griffiths
+...M SIGCOMM, 2006. [30] J. L. T. Creighton, C. Griffiths and R. Weber. Recommended Configuration and ...
+                                                ^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Warning: index mismatch with find text (0,0):   
+1551, 6, "Possible typo: you repeated a whitespace", " ", "...ect by Service Providers. IETF Internet Draft  work in progress 00, IETF, July 2009. [31] R....", "  "
+...ect by Service Providers. IETF Internet Draft  work in progress 00, IETF, July 2009. [31] R....
+                                                ^^                                             
+CHECK!!!
+Brustoloni
+...July 2009. [31] R. Villamarin-Salomon and J. Brustoloni. Identifying botnets using anomaly detection...
+                                                ^^^^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+botnets
+...marin-Salomon and J. Brustoloni. Identifying botnets using anomaly detection techniques applied t...
+                                                ^^^^^^^                                             
+*** 0, 1
+CHECK!!!
+Yadav
+...8. 5th IEEE, pages 476481, Jan 2008. [32] S. Yadav, A. K. K. Reddy, A. L. N. Reddy, and S. Ranj...
+                                                ^^^^^                                             
+*** 0, 3
+CHECK!!!
+Reddy
+...es 476481, Jan 2008. [32] S. Yadav, A. K. K. Reddy, A. L. N. Reddy, and S. Ranjan. Detecting al...
+                                                ^^^^^                                             
+*** 0, 5
+CHECK!!!
+Reddy
+...008. [32] S. Yadav, A. K. K. Reddy, A. L. N. Reddy, and S. Ranjan. Detecting algorithmically ge...
+                                                ^^^^^                                             
+*** 1, 5
+CHECK!!!
+Ranjan
+...adav, A. K. K. Reddy, A. L. N. Reddy, and S. Ranjan. Detecting algorithmically generated domain-...
+                                                ^^^^^^                                             
+*** 0, 2
+CHECK!!!
+algorithmically
+...dy, A. L. N. Reddy, and S. Ranjan. Detecting algorithmically generated domain-flux attacks with DNS traff...
+                                                ^^^^^^^^^^^^^^^                                             
+*** 0, 2
+CHECK!!!
+Netw
+...s with DNS traffic analysis. IEEE/ACM Trans. Netw., 20(5):16631677, Oct. 2012. [33] S. Yadav, ...
+                                                ^^^^                                             
+*** 2, 4
+CHECK!!!
+Yadav
+...s. Netw., 20(5):16631677, Oct. 2012. [33] S. Yadav, A. K. K. Reddy, A. N. Reddy, and S. Ranjan....
+                                                ^^^^^                                             
+*** 1, 3
+CHECK!!!
+Reddy
+...16631677, Oct. 2012. [33] S. Yadav, A. K. K. Reddy, A. N. Reddy, and S. Ranjan. Detecting algor...
+                                                ^^^^^                                             
+*** 2, 5
+CHECK!!!
+Reddy
+.... 2012. [33] S. Yadav, A. K. K. Reddy, A. N. Reddy, and S. Ranjan. Detecting algorithmically ge...
+                                                ^^^^^                                             
+*** 3, 5
+CHECK!!!
+Ranjan
+.... Yadav, A. K. K. Reddy, A. N. Reddy, and S. Ranjan. Detecting algorithmically generated malicio...
+                                                ^^^^^^                                             
+*** 1, 2
+CHECK!!!
+algorithmically
+...Reddy, A. N. Reddy, and S. Ranjan. Detecting algorithmically generated malicious domain names. In Proceed...
+                                                ^^^^^^^^^^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Yadav
+... 4861, New York, NY, USA, 2010. ACM. [34] S. Yadav and A. L. N. Reddy. Winning with DNS failure...
+                                                ^^^^^                                             
+*** 2, 3
+CHECK!!!
+Reddy
+..., USA, 2010. ACM. [34] S. Yadav and A. L. N. Reddy. Winning with DNS failures: Strategies for f...
+                                                ^^^^^                                             
+*** 4, 5
+CHECK!!!
+botnet
+...ing with DNS failures: Strategies for faster botnet detection. In 7th International ICST Confere...
+                                                ^^^^^^                                             
+*** 1, 2
+CHECK!!!
+Zdrnja
+... London, United Kingdom, Sept. 2011. [35] B. Zdrnja. Google Chrome and (weird) DNS requests. htt...
+                                                ^^^^^^                                             
+*** 0, 1

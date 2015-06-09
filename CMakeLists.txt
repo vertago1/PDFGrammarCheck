@@ -8,14 +8,14 @@ message(STATUS "MODULES:${CMAKE_MODULE_PATH}")
 #set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -O3 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -g -Wall -Wextra")
 
-find_package(Poppler REQUIRED)
-find_package(GLIB2 REQUIRED)
-find_package(Cairo REQUIRED)
+#find_package(Poppler REQUIRED)
+find_package(Qt4 REQUIRED)
+find_package( KDE4 REQUIRED )
 
-include_directories(${GLIB2_INCLUDE_DIR})
-include_directories(${CAIRO_INCLUDE_DIRS})
-include_directories(${POPPLER_INCLUDE_DIRS})
+#include_directories(${POPPLER_INCLUDE_DIRS} ${QT_INCLUDE_DIR})
+include(KDE4Defaults)
+include_directories("/usr/include/okular" ${QT_INCLUDE_DIR})
 
-MESSAGE( STATUS "Inlcudes: " ${GLIB2_INCLUDE_DIR} )
+#MESSAGE( STATUS "Inlcudes: " ${GLIB2_INCLUDE_DIR} )
 
 add_subdirectory(src)

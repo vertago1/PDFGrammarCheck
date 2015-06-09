@@ -1,0 +1,892 @@
+                          What constitutes DNS traffic today?
+                                            Changing landscape of DNS
+                           Allen T. Webb                                    A. L. Narasima Reddy
+                            Dept. of ECE                                            Dept. of ECE
+                        Texas A&M University                                   Texas A&M University
+                     allenwebb@tamu.edu                                      reddy@ece.tamu.edu
+ABSTRACT                                                         lar domain. DNS traffic is typically allowed through
+New technology and new applications are driving rapid change     firewalls; thus, many new services are using DNS infras-
+in the services accessed over the Internet. The Domain Name      tructure as a means of communicating information.
+System (DNS) is fundamental to the day-to-day operation of          DNS traffic has been widely studied to understand
+the Internet. As new uses for DNS are introduced and the         network traffic at large. DNS traffic provides a view into
+ways people use the Internet change, the impact on exist-        traffic patterns [7], popular domains. DNS responses
+ing network utilities and services need to be continuously       give a view into the mechanisms of load balancing [29,
+studied and evaluated. We present a study of the DNS traf-       23] and the functioning of Content Distribution Net-
+fic on a large campus network and investigate the impact of      works (CDNs) [27]. DNS traffic has recently been used
+new applications of DNS. We study various aspects of DNS         to provide a view into botnet behavior, by distinguish-
+traffic including the network sources, application sources,      ing the botnet generated DNS query traffic from human
+and especially the various sources of DNS NXDOMAIN re-           generated query traffic [5]. Collecting and analyzing
+sponses. In addition, we look into the differences in DNS        DNS traffic is more scalable than carrying out similar
+traffic from wired hosts and Wi-Fi hosts. Our results indicate   analysis on the entire network traffic.
+that non-negligible fraction (10-15%) of DNS queries re-            This study is motivated by two trends in network us-
+sult in NXDOMAIN responses, many new applications have           age. The first is the growing use of mobile and wire-
+come to rely on DNS as a side channel through network fire-      less devices. Users have started replacing desktop com-
+walls and that wireless DNS traffic can exceed the wired         puters with laptops and other devices; the widespread
+DNS traffic.                                                     adoption of smartphones with Wi-Fi capabilities is chang-
+                                                                 ing the network usage patterns. The introduction of
+                                                                 mobile devices brings several aspects to the study of
+Categories and Subject Descriptors
+                                                                 DNS traffic. The network traffic can be different be-
+C.2.2 [Computer-Communication Networks]: Net-                    cause of differences in application usage, network usage,
+work Protocols; C.2.3 [Computer-Communication                    and the different resources in the devices. The applica-
+Networks]: Network Operations—Network monitor-                   tion usage on mobile devices may include more frequent
+ing; C.2.5 [Communication Networks]: Local and                   accesses to social networking and video sites. The wire-
+Wide-Area Networks—Internet; C.4 [Performance of                 less devices on a campus that has wide Wi-Fi coverage
+Systems]: Measurement studies                                    allow for more continuous or longer usage of network
+                                                                 resources compared to desktop devices. Mobile devices
+Keywords                                                         with limited resources (and hence lower caching) may
+DNS, measurement study, Wi-Fi vs. wired                          also generate more traffic than desktop devices.
+                                                                    The second trend is the usage of DNS as a side chan-
+                                                                 nel by many applications. Most campus and enterprise
+1.    INTRODUCTION
+                                                                 networks are protected by firewalls at the edge. These
+   The Domain Name System (DNS) [21, 22] provides a              firewalls restrict the flow of traffic between the protected
+way to map human readable names into Internet Proto-             network and the outside world. However, most net-
+col address which can be routed to specific endpoints on         work firewalls typically allow communication on a few
+the Internet (e.g. www.domain.tld). It serves as a dis-          designated ports. The ports for HTTP and DNS are
+tributed database for records which are identified with          commonly left open, and a number of applications have
+a multi-part name. DNS servers have authority over               come to rely on these open ports for getting through
+subsets of names delegated to them. In this way the ad-          the firewalls. DNS is being used by a number of appli-
+ministrative burden of updating records is spread across         cations from spam checkers to anti virus software as a
+the organizations which have authority over a particu-
+                                                               1
+side channel to contact outside servers to provide their     balancing performance from using a single DNS server
+service. Other new new services we observed are ENUM         for a geographically diverse set of mobile devices. DNS
+over DNS (subsection 5.6), and the ICANN name col-           has been widely used for load balancing and reducing
+lision block list. New services which make use of the        delays over wide area networks through redirection [29,
+Domain Name System (DNS) infrastructure change the           23]. DNS has also been used as a way to measure delays
+landscape of DNS queries.                                    across the internet [18]. DNS measurement studies have
+   This paper studies the DNS traffic to observe and         been conducted in the past from the point of view of a
+understand the impact of these two trends. We collect        root DNS server [7]. This study identified violations of
+and analyze DNS traffic at an educational institution to     the DNS standard, reflection attacks, and divided up
+understand the nature of network traffic.A better un-        DNS failure responses by the reasons they failed.
+derstanding of what is implied by DNS traffic improves          Domain registration has been studied for the possibil-
+decision making in the area of how much monitoring is        ity of identifying spammers early in [12]. DNS behavior
+warranted to stop outbreaks of malicious software and        has been studied from several vantages to understand
+detect intrusion while protecting individual privacy. A      the global DNS query patterns which can be used to
+better picture of DNS traffic will also help gain an un-     detect malicious domain groups [10].
+derstanding of scalability and other issues. For example,       DNS traffic has recently been used to provide a view
+DNS traffic has been recently used as a means to iden-       into botnet behavior, by distinguishing the botnet gen-
+tify botnet C&C (command and control) [33], [34], and        erated DNS query traffic from human generated query
+[3]. Specifically, these earlier studies have used DNS       traffic. In [31], [33], [34], and [3] non-existent domain
+NXDOMAIN responses as a means of identifying po-             queries are used to identify botnets which use domain
+tential botnet traffic. Many new applications such as        generation algorithms (DGA) for locating the C&C chan-
+spam checkers and antivirus tools that use DNS as a          nel. The query rates for bots were observed to be high,
+side channel generate a significant number of NXDO-          occurring over a short period of time, and generating
+MAIN responses as part of their legitimate service. Un-      NXDOMAIN responses in [31]. DNS error responses
+derstanding and separating this traffic is important for     were classified using the type of error, query entropy
+continuing to provide security of the networks.              over the number of requests per local resolver and au-
+   The paper makes the following significant contribu-       thoritative name server, and query content in [16]. They
+tions:                                                       found a string of malicious domains copying strings from
+    • Collects and analyzes the DNS traffic over several     common social network domains. In [2] and [5] rather
+      days at a campus network, separating the traffic       than focusing on DGA, a classification scheme is devel-
+      from wired networks and wireless networks.             oped for malicious domains. [5] makes use of timing
+                                                             information, address record IP related information, re-
+    • Shows that wireless networks are starting to domi-     verse record information, TTL statistics, and domain
+      nate the campus traffic, leading to implications on    name features to perform the classification.
+      scalability and throughput of these networks.             The possibility of information being leaked through
+                                                             DNS is investigated in [26]. They employ several layers
+    • Shows that a significant fraction of DNS traffic re-
+                                                             of filtering to identify interesting traffic to be investi-
+      sults in failures, much of this traffic originating
+                                                             gated. Their final detection is based on a bound on
+      from new services exploiting DNS as a side chan-
+                                                             how much information may be conveyed through the
+      nel. These increased failure traffic increase the
+                                                             contents and timing of DNS traffic after filtering. Sev-
+      processing burden for separating legitimate traffic
+                                                             eral services now use DNS for purposes beyond looking
+      from malicious traffic.
+                                                             up the address record of a server by name. We present
+    • Shows that the application usage across wireless       an exhaustive survey of DNS traffic to identify new ar-
+      and wired networks leads to different network ac-      eas of usage.
+      cesses.                                                   In addition to intentional leakage of information, the
+                                                             architecture of a network can be inferred through DNS
+2.    RELATED WORK                                           traffic. The problem of remotely identifying the type
+                                                             of DNS client infrastructure is addressed in [28]. They
+   DNS traffic has been widely studied to understand
+                                                             distinguish DNS clients into open DNS servers which
+network traffic at large. DNS traffic provides a view
+                                                             are forwarders, or recursive resolvers, direct recursive
+into traffic patterns [7], popular domains and through
+                                                             resolvers, and hidden DNS servers. They perform this
+responses a view into the mechanisms of load balanc-
+                                                             classification by probing for DNS servers by issuing re-
+ing [29, 23] and the functioning of Content Distribution
+                                                             quests to an authoritative name server they control.
+Networks (CDNs) [27].
+                                                                DNS traffic can be analyzed to identify the operat-
+   DNS traffic in cellular networks has been recently
+                                                             ing systems of hosts. DNS query traffic has been em-
+studied [27]. They investigate the impact on CDN load
+                                                           2
+                                             Dataset 1      Dataset 2          Dataset 3        Dataset 4
+                                                                              Spring Sem.      Spring Sem.
+                     Time Period             Summer       Fall Semester
+                                                                               Weekend            Week
+                      Start Date           June 19, 2014   Sep. 9, 2014      Jan. 16, 2015    Jan. 22, 2015
+                   Duration (days)                  13.07           10.26              2.26             7.02
+                               Total           2.02E+09       2.57E+09           2.36E+08         1.82E+09
+                Requests    % No Error            70.11%          92.02%            86.35%           91.10%
+                              % Error             29.89%           7.43%            13.00%            7.99%
+                               Total           9.22E+06       9.08E+06           1.08E+06         4.81E+06
+                 Unique
+                            % Resolved            47.10%          57.72%            76.67%           76.66%
+                Domains
+                            % Not Res.            52.90%          42.28%            23.33%           23.34%
+                               Total           1.77E+05       1.66E+05           9.65E+04         1.78E+05
+               Unique IPs     % Wired             42.96%          29.63%            24.74%           26.59%
+                              % Wi-Fi             57.04%          70.37%            75.26%           73.41%
+Table 1: Volume of traffic present in each datasets. It should be noted that for both Dataset 1 and Dataset 3 and
+weekend dataset there are fewer students on campus than the other datasets. This provides a variety of different
+conditions to observe the unique and common features across the datasets.
+ployed to carry out passive OS fingerprinting in [20] us-     domain, “”. These made up 0.05% to 0.18% of the total
+ing OS-specific DNS queries and timing of DNS queries.        requests.
+They also estimated the number of devices generating             It is notable that in Table 1 between 7.43% and 29.89%
+the queries.                                                  of the DNS requests failed across the datasets. The DNS
+   Work has been done to evaluate the performance of          failure rates were higher during the summer and week-
+DNS caches in [15]. In their study DNS traffic was col-       ends. The hosts which filter out Spam emails gener-
+lected along with TCP SYN, FIN, and RST packets.              ate a higher ratio of failed to successful DNS responses
+They investigated the relationship between TTL and            than typical users. When there are more typical users
+DNS cache hit rate and found that most of the DNS             such as the university students during the semester or
+cache hits occur within minutes of the initial miss.          week, the relative contribution of the Spam filter traf-
+   Other work has investigated the difference in usage        fic is less. In dataset 1 the hosts which accessed Spam
+patterns between traditional computers such as desk-          blacklists had a 50.7% DNS error rate and were respon-
+tops and mobile devices [9]. This work makes no men-          sible for 37.5% of the total DNS responses. In the other
+tion of DNS but instead relies on other measurements.         datasets these hosts were responsible for 13-18% of the
+Our work seeks to gain insights into mobile device usage      DNS responses. We found that four forwarding name-
+with only a subset of the network traffic.                    servers were responsible for the much larger nonexistent
+                                                              domain percentage in dataset 1. For datasets 2 and 4
+                                                              the error rates of hosts accessing Spam blacklists were
+3.    DATASETS / METHODS                                      between 16.4% and 19.0%, while for dataset 3 the error
+   Our measurements were taken from a campus of about         rate was 29.4%. The higher error rate for dataset 3 is
+60,000 users. We collected all the DNS traffic from four      likely due to the volume of DNS errors remaining rel-
+time periods: one during the summer of 2014, and one          atively flat across the week while the successful traffic
+during the fall semester of 2014, and two during the          is more dependent on the time of day and day of the
+spring semester of 2015. Our data includes requests for       week, see Figure 4.
+which the campus DNS servers are the start of author-            Also of note, is the difference in percentages of do-
+ity (SOA) and also local queries which were recursively       mains which resolved versus domains which did not re-
+resolved. The size of the datasets and some basic statis-     solve. Domains which resolved had at least one success-
+tics about their constituents can be found in Table 1.        ful DNS response while domains which didn’t resolve
+   To collect our data we tapped DNS traffic directed to      had no successful DNS responses. There were a higher
+the campus DNS resolvers. We excluded traffic involved        percentage, 70.11% to 92.02%, of successful DNS re-
+in the process of recursive DNS resolution. Thus, each        sponses than resolved domains, 47.10% to 76.66%.
+dataset contains those DNS requests made to the local            The unique IPs in Table 1 show the change in relative
+campus resolvers, as well as the corresponding responses      percentage of IP addresses between the wired and Wi-Fi
+from the resolver back to the requester. These traces         networks during the summer when students were away
+were then processed afterward. DNS names longer than
+the 255 byte limit are included in the count as an empty
+                                                          3
+  Figure 1: CDF of DNS Address Record TTL Values
+                                                             Figure 3: Volume of DNS Requests for each Domain
+                                                           level domains had more successful DNS requests from
+                                                           wired hosts and these accounted for 1.70% of all the suc-
+                                                           cessful DNS requests. This shows that a small subset
+                                                           of domains are responsible for a significant bias in the
+                                                           amount of successful DNS queries between wired and
+                                                           Wi-Fi devices.
+                                                              In Table 2 the top 50 most requested second level do-
+                                                           mains are listed. Only successful requests are counted
+                                                           in this table. The % All column is the percentage of all
+                                                           successful DNS requests which match the specified sec-
+                                                           ond level domain. The Wi-Fi % column is the fraction
+                                                           of successful DNS requests for the specified second level
+                                                           domain which originate from Wi-Fi IP addresses. The
+                                                           Rank column shows the rank of that domain in the top
+Figure 2: CDF of DNS Record TTLs Grouped by Alexa          500 Alexa list.
+Rank                                                          The Time to Live (TTL) value of a DNS record con-
+                                                           veys how long the record should be cached before ex-
+versus during the semesters when students were present.
+                                                           piring. More information can be inferred from the TTL
+Between datasets 1 and 2 this difference was 13.33%.
+                                                           values as they reflect a trade off between DNS server
+                                                           load and update response time. A record with a higher
+4.   WIRED VS. WI-FI DNS TRAFFIC                           TTL is cached longer and is requested less frequently
+   The availability of low cost and portable computers     as a result. Web services which depend heavily on load
+such as laptops, smart phones, and tablets has intro-      balancing to provide better quality-of-service such as
+duced new variation into the way networks are used.        video streaming use small TTLs to allow for faster con-
+One window for observing changes in usage is the DNS       trol over which servers receive new clients. Content dis-
+requests made by different classes of devices.             tribution networks (CDN) also use small TTL values.
+   Alexa is an analytics company which provides rank-      Fast-fluxing DNS botnets use small TTL values to make
+ings for the most popular websites on the Internet [1].    it more difficult to blacklist all their IP addresses and
+We compared the ranking of domains on Alexa with           domain names.
+the ranking of domains by volume of DNS requests and          The TTL values for different subsets of domains grouped
+provide a summary here: The top 50 domains on Alexa        by Alexa rank are shown in Figure 1. More than 80% of
+were responsible for 34.69% of the successful requests     the domains ranked 51st through 500th had TTL val-
+from Wi-Fi IPs and 16.59% on wired IPs. The top            ues of 60 seconds or less. For the top 50 domains almost
+500 domains on Alexa were responsible for 48.63% of        half of the requests had TTL values between 60 seconds
+the successful requests from Wi-Fi IPs and 27.01% on       and 5 minutes. The remaining domains had more of a
+wired IPs. Of the top 500 domains on Alexa: Four sec-      spread over the different TTL values with about half
+ond level domains were responsible for 21.93% of all the   having TTL values 60 seconds or less. Figure 1 shows
+successful DNS requests, and of these 83.30% of the re-    the CDF of the TTL values of address records for Wi-
+quests originated from Wi-Fi IP addresses. 97 second       Fi and wired devices. We saw that more of the TTL
+                                                         4
+    2nd Level Domain        % All   Wi-Fi %    Rank
+                                                                 % DN S Request s Fr om Wi-Fi
+             apple.com     20.76%    92.77%      46
+                                                                                                100                                   100
+            google.com     18.49%    73.22%       1
+         facebook.com       8.48%    85.52%       2                                             80                                    80
+      amazonaws.com         5.15%    77.69%     130
+         akamaihd.net       4.96%    79.39%     288                                             60                                    60
+       instagram.com        4.57%    94.79%      31
+            yahoo.com       3.18%    74.65%       4                                             40                                    40
+            icloud.com      2.96%    89.89%     480
+           twitter.com      2.79%    77.25%       9                                             20                                    20
+       googleapis.com       1.83%    82.32%     495
+        microsoft.com       1.78%    48.11%      47                                              0                                    0
+                                                                                                     id    S        ac e il
+               bing.com     1.54%    86.59%      25                                              ro       iO    W 'N I
+                                                                                                               ob in X
+                                                                                                                     do
+                                                                                                                        O   S
+                                                                                                                        w
+        cloudfront.net      1.33%    65.94%     361                                             nd         M
+                                                                                                                 C hr
+                                                                                                                  Fi  om
+                                                                                                                     re
+                                                                                                                            s
+                                                                                                                            e
+                                                                                          A                     M  Sa x fo
+    googleusercontent       1.29%    68.81%      94                                                       er           fa  ri
+                                                                                                      th
+                    .com                                                                             O
+            netflix.com    1.22%     76.74%       59                                            Oper at ing Syst em s   Br ow ser s
+              fbcdn.net    1.01%     78.86%      425
+          amazon.com       0.92%     76.14%        7
+                live.com   0.73%     62.16%       12            Figure 5: Percent of Total DNS Requests from Wi-Fi
+                                                                hosts for Software Specific Domain Names (Dataset 4)
+          youtube.com      0.73%     72.94%        3
+           spotify.com     0.69%     91.15%      345
+               msn.com     0.65%     73.41%       27               Figure 4 shows the number of DNS responses with
+            twimg.com      0.62%     81.55%      409            and without errors per five minute interval. The data
+           tumblr.com      0.62%     79.30%       39            showed a different diurnal cycle for wired versus wireless
+          dropbox.com      0.61%     43.60%       83            especially for DNS error responses. The difference in
+                                                                diurnal cycle is likely due to the Wi-Fi devices being
+                                                                used after work hours for personal use, but the wired
+Table 2: Most Requested Second Level Domains from               devices were mostly accessed during work hours. In a
+Alexa Top 500                                                   typical day, the wired hosts see a drop-off in activity
+                                                                after 5-6PM and the wireless hosts were active until 10-
+values of DNS address records requested by Wi-Fi de-            11PM.
+vices were sixty seconds or less than 5 minutes. Other             The volume of DNS errors for Wi-Fi hosts more closely
+common TTL values include three hours and one day.              follows the volume of DNS successes. The relatively flat
+This suggests that users of Wi-Fi devices requested more        error response volume for wired hosts in Figure 4 is due
+CDN hosted content such as online videos than users of          to the requests from Spam filters which are related to
+wired devices.                                                  the volume of email traffic. The Wi-Fi hosts are respon-
+   The first two second level domains, apple.com and            sible for more successful DNS responses than the wired
+google.com, both make up a very large percentage of             hosts, but the Wi-Fi hosts produce less failed responses
+the DNS traffic. This can be explained by synchroniza-          than the wired hosts. The spikes in Wi-Fi error re-
+tion or other mobile device features on devices running         sponses on Figure 4 result from anomalous traffic which
+iOS and Android. Also, small TTL values introduce               is discussed in subsection 5.7.
+positive bias for the number of DNS requests a domain              One interesting feature in Figure 4 is centered 4.5
+will receive; domains with larger TTL values will be            days after the start of the trace. There was a football
+cached longer and have fewer requests than domains              game during this time which resulted in less than half
+with smaller TTL values. In Table 2 only, microsoft.com         the Wi-Fi DNS responses on each side of the valley.
+and dropbox.com, have more DNS requests from wired              The DNS responses from wired hosts did not have a
+hosts than Wi-Fi hosts.                                         noticeable change in the volume.
+   Figure 3 shows that the volume of requests of domains           It is possible to predict when students are between
+is nearly linear on a log-log plot. This resembles a dis-       classes by changes in the volume of traffic. There are
+tribution following a power law [15]. However, there is         regular peaks on the Wi-Fi DNS responses without er-
+a slight curve which suggests that it is actually a power       rors in Figure 4 during the breaks between classes.
+law with exponential cutoff or a log-normal distribution.          Figure 5 shows the percentages of DNS requests made
+The distribution of requests from wired devices is more         for software specific domain names. The particular do-
+linear on the log-log plot than from Wi-Fi devices.             main chosen where those used for software updates and
+                                                            5
+                                          7
+                                     10
+        N um ber of DN S Responses
+                                          6                     Wi-Fi N o Er r or                                Wir ed N o Er r or
+                                     10
+                                          5
+                                     10
+                                          4
+                                     10
+                                          3
+                                     10
+                                          2
+                                     10
+                                                                        Wi-Fi Er r or                              Wir ed Er r or
+                                          1
+                                     10
+                                              0.0   0.5   1.0     1.5   2.0    2.5      3.0       3.5      4.0     4.5      5.0      5.5    6.0    6.5     7.0
+                                                                   Days Fr om St ar t of Capt ur e (5-m inut e bins)
+                                                                Figure 4: Wired vs. Wi-Fi DNS Response Volume.
+account synchronization. An example software specific                                                     much now that smart phones can handle HTML
+domain is android.clients.google.com which is used by                                                     which has looser programming requirements but
+android to download application updates and to access                                                     requires more processing power.
+the Google Play API. As expected Android and iOS
+                                                                                                        • xhtml.* subdomain used for an xhtml mobile site
+DNS requests predominately originated from Wi-Fi IP
+                                                                                                          which is both HTML and XML compliant requir-
+addresses. There is a strong bias toward mobile traffic
+                                                                                                          ing less processing power.
+originating from Wi-Fi IPs, so by observing the Wi-Fi
+tendencies we can infer mobile usage trends. Windows                                              The api. subdomains made up the largest percentage
+was split about evenly between the Wi-Fi and wired IP                                             of the responses with no error with between 0.61% and
+addresses; however, Mac OS had a higher number of re-                                             1.19% for wired hosts and between 2.46% and 5.71% for
+quests from Wi-Fi IP addresses. Safari is closely tied to                                         Wi-Fi hosts. Although we did observe requests made to
+iOS and Mac OS so its percentage lied between the two                                             the other mobile related domains, these made up less
+operating systems. Requests from Firefox were more                                                than 0.005% of the total requests.
+common from wired hosts; requests from Chrome was
+more common on Wi-Fi hosts. These percentages are                                                                 Dataset            1        2       3         4
+from the raw total number of requests.                                                                             Wi-Fi          2.46%    3.63%   4.68%     5.71%
+                                                                                                          api.*
+   Mobile devices such as smart-phones and tablets are                                                             Wired          0.61%    1.19%   0.64%     1.02%
+increasingly common. These devices typically connect                                                               Wi-Fi          0.42%    0.38%   0.34%     0.30%
+                                                                                                           m.*
+to local networks through Wi-Fi. Separate web sites                                                                Wired          0.26%    0.29%   0.18%     0.24%
+are provided for these devices because they have touch                                                             Wi-Fi          0.12%    0.18%   0.22%     0.21%
+                                                                                                    mobile.*
+screens instead of a mouse and keyboard. Also, their                                                               Wired          0.03%    0.06%   0.03%     0.05%
+screens may be much smaller so that a different layout is                                                          Wi-Fi          0.11%    0.18%   0.17%     0.18%
+                                                                                                        *.mobi
+preferable than for desktops or laptops. Domains of the                                                            Wired          0.01%    0.03%   0.01%     0.02%
+following formats are associated with mobile devices:
+   • *.mobi TLD dedicated to mobile websites                                                        Table 3: Successful Mobile Related DNS Responses
+   • api.* subdomain frequently used for web and mo-                                                 Table 3 shows that the mobile handsets are not nec-
+     bile application programming interface                                                       essarily always visiting mobile domains. The api.* do-
+   • m.*, mini.*, and mobile.* subdomains used for                                                main group is commonly used with mobile applications
+     websites formated for mobile devices.                                                        instead of websites in a browser. Not all mobile web-
+                                                                                                  sites use mobile domains; some share the same domain
+   • palm.*, pda.* subdomains used to host websites
+                                                                                                  as the website formatted for desktops. Also, many web-
+     formatted for personal digital assistants or Pal-
+                                                                                                  sites are designed using a “responsive design” [19] which
+     mOS devices.
+                                                                                                  is shared across different devices and screen formats.
+   • wap.*, wireless.* subdomains used for a wireless                                             Although there are still hits for older style mobile do-
+     application protocol browser. This is not used as                                            mains such as palm.*, pda.*, wap.*, and xhtml.*, these
+                                                                                              6
+                                -7                                                                        Wired                  Wi-Fi
+                          10                                                                Total              12.24%                  2.22%
+                                                                                                    Successes Failures    Successes   Failures
+                                -8                                                      ARPA           3.06%    2.01%        0.34%     0.18%
+                          10
+                                                                                       DNS-SD          0.23%    2.47%        0.03%     0.55%
+ Pr obabilit y Densit y
+                                -9
+                                                                                         Spam          0.81%    1.30%        0.07%     0.07%
+                          10                                                               AV          0.28%    0.63%        0.10%     0.03%
+                                                                                        WPAD           0.00%    0.77%        0.00%     0.07%
+                               -10                                                        Bugs         0.01%    0.42%        0.01%     0.13%
+                          10
+                                                                                          TLD          0.01%    0.25%        0.01%     0.59%
+                               -11                                                            Table 4: Different Sources of DNS Traffic
+                          10
+                                                               Wi-Fi
+                               -12
+                          10                                                          5.    CLASSES OF DNS TRAFFIC
+                                                               Wir ed
+                                                               This paper looks at the considerable number of DNS
+                               -13
+                          10                                query failures in order to understand the source of these
+                                0     0
+                                     10
+                                           0
+                                          20
+                                                0
+                                               30
+                                                     0
+                                                    40
+                                                          0
+                                                         50 failures. The source of failures have been characterized
+                                                               0
+                                                              60
+                                                                    0
+                                                                   70
+                                                                         0
+                                                                        80
+                                                                              0
+                                                                             90
+                                                            into different groups as shown in Figure 7. In this figure
+        Aver age I nt er -pack et Ar r ival Tim e (seconds) each class of traffic, represented by a color, sums up to
+                                                            100%. To keep the categories mutually exclusive pack-
+Figure 6: Distribution of Average Delay Between DNS         ets were assigned to the first category they matched ac-
+Requests                                                    cording to the order Bugs, SD, WPAD, INTERN., LAN,
+                                                            ARPA, SPAM, AV, TLD. These are descriptions of each
+                                                            category listed in descending order by the percentage of
+                                                            DNS error responses:
+domains make up a very small percentage of the total
+responses.                                                      • LAN includes DNS requests for domains reserved
+  Besides differences in the domains being queried, there         or commonly used for local networks such as .lan,
+were also rate differences between wired and Wi-Fi hosts.         .local, .localdomain, etc. See subsection 5.1.
+We observed higher DNS packet rates on wired hosts vs                                      • SD, Service Discovery, is comprised of any domain
+Wi-Fi hosts based sessions defined by a 15 minute sep-                                       lookup with one domain level starting with an un-
+aration between packets for a given IP address shown                                         derscore, [8]. These domains are used in the DNS
+in Figure 6. To exclude the bias introduced by the edge                                      service discovery application of the DNS protocol.
+of the session window we calculated the mean time be-                                        See subsection 5.2.
+tween packets to be the the time of the last packet minus
+the time to the first packet divided by the total num-                                     • Intern. denotes DNS traffic for which the start
+ber of packets minus one. Wi-Fi IP addresses had a                                           of authority (SOA) is internal to the network or
+higher likelihood of long periods of time between DNS                                        belongs to the same organization as the network.
+requests than wired IP addresses. Wi-Fi devices may                                          A more general description of this category is the
+be used more intermittently than wired devices. Wired                                        internal domains on a business, organization, or
+IP addresses with multiple simultaneous hosts through                                        campus network. See subsection 5.1.
+NAT, and higher demand from DNS dependent services
+                                                                                           • ARPA, Address and Routing Parameter Area [13],
+such as Spam filtering contribute to the higher rate on
+                                                                                             includes reverse IP lookups providing a DNS name
+wired IP addresses.
+                                                                                             record. A DNS lookup to the name returned by
+   Table 4 shows the percentages of requests linked to
+                                                                                             this record should but does not necessarily match
+applications other than getting the IP addresses of servers
+                                                                                             the IP address with the reverse lookup. It also
+by category. Although ARPA is an existing use of DNS,
+                                                                                             includes other ARPA services such as lookups for
+its use in verification for Spam filtering is notable. DNS
+                                                                                             E.164 numbers using e164.arpa. See subsection 5.3.
+based blacklists have been created for filtering Spam and
+identifying viruses for anti-virus tools (AV). WPAD uses                                   • Spam and AV includes DNS traffic for blacklists
+DNS to locate a web proxy auto discovery script. In-                                         and whitelists used by Spam filters and anti-virus
+valid DNS names have been registered as a work around                                        software. Spam blacklists include those for IP ad-
+for application bugs. Random top level domains (TLD)                                         dresses from which Spam originates, unregistered
+are being used to detect DNS hijacking.                                                      IP addresses (bogons), and URIs (uniform resource
+                                                                                  7
+                                                                                                               WP
+                                                                                                    Bugs         AD     n.
+                                                                                                                    t er
+                                   No Response
+                                                                                                                  In
+                     ed    Wi-Fi
+                  Wir
+                                                                                                        SD
+                                                                                        sp
+                                                                                      Su.
+                          Erro
+                                                                                                                             N
+                                                                                                                        LA
+                           r                                            TLD
+                                                                                                                    i
+                                                                                                                 i-F               ARPA
+                                                                              AV                                W                  Spam
+    Wired                                                                                        Error                             AV
+                          Requests                                         Spam                                              TLD
+                                                                                               Responses
+                                                                                           d                              Sus
+                                                             Wi-
+                                                                 Fi                    ire                               Bu p.
+                                                                                 PA   W                                    gs
+                                            rror                              AR
+                                       No E
+                                                                                                                  SD
+                                                                              LA
+                                                                                                        WPA
+                                                                                N         Inte
+                                                                                              rn.
+                                                                                                           D
+                    (a) Total Requests                                                         (b) DNS Failures
+                                                 Figure 7: DNS Traffic Volume by Domain Category
+  identifiers) commonly included in Spam. Often                               • Other lookups which do not fit into the preced-
+  DNS traffic is allowed through firewalls allowing                             ing categories are discussed in subsection 5.7. It is
+  anti-virus apps with a way to check file hashes on-                           noted that DNS query failures seem to be the result
+  line. See subsection 5.4.                                                     of some valid services such as (spam checks, anti
+                                                                                virus software), software and protocol bugs, along
+• TLD, top level domains, are those domains which
+                                                                                with malicious and suspicious traffic. With in-
+  only have one domain level such as localhost. Ran-
+                                                                                creased use of DNS as a mechanism to get through
+  domized TLD requests are used by some browsers
+                                                                                firewalls for providing services, the DNS failure
+  to detect DNS hijacking by ISPs (Internet service
+                                                                                traffic needs to be filtered appropriately to identify
+  providers). See subsection 5.5.
+                                                                                or isolate suspicious and malicious traffic. Filtered
+• WPAD, Web Proxy Auto-Discovery protocol [24],                                 traffic should be selected so that it should not be
+  requests are made to either the “wpad” top level                              easy for the authors of malicious software to hide
+  domain or the domain a machine belongs to with                                their C&C traffic by it being filtered in this step.
+  “wpad” as the last level domain. See subsection 5.2.
+                                                                              In revisiting the DNS usage landscape these datasets
+  (e.g. wpad.mydomain.tld).
+                                                                           contain some familiar categories of traffic. This paper
+• Bugs represents DNS requests that are either in-                         categorizes traffic as being from blacklists or whitelists,
+  valid or have clear indicators that they resulted                        reverse lookups, lookups for top level domains, lookups
+  from an application bug or misconfiguration. For                         for WPAD domains, lookups for domains which our
+  example many of these lookups contained an en-                           DNS servers is the SOA for, local domains, and all other
+  tire URI or parts of a URI such as protocol (e.g.                        DNS lookups. These categories were selected by seeking
+  http://), port (:80), path (/index.html). There                          to explain the bulk of DNS lookup failures and inves-
+  were DNS requests for domain names of the same                           tigate any distinguishing characteristics to provide in-
+  form as valid IPv4 and IPv6 addresses. Some re-                          sight into distinctions between DNS traffic from mobile
+  sembled file paths and or terminated with com-                           devices vs servers, desktops, laptops and other devices
+  mon file extensions. Others contained null, or un-                       wired into the network.
+  defined which suggests a software error such as                             There were also groups of random domains which
+  concatenating a null or undefined JavaScript vari-                       shared some domain levels and had both valid and nonex-
+  able to a URI which then is interpreted as part of                       istent domain responses. In [33] domains of this type
+  the domain. Others had invalid characters, spaces,                       were linked to botnet command and control (C&C) traf-
+  or URL (uniform resource locator) encodings (e.g.                        fic. The new traces we collected had domains that
+  %20). See subsection 5.5.                                                matched this profile but had valid uses. Blacklist and
+                                                                       8
+whitelist services are hosted using the DNS infrastruc-       nique for enumerating the services available on a net-
+ture and are discussed in a later section.                    work such as printers, media servers, other hosts, etc. It
+                                                              expands the capabilities of zero configuration network-
+5.1     Internal and Local Domains                            ing beyond IP address allocation and host resolution to
+   Internal and local domains are domains whose start         include advertising and querying services on a network.
+of authority is local or that belong to the same organi-      Well known implementations of DNS-SD include Bon-
+zation as the network. This group of traffic was singled      jour, and Avahi.
+out in [26] to remove DNS traffic which was not likely           Examples of auto configuration domains we saw in-
+to be a channel for someone trying to get information         clude requests for Active Directory, and WPAD. Active
+through the firewall. Although traffic between bots may       Directory uses domains with ad as the last level domain,
+be local, C&C channels require information from out-          (i.e. ad.domain.tld ). It makes use of Kerberos and
+side the network, so we highlight this as its own category    LDAP. Non-existent domain responses for Active Di-
+of DNS traffic.                                               rectory domains point out a misconfiguration or service
+   For all four datasets the number of error responses        outage. We observed that only 0.14% of ad.* domain
+for domains associated with local networks such as .lan,      requests failed. Identifying these can help remove po-
+.local, and .localdomain was low for wired hosts 0.40%,       tential abuse of any misconfiguration by someone trying
+0.71%, 0.76% and 1.79%. For Wi-Fi hosts there was             to compromise an Active Directory client. The percent-
+much more variation: 0.80%, 6.09%, 47.37%, and 45.65%.        ages of auto-configuration traffic, out of all the DNS
+Notice that for Wi-Fi hosts in datasets 3 and 4 these         error responses across each of the four datasets, were
+responses are a much larger percentage. The actual vol-       comparable between the set of wired hosts and the set
+ume of responses was about 2.04 million for Dataset 2,        of Wi-Fi hosts.
+but for Dataset 3 was 20.6 million. These datasets were          Traffic for the Web Proxy Auto-Discovery [24] pro-
+taken over about the same amount of time and both             tocol (WPAD) made up between 1.07% and 3.96% of
+when classes were in session. What is different in this       the total DNS errors for each dataset. All the DNS
+category from the first two datasets from the second          responses in the datasets for WPAD domains were fail-
+two is that there are a large number of requests from         ures. WPAD allows network administrators to distribute
+Wi-Fi IP addresses for the domain “local.” There are          a Proxy Auto Config (PAC) file, usually
+responses with out the error flag set in the later datasets
+                                                                    http://wpad/wpad.dat
+but no IP address is provided in the answers section for
+local. There was a drastic difference in the number of        which defines a JavaScript function FindProxyForURL(
+queries for the domain “local” from Wi-Fi hosts. Mac          url, host). This protocol also checks each level of
+OS X issues SOA queries for “local” as part of Bonjour        the domain tree which the host machine belongs to in or-
+[4]. Ubuntu issues these queries as well, but Windows         der to automatically determine the proxy settings. At-
+does not by default.                                          tackers can use WPAD to enable man-in-the-middle at-
+   Of the internal DNS failures from wired hosts 12.95%       tacks [25].
+to 33.49% of the internal domain failures were repeated          DNS-SD traffic ranged from 4.09% to 17.61% of the
+queries which appended the host’s domain to a failed          total DNS error responses, but only 0.11% to 0.36%
+TLD query. For Wi-Fi hosts this number was from               of the successful responses. There were also DNS-SD
+0.53% to 1.94%. For example if the Google Chrome              queries which included non-printable characters. Uni-
+browser queries lacxspgdze and the host belongs to do-        code names being used or exploits can cause this behav-
+main.tld once the first query fails another query will be     ior. DNS-SD is used to enumerate services. When DNS-
+issued for lacxspgdze.domain.tld. These failures can be       SD requests are issued through normal (as opposed to
+explained by hosts appending the domain they are con-         multicast) DNS, it is expected that these requests would
+figured to belong to failed TLD queries and retrying. In      fail unless the local DNS server is configured to list these
+some cases there were more than one parent domain as-         services.
+sociated with a single IP address. This can be explained
+by different virtual or physical machines configured with     5.3    ARPA
+different domains using NAT and the same IP address.             Although the .arpa top level domain originally was
+                                                              related to the ARPANET created by DARPA it now has
+5.2     Auto-configuration Domains and DNS Ser-               been repurposed to be Address and Routing Parameter
+        vice Discovery                                        Area Domain [13]. This top level domain now provides
+   Auto-configuration domains for which DNS records           reverse address resolution name records for IPv4 and
+are used either to point to an auto configuration server      IPv6 addresses. An IP version 4 lookup for 127.0.0.1
+or contain a record containing the configuration infor-       would have the form, 1.0.0.127.in-addr.arpa. The result
+mation. DNS service discovery (DNS-SD) is a tech-             is a name record with the value localhost. Notice that
+                                                            9
+the order of the octets is reversed so that authority can        of local databases used by anti-virus tools, the tools
+be delegated by domain level.                                    should use an authentication technique resilient to man
+   The wired hosts had between 12.67% and 28.98%                 in the middle attacks such as requiring DNSSEC. An
+.arpa DNS error responses across all the datasets, and           example of what this would look like is:
+the Wi-Fi hosts had between 3.90% and 6.15%. We in-                    e9e3f794b69c8707f724f47a48dbb3a7b492a55f6e0e
+cluded lookups to the deprecated ip6.int domain [14]                   42968c19a3f00f96.57ce.list.domain.tld
+in counting the .arpa traffic. Hosts associated with
+Spam filtering lookups also had a higher number of re-           where the first two levels of the domain is the SHA
+verse resolutions. This can be explained by the forward-         256 or other hash, and the rest of the levels denote the
+confirmed reverse DNS method for verifying associa-              parent domain of the database. Any hash longer than
+tions between IP addresses and domains. Other sources            63 characters will need to be split across domain levels
+of .arpa traffic include logging services such as rsyslog        because of the limit in the DNS standard [22]. The
+and packet capture software such as tcpdump and wire-            maximum length domain name is 253 characters which
+shark.                                                           has a size of 255 data bytes when represented in a DNS
+                                                                 packet. Similar to the Spam lists, the number of DNS
+5.4     Blacklists and Whitelists                                error responses from anti-virus lists was higher for wired
+   Blacklists and whitelists over DNS leverage the in-           hosts than Wi-Fi hosts, but the ratios varied from 1.3
+frastructure of DNS to provide cached lookups to dy-             to 5.8 times.
+namically changing information. Some Spam detection                 We took the positive results from URI blacklists and
+solutions rely on DNS lookups to determine:                      cross checked to see if hosts from other IP addresses were
+                                                                 requesting blacklisted domains. We did find hosts ac-
+    • If the sender of an email is blacklisted.                  cessing domains listed on the URI blacklists. In many
+                                                                 cases this is because the domains are for widely used
+    • If the IP address of the server which the email            services which Spam emails link to, but which hosts
+       was originally submitted to reverse resolves to the       legitimate content or provides a legitimate service (ex-
+       domain of the email address in the “from” field           amples: Tiny URL, YouTube, etc). The percentages of
+    • If there are blacklisted URLs in the contents of the       blacklisted successful DNS responses for each dataset is
+       message                                                   3.79%, 0.08%, 0.10%, and 0.20%.
+                                                                    Those hosts which queried Spam related blacklists
+   IP addresses may be blacklisted for a number of rea-          had a much higher percentage of the non classified do-
+sons such as being a known source of Spam. Spam traps            mains. Many nonexistent domains requested by these
+are one way IP addresses of Spam senders are identi-             hosts had a random component along with a valid par-
+fied. There are blacklists for open proxy servers (HTTP,         ent domain. We believe these requests were generated
+SOCKS, SMTP) which may be used by Spammers to                    as a result of Spam filters performing forward-confirmed
+hide the IP address Spam originates from. Some black-            reverse DNS checking. Forward-confirmed reverse DNS
+lists contain IP addresses for machines hosting exploits.        is when there is agreement between the reverse reso-
+These can be detected by specialized web crawlers. There         lution and the forward resolution of a domain name.
+are also blacklists for IP addresses exhibiting behavior         Spammers likely use fake subdomains of valid domains
+associated with being part of a botnet. These IP ad-             to try to evade Spam filters by taking advantage of
+dresses can be identified by listening for attacks with a        Spam exception filters. Emails which claim to originate
+honeypot. Lastly, there are blacklists for IP address            from an invalid domain or that do not pass the forward-
+ranges which are not registered, bogons, since there             confirmed reverse DNS check are more suspicious than
+should not be emails originating from these addresses.           ones which originate from a valid domain. It is note-
+   This class of traffic has a large ratio of error responses    worthy that if spammers randomize the origin of and
+to responses with no error because of lookups which are          URIs contained within their emails, a Spam email may
+not listed. Spam related black and white lists made up           generate a significant number of DNS queries. We ob-
+at least 5.34% to 6.30% of the DNS error responses, and          served cases where one URL was checked against three
+anti-virus related lists made up at least 1.71% to 4.30%.        separate blacklists.
+We observed that email servers generate a significant               Using DNS blacklists for a safe browsing by warning
+amount of the Spam related black or white list traffic.          a user when they visit an IP known to host exploits can
+This explains why in 3 out of the 4 data sets, the wired         amplify the amount of DNS traffic made for visiting a
+hosts have more than 2.8 times the percentage of Spam            single page.
+list DNS error responses than Wi-Fi hosts.
+   Some anti-virus tools use hash based DNS lists. Ex-           5.5    Application Behavior and Bugs
+amples include McAfee and Sophos. It should be noted                We observed distinguishing features in some of the
+that although this may allow for a reduction in the size         DNS Error responses. One category of nonexistent do-
+                                                              10
+main requests we observed had the prefix, “https://” or       to 127.0.53.53. Since, August of 2014 this address has
+other protocol prefixes such as “http://”. These prefixes     been purposed for ICANN name collision management.
+shouldn’t occur in DNS requests and indicate the pres-        Table 5 shows the number of unique domains returning
+ence of buggy applications. However, we did find exam-        127.0.53.53 versus the total number of requests for a
+ples of valid DNS responses for domains of this format.       domain name with only a top level which returned an
+These domains were likely registered as a work around.        IP address. Dataset 1 was taken in June and predates
+Some application bugs included a port specification in        the roll out of this feature explaining the lower numbers.
+the domain name lookup “something.com:8080”, included         Dataset 2 had a large amount of requests to a partic-
+the relative path, or the entire URI. All of these re-        ular second level domain returning 127.0.53.53. These
+quests resulted in errors. Javascript bugs which ap-          requests were present in datasets 1, and 4 but were all
+pended an undefined variable to a domain name “some-          nonexistent domains.
+thing.comundefined” or “something.comnull”. There were           One observation we made was queries requesting ran-
+also cases where lookups were performed for strings that      dom top level domains. The source of these queries was
+were likely filenames because they ended with common          found to be the Google Chrome web browser [35]. Some
+file extensions (e.g. index.html, image.jpg, script.js). A    Internet service providers (ISPs) hijack DNS responses
+simple mistake on a web page such as:                         and Comcast has submitted an Internet draft on DNS
+                                                              redirection [30]. Although this technique might be used
+      <iframe src="http://index.html"></iframe>to offer services, ICANN has forbidden NXDOMAIN
+      <img src="http://image.jpg" />                          substitution by gTLD registrars for several reasons in-
+      <script src="http://script.js"></script> cluding but not limited to privacy and user experience
+Loading these HTML tags from a web page results in            concerns. Properly determining whether domains exist
+a DNS query for index.html, image.jpg, and script.js,         is a dependency of some of the browser’s features. The
+respectively. Instead of a DNS query the page writer          Google Chrome web browser issues domain requests for
+likely intended to make HTTP requests which would ei-         several strings of random letters to detect DNS hijack-
+ther include the domain name along with the path or           ing. These random strings are effectively random TLDs
+leave the protocol out of the URI entirely. Some do-          which do not exist. When an ISP hijacks nonexistent
+main lookups had spaces, commas or asterisks. In these        domain responses, an address record to an ISP search
+cases the lookups appeared to be related to improperly        engine is returned instead of the error response. The
+configured servers.                                           Chrome web browser checks to see if the random queries
+   Some domain lookups contained URL encoded strings          it issued result in an address record instead of nonexis-
+such as %20. These encodings allow special characters         tent domain responses. If these requests are directed to
+to be included in POST and GET data used in HTTP              the same IP address, it is clear that IP address should be
+lookups. These are used heavily in web applications           interpreted as an non-existent domain response. With-
+where user submitted content or queries are submitted         out this detection the address bar search feature would
+to the web-server. If a buggy web application neglects        not work properly. These domains are distinguishable
+to delimit the URL path from the domain, these char-          from botnet C&C traffic because botnets have not used
+acters can end up in a query. Also if a user’s browser        TLDs as their C&C domains. At first glance this looks
+searches from the address bar, their search query may be      like a category of traffic attackers could hide their re-
+interpreted as a domain name and instead of a search          quests in; however, it isn’t trivial to create a new top
+parameter. For applications, these bugs triggered re-         level domain as the registration process occurs over a
+peat failed queries. Bugs which show up in client-side        several month period. One disadvantage of using ran-
+JavaScript may only show up for certain versions of cer-      dom TLDs for detection is the possibility that DNS hi-
+tain browsers or under certain circumstances limiting         jackers like ISPs may leave TLDs untouched and hijack
+the rate at which they are repeated. Bugs in mobile           second level domains and greater. This traffic on some
+applications may trigger lookups periodically.                systems causes requests for subdomains of the domain
+                                                              a hosts belongs to (see subsection 5.1).
+                        Dataset    1     2     3      4          We found another class of non-existent domain queries
+   Number of blocked domains        1 772      45 427         generated   by the Google Chrome web-browser. Specifi-
+      Number of blocked TLDs        0    24      7    39      cally  this browser  has a DNS prefetching feature which
+   TLDs with any DNS record 420 354 132 335                   is enabled   by default. This class of traffic was observed
+                                                              in [17] and is discussed in [11]. This is different than
+    Table 5: ICANN Name Collision Block List Stats            HTML5 prefetching which requests domains for links
+                                                              on a page that have:
+   In investigating top level domains which were coming             <link rel="dns-prefetch"
+back as having IP addresses we found some with records              href="//www.domain.tld/" />
+                                                           11
+When a user is typing a domain in the address bar and           number of nonexistent domain responses being issued
+the query appears to be valid, this browser will issue a        by the DNS server for the entire campus. The average
+preemptive DNS request. Partial queries that appear             bandwidth of the requests and responses was less than
+to be valid end with a valid TLD. This feature reduces          1 Mbps which is not close enough to the link capacity
+the perceived delay of loading a page to the user at a          to cause congestion by itself.
+cost of extra DNS traffic. Some argue this raises privacy          We did observe fast fluxing DNS responses, and sus-
+issues because it generates traffic even before the user        picious DNS traffic likely related to botnets. Some of
+has actually submitted a search query or page lookup.           the suspicious traffic appeared to be aggregated either
+   There were DNS lookups for valid IPv4 and IPv6 ad-           by NAT or a DNS forwarder. Of the domains with DNS
+dresses. These should have been used directly as the            failures 89.11% to 99.53% of them had an edit distance
+destination address of a service. Requests of this form         greater than two to the nearest valid domain. The re-
+may originate when an application issues a DNS query            maining percentage includes those typos where in one or
+for a user specified field without checking if it is an IP      two instances a letter is omitted, different, or inserted.
+address. The gethostname() library function does                   Examples of domains we identified which indicate the
+not have this issue.                                            presence of malware include:
+   We observed some domains which appeared to be in-
+tentionally used to get nonexistent domain responses.                 bvkaymxoioe.www.game499.com.
+These had the last level domain none.                                                              2014-12-30.pw
+                                                                      bvkcrzkdcsb.www.gannme499.com
+5.6    ENUM For VOIP                                                  loooplollokp80.com
+                                                                      musechizewrt40.no-ip.info
+   One source of a large volume of nonexistent domains
+was the nrenum.net second level domain. Nrenum pro-             With each example the bold part of the domain name
+vides an ENUM database over DNS for participating               was constant while the rest of the domain had variation.
+universities. ENUM provides a way for E.164 numbers             The last two examples were accompanied by several re-
+to be converted to a URI [6]. Protocols such as SIP             quests to the same prefix with different numbers at the
+and H.323 then provide a way of initiating the voice            end. This is an attempt to lower the edit distance be-
+communication. 99.98% of the nonexistent ENUM do-               tween requests and avoid detection. The last request
+main responses were for a single host. In Dataset 4 for         was for a DDNS provider.
+every successful lookup this host had 9.67 failures, but
+the next most common requester had more than 350                6.    CONCLUSION
+successful lookups for every failure. This appears to
+be a brute force search of the entire ENUM database.               How the Internet is used and what services are of-
+The results of this kind of search could be used to asso-       fered have changed rapidly with the introduction of new
+ciate IP addresses with VOIP phone numbers, or deter-           technology. DNS is a critical service enabling the Inter-
+mine what numbers are active for purposes like robo-            net to function. We collected DNS traffic from a cam-
+callers, etc. One technique to mitigate this kind of at-        pus over several days distinguishing wireless from wired
+tack is impose rate limiting per IP by the number of            traffic. We have investigated network sources, applica-
+unique ENUMs requested with a higher penalty for non-           tion sources, and sources of NXDOMAIN responses, to
+existent numbers. Heavy offenders could be blacklisted,         provide insight into how the usage of the DNS service
+and legitimate services which require higher rates could        is changing. Also, we compared DNS usage between
+be white-listed.                                                wired and Wi-Fi hosts. The wireless hosts were respon-
+                                                                sible for close to two thirds of the DNS traffic. Most of
+5.7    Suspicious and Unclassified Traffic                      the popular domains received more DNS requests from
+                                                                wireless devices. A significant amount of NXDOMAIN
+   In Figure 4 there are several spikes in the rate of error
+                                                                responses were measured (10-15%), many of which were
+responses. We found these to be caused by individual
+                                                                requested by applications which use DNS as a side chan-
+hosts which repeatedly queried particular non-existent
+                                                                nel through network firewalls. This increase in failures
+domains repeatedly. The DNS cache expiration times
+                                                                makes it more difficult to identify malicious traffic. DNS
+were larger than the width of the spike, and these re-
+                                                                traffic analysis has proved useful in identifying several
+sponses were answered from the local DNS resolver’s
+                                                                anomalies and infected machines on the network.
+cache rather than generating a large volume of DNS re-
+quests to the SOA for these domains. If these responses
+resulted in requests to the SOA, they would be denial of        7.    ACKNOWLEDGMENTS
+service traffic, but the ones we observed were the result          This publication was made possible by the NPRP
+of a software bug or misconfiguration. One bug on one           award [NPRP 5-648-2-264] from the Qatar National Re-
+machine caused a more than ten-fold increase in the             search Fund.
+                                                             12
+8.   REFERENCES                                            [13] G. Huston. Management Guidelines &
+                                                                Operational Requirements for the Address and
+ [1] Alexa Internet, Inc. The top 500 sites on the web.
+                                                                Routing Parameter Area Domain (“arpa”). RFC
+     http://www.alexa.com/topsites.
+                                                                3172 (Best Current Practice), Sept. 2001.
+ [2] M. Antonakakis, R. Perdisci, W. Lee,
+                                                           [14] G. Huston. Deprecation of “ip6.int”. RFC 4159
+     N. Vasiloglou, II, and D. Dagon. Detecting
+                                                                (Best Current Practice), Aug. 2005.
+     malware domains at the upper DNS hierarchy. In
+                                                           [15] J. Jung, E. Sit, H. Balakrishnan, and R. Morris.
+     Proceedings of the 20th USENIX Conference on
+                                                                Dns performance and the effectiveness of caching.
+     Security, SEC’11, pages 27–27, Berkeley, CA,
+                                                                IEEE/ACM Trans. Netw., 10(5):589–603, Oct.
+     USA, 2011. USENIX Association.
+                                                                2002.
+ [3] M. Antonakakis, R. Perdisci, Y. Nadji,
+                                                           [16] Y. Kazato, K. Fukuda, and T. Sugawara. Towards
+     N. Vasiloglou, S. Abu-Nimeh, W. Lee, and
+                                                                classification of DNS erroneous queries. In
+     D. Dagon. From throw-away traffic to bots:
+                                                                Proceedings of the 9th Asian Internet Engineering
+     Detecting the rise of DGA-based malware. In
+                                                                Conference, AINTEC ’13, pages 25–32, New York,
+     Proceedings of the 21st USENIX Conference on
+                                                                NY, USA, 2013. ACM.
+     Security Symposium, Security’12, pages 24–24,
+                                                           [17] S. Krishnan and F. Monrose. DNS prefetching and
+     Berkeley, CA, USA, 2012. USENIX Association.
+                                                                its privacy implications: When good things go
+ [4] Apple Inc. Mac OS X: About Multicast DNS.
+                                                                bad. In Proceedings of the 3rd USENIX
+     https://support.apple.com/kb/TA20999?
+                                                                Conference on Large-scale Exploits and Emergent
+     locale=en US.
+                                                                Threats: Botnets, Spyware, Worms, and More,
+ [5] L. Bilge, S. Sen, D. Balzarotti, E. Kirda, and
+                                                                LEET’10, pages 10–10, Berkeley, CA, USA, 2010.
+     C. Kruegel. Exposure: A passive DNS analysis
+                                                                USENIX Association.
+     service to detect and report malicious domains.
+                                                           [18] D. Leonard and D. Loguinov. Turbo king:
+     ACM Trans. Inf. Syst. Secur., 16(4):14:1–14:28,
+                                                                Framework for large-scale internet delay
+     Apr. 2014.
+                                                                measurements. In INFOCOM 2008. 27th IEEE
+ [6] S. Bradner, L. Conroy, and K. Fujiwara. The
+                                                                International Conference on Computer
+     E.164 to Uniform Resource Identifiers (URI)
+                                                                Communications, Joint Conference of the IEEE
+     Dynamic Delegation Discovery System (DDDS)
+                                                                Computer and Communications Societies, 13-18
+     Application (ENUM). RFC 6116 (Proposed
+                                                                April 2008, Phoenix, AZ, USA, pages 31–35, 2008.
+     Standard), Mar. 2011.
+                                                           [19] E. Marcotte. Responsive Web Design.
+ [7] N. Brownlee, K. Claffy, and E. Nemeth. DNS
+                                                                http://alistapart.com/article/
+     measurements at a root server. In Global
+                                                                responsive-web-design.
+     Telecommunications Conference, 2001.
+                                                           [20] T. Matsunaka, A. Yamada, and A. Kubota.
+     GLOBECOM ’01. IEEE, volume 3, pages
+                                                                Passive OS fingerprinting by DNS traffic analysis.
+     1672–1676 vol.3, 2001.
+                                                                In Proceedings of the 2013 IEEE 27th
+ [8] S. Cheshire and M. Krochmal. DNS-Based Service
+                                                                International Conference on Advanced
+     Discovery. RFC 6763 (Proposed Standard), Feb.
+                                                                Information Networking and Applications, AINA
+     2013.
+                                                                ’13, pages 243–250, Washington, DC, USA, 2013.
+ [9] H. Falaki, R. Mahajan, S. Kandula,
+                                                                IEEE Computer Society.
+     D. Lymberopoulos, R. Govindan, and D. Estrin.
+                                                           [21] P. Mockapetris. Domain names - concepts and
+     Diversity in smartphone usage. In Proceedings of
+                                                                facilities. RFC 1034 (INTERNET STANDARD),
+     the 8th International Conference on Mobile
+                                                                Nov. 1987.
+     Systems, Applications, and Services, MobiSys ’10,
+                                                           [22] P. Mockapetris. Domain names - implementation
+     pages 179–194, New York, NY, USA, 2010. ACM.
+                                                                and specification. RFC 1035 (INTERNET
+[10] H. Gao, V. Yegneswaran, Y. Chen, P. Porras,
+                                                                STANDARD), Nov. 1987.
+     S. Ghosh, J. Jiang, and H. Duan. An empirical
+                                                           [23] J. S. Otto, M. A. Snchez, J. P. Rula, and F. E.
+     reexamination of global dns behavior. Proc. of
+                                                                Bustamante. Content delivery and the natural
+     ACM SIGCOMM, Aug. 2013.
+                                                                evolution of dns - remote dns trends, performance
+[11] Google Inc. DNS Prefetching.
+                                                                issues and alternative solutions. Proc. of Internet
+     http://www.chromium.org/developers/
+                                                                Measurement Conf., Nov. 2012.
+     design-documents/dns-prefetching.
+                                                           [24] M. D. P. Gauthier, J. Cohen and C. Perkins. Web
+[12] S. Hao, M. Thomas, V. Paxson, N. Feamster,
+                                                                Proxy Auto-Discovery Protocol. IETF Internet
+     C. Kreibich, C. Grier, and S. Hollenbeck.
+                                                                Draft – work in progress 00, IETF, November
+     Understanding the domain registration behavior
+                                                                2000.
+     of spammers. Proc. of Internet Measurement
+     Conf., Oct. 2013.
+                                                        13
+[25] A. Pashalidis. A cautionary note on automatic         [31] R. Villamarin-Salomon and J. Brustoloni.
+     proxy configuration. In Proceedings of the                 Identifying botnets using anomaly detection
+     IASTED International Conference on                         techniques applied to DNS traffic. In Consumer
+     Communication, Network, and Information                    Communications and Networking Conference,
+     Security, CNIS, 2003.                                      2008. CCNC 2008. 5th IEEE, pages 476–481, Jan
+[26] V. Paxson, M. Christodorescu, M. Javed, J. Rao,            2008.
+     R. Sailer, D. Schales, M. P. Stoecklin, K. Thomas,    [32] S. Yadav, A. K. K. Reddy, A. L. N. Reddy, and
+     W. Venema, and N. Weaver. Practical                        S. Ranjan. Detecting algorithmically generated
+     comprehensive bounds on surreptitious                      domain-flux attacks with DNS traffic analysis.
+     communication over DNS. In Proceedings of the              IEEE/ACM Trans. Netw., 20(5):1663–1677, Oct.
+     22nd USENIX Conference on Security, SEC’13,                2012.
+     pages 17–32, Berkeley, CA, USA, 2013. USENIX          [33] S. Yadav, A. K. K. Reddy, A. N. Reddy, and
+     Association.                                               S. Ranjan. Detecting algorithmically generated
+[27] J. Rula and F. Bustamante. Behind the curtain              malicious domain names. In Proceedings of the
+     –cellular dns and content replica selection. Proc.         10th ACM SIGCOMM Conference on Internet
+     of Internet Measurement Conf., Nov. 2014.                  Measurement, IMC ’10, pages 48–61, New York,
+[28] K. Schomp, T. Callahan, M. Rabinovich, and                 NY, USA, 2010. ACM.
+     M. Allman. On measuring the client-side DNS           [34] S. Yadav and A. L. N. Reddy. Winning with DNS
+     infrastructure. In Proceedings of the 2013                 failures: Strategies for faster botnet detection. In
+     Conference on Internet Measurement Conference,             7th International ICST Conference on Security
+     IMC ’13, pages 77–90, New York, NY, USA, 2013.             and Privacy in Communication Networks
+     ACM.                                                       (SecureComm), London, United Kingdom, Sept.
+[29] A.-J. Su, D. R. Choffnes, A. Kuzmanovic, and               2011.
+     F. E. Bustamante. Drafting behind akamai              [35] B. Zdrnja. Google Chrome and (weird) DNS
+     (travelocity-based detouring). Proc. of ACM                requests.
+     SIGCOMM, 2006.                                             https://isc.sans.edu/diary/Google+
+[30] J. L. T. Creighton, C. Griffiths and R. Weber.        Chrome+and+%28weird%29+DNS+requests/10312.
+     Recommended Configuration and Use of DNS
+     Redirect by Service Providers. IETF Internet
+     Draft – work in progress 00, IETF, July 2009.
+                                                        14
