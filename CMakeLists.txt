@@ -10,7 +10,8 @@ set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -g -Wall -Wextra")
 
 #find_package(Poppler REQUIRED)
 find_package(Qt4 REQUIRED)
-find_package( KDE4 REQUIRED )
+find_package(KDE4 REQUIRED)
+find_package(Boost COMPONENTS regex REQUIRED)
 
 #include_directories(${POPPLER_INCLUDE_DIRS} ${QT_INCLUDE_DIR})
 include(KDE4Defaults)
