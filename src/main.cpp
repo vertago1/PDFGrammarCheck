@@ -55,7 +55,7 @@ inline QString str2qstr(const std::string& str) {
     return QString(str.c_str());
 }
 
-regex_ns::basic_regex<std::string::iterator> regex_hypen_word = regex_ns::basic_regex<std::string::iterator>::compile("([A-Z]?[a-z]*)-$\n([a-z]+[,.?;]?)|[^-](\n)");
+regex_ns::basic_regex<std::string::iterator> regex_hypen_word = regex_ns::basic_regex<std::string::iterator>::compile("([A-Z]?[a-z]*)-$\n([a-z]+[,.?;]?)|(\n)");
 
 class page_record {
 public:
@@ -63,6 +63,39 @@ public:
             page_text(qstr2str(p->text(NULL))) {
         filter_hyphens();
     }
+    
+    const Okular::Page* getPage() const { return page; }
+    std::string get_text() const { return page_text; }
+    const std::vector<size_t> get_lines() const { return lines; }
+    const std::string get_hypenated_line(size_t line_no) const {
+        assert(line_no+1>=lines.size());
+        std::string line;
+        if(line_no>0){
+            auto itr = hypens.find(line_no-1);
+            if(itr!=hypens.end()){
+                line=std::string(page_text.begin()+lines[line_no-1]+itr->second,page_text.begin()+lines[line_no]-1);
+            }
+        }
+        auto itr = hypens.find(line_no);
+        if(itr==hypens.end()){
+            if(line_no+2>=lines.size()){
+                line.append(std::string(page_text.begin()+lines[line_no],page_text.end()));
+            } else {
+                line.append(std::string(page_text.begin()+lines[line_no],page_text.begin()+(lines[line_no+1]-1)));
+            }
+            
+        } else {
+            line.append(std::string(page_text.begin()+lines[line_no],page_text.begin()+lines[line_no]+itr->second));
+            line.append("-");
+        }
+        return line;
+    }
+    size_t line_count() const { return lines.size()-1; }
+private:
+    const Okular::Page * page;
+    std::vector<size_t> lines; //starts from zero
+    std::map<size_t,size_t> hypens; //starts from zero
+    std::string page_text;
     
     void filter_hyphens(){
         regex_ns::match_results<std::string::iterator> sm;
@@ -91,33 +124,6 @@ public:
         result.append(begin,end);
         page_text=result;
     }
-    
-    const Okular::Page* getPage() const { return page; }
-    std::string get_text() const { return page_text; }
-    const std::vector<size_t> get_lines() const { return lines; }
-    const std::string get_hypenated_line(size_t line_no) const {
-        std::string line;
-        if(line_no>0){
-            auto itr = hypens.find(line_no-1);
-            if(itr!=hypens.end()){
-                line=std::string(page_text.begin()+lines[line_no-1]+itr->second,page_text.begin()+lines[line_no]-1);
-            }
-        }
-        auto itr = hypens.find(line_no);
-        if(itr==hypens.end()){
-            line.append(std::string(page_text.begin()+lines[line_no],(line_no==lines.size()?page_text.end():page_text.begin()+lines[line_no+1]-1)));
-        } else {
-            line.append(std::string(page_text.begin()+lines[line_no],page_text.begin()+lines[line_no]+itr->second));
-            line.append("-");
-        }
-        return line;
-    }
-    size_t line_count() const { return lines.size()-1; }
-private:
-    const Okular::Page * page;
-    std::vector<size_t> lines; //starts from zero
-    std::map<size_t,size_t> hypens; //starts from zero
-    std::string page_text;
 };
 
 std::string check_spelling_and_grammar(std::string text){
@@ -195,7 +201,6 @@ int main(int argc, char **argv) {
         const Okular::Page * pg = doc.page(x);
         
         page_record* page_rec = new page_record(pg);
-        page_rec->filter_hyphens();
         
         pages.push_back(page_rec);
         line_no_page_index.insert(std::make_pair(line_no,page_rec));
@@ -217,10 +222,10 @@ int main(int argc, char **argv) {
 //    }
 //    exit(0);
     
-    //write_total_text(text);
-    //std::string result = check_spelling_and_grammar(text);
-    //write_sample_result(result);
-    std::string result = get_sample_result();
+    write_total_text(text);
+    std::string result = check_spelling_and_grammar(text);
+    write_sample_result(result);
+    //std::string result = get_sample_result();
     
     //https://github.com/languagetool-org/languagetool/blob/master/languagetool-core/src/main/resources/org/languagetool/resource/api-output.dtd
     enum : int {
@@ -345,7 +350,7 @@ int main(int argc, char **argv) {
             } //done parsing xml tag
             if(((~flags)&(flag_fromy|flag_fromx|flag_toy|flag_tox))==0){
                 
-                auto itr_page_rec = line_no_page_index.upper_bound(fromy+1);
+                auto itr_page_rec = line_no_page_index.upper_bound(fromy);
                 if(itr_page_rec==line_no_page_index.begin()) {
                     std::cerr <<"Warning: failed to lookup page by line number!\n";
                     std::cerr <<fromy <<" " <<itr_page_rec->first <<"\n";
@@ -356,7 +361,7 @@ int main(int argc, char **argv) {
                 page_record * page_rec = itr_page_rec->second;
                 auto page = page_rec->getPage();
                 
-                std::cerr <<fromy <<" " <<itr_page_rec->first <<"\n";
+                std::cout <<fromy <<" " <<itr_page_rec->first <<" " <<local_line_no <<" " <<page_rec->line_count() <<"\n";
                 std::cout <<"== " <<page_rec->get_hypenated_line(local_line_no) <<"\n";
                 std::cout <<"-- " <<context <<"\n";
                 
@@ -390,7 +395,10 @@ int main(int argc, char **argv) {
         }
     }
     
-
+    for(page_record * rec : pages) { delete rec; }
+    pages.clear();
+    line_no_page_index.clear();
+    
     //return qa.exec();
     //page->search(QString("non-ascii:"), pageRegion, Poppler::Page::FromTop, Poppler::Page::CaseSensitive)
     
