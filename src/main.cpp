@@ -183,6 +183,7 @@ int main(int argc, char **argv) {
     
     Okular::SettingsCore::instance("LanguageTool");
     QString path(RUN_PATH "sample.pdf");
+    QString out_path(RUN_PATH "sample.chkd.pdf");
     const KMimeType::Ptr mime = KMimeType::findByPath(path);
     QString pswd;
     Okular::Document doc(&window);
@@ -222,10 +223,10 @@ int main(int argc, char **argv) {
 //    }
 //    exit(0);
     
-    write_total_text(text);
-    std::string result = check_spelling_and_grammar(text);
-    write_sample_result(result);
-    //std::string result = get_sample_result();
+    //write_total_text(text);
+    //std::string result = check_spelling_and_grammar(text);
+    //write_sample_result(result);
+    std::string result = get_sample_result();
     
     //https://github.com/languagetool-org/languagetool/blob/master/languagetool-core/src/main/resources/org/languagetool/resource/api-output.dtd
     enum : int {
@@ -361,12 +362,40 @@ int main(int argc, char **argv) {
                 page_record * page_rec = itr_page_rec->second;
                 auto page = page_rec->getPage();
                 
-                std::cout <<fromy <<" " <<itr_page_rec->first <<" " <<local_line_no <<" " <<page_rec->line_count() <<"\n";
-                std::cout <<"== " <<page_rec->get_hypenated_line(local_line_no) <<"\n";
-                std::cout <<"-- " <<context <<"\n";
+                QString line = str2qstr(page_rec->get_hypenated_line(local_line_no));
+                Okular::RegularAreaRect* found = page->findText(0,line,Okular::FromTop,Qt::CaseInsensitive);
+                if(found==NULL || found->size()<1){
+                    std::cout <<"-- " <<context <<"\n";
+                    continue;
+                } else {
+                    std::cout <<"++ " <<context <<"\n";
+                }
                 
-                Okular::TextAnnotation * annotation = new Okular::TextAnnotation;
-                annotation->setAuthor(author);
+                //std::cout <<fromy <<" " <<itr_page_rec->first <<" " <<local_line_no <<" " <<page_rec->line_count() <<"\n";
+                //std::cout <<"== " <<page_rec->get_hypenated_line(local_line_no) <<"\n";
+                //std::cout <<"-- " <<context <<"\n";
+                
+                Okular::HighlightAnnotation * annotation = new Okular::HighlightAnnotation;
+                annotation->setHighlightType(Okular::HighlightAnnotation::Highlight);
+                
+                //Okular::NormalizedRect bounds(found->front());
+                for ( const Okular::NormalizedRect & r : *found ) {
+                    //bounds=bounds|r;
+                    Okular::HighlightAnnotation::Quad q;
+                    q.setCapStart( false );
+                    q.setCapEnd( false );
+                    q.setFeather( 1.0 );
+                    q.setPoint( Okular::NormalizedPoint( r.left, r.bottom ), 0 );
+                    q.setPoint( Okular::NormalizedPoint( r.right, r.bottom ), 1 );
+                    q.setPoint( Okular::NormalizedPoint( r.right, r.top ), 2 );
+                    q.setPoint( Okular::NormalizedPoint( r.left, r.top ), 3 );
+                    annotation->highlightQuads().append( q );
+                    std::cout <<r.left <<" " <<r.right <<" " <<r.top <<" " <<r.bottom <<"\n";
+                }
+                annotation->style().setColor(QColor(255,255,200));
+                annotation->style().setOpacity(1.0);
+                //annotation->setBoundingRectangle(bounds);
+                
                 
                 QString contents;
                 if((flags & flag_msg)!=0){
@@ -389,11 +418,16 @@ int main(int argc, char **argv) {
                     }
                     contents.append(std::string(start,itr).c_str());
                 }
+                annotation->setAuthor(author);
+                annotation->setCreationDate( QDateTime::currentDateTime() );
+                annotation->setModificationDate( QDateTime::currentDateTime() );
                 annotation->setContents(contents);
                 doc.addPageAnnotation(page->number(),annotation);
             }
         }
     }
+    
+    doc.saveChanges(out_path);
     
     for(page_record * rec : pages) { delete rec; }
     pages.clear();
