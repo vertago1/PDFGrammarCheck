@@ -61,7 +61,7 @@ inline Okular::RegularAreaRect * find_in_page(const Okular::Page* page, QString 
     bool retry = rar!=NULL;
     int start = 0, at = 0;
     auto end = text.size();
-    while(at!=end && !text.at(at).isLetter()){
+    while(at!=end && !text.at(at).isLetterOrNumber()){
         ++at;
         start=at;
     }
@@ -88,7 +88,7 @@ inline Okular::RegularAreaRect * find_in_page(const Okular::Page* page, QString 
             } else {
                 ++at;
             }
-            while(at!=end && !text.at(at).isLetter()){
+            while(at!=end && !text.at(at).isLetterOrNumber()){
                 ++at;
                 start=at;
             }
@@ -140,7 +140,7 @@ public:
         if(itr==hypens.end()){
             return 0;
         }
-        return lines[line_no]-itr->second-1;
+        return lines[line_no]-lines[line_no-1]-itr->second-1;
     }
     const std::string get_hypenated_line(size_t line_no) const {
         assert(line_no+1>=lines.size());
@@ -455,14 +455,17 @@ int main(int argc, char **argv) {
                 QString line = str2qstr(page_rec->get_hypenated_line(local_line_no));
                 
                 size_t prefix_length = page_rec->get_line_prefix_length(local_line_no);
+                std::cout <<"fromx: " << fromx <<" prefix_length: " <<prefix_length <<"\n";
                 fromx += prefix_length;
                 
-                if(fromx>line.length()-1){
+                if(((int)fromx)>line.length()-1){
                     fromx-=line.length()-1;
                     fromy+=1;
                     local_line_no+=1;
+                    std::cout <<"fromx: " << fromx <<" old line: " <<qstr2str(line) <<"\n";
                     line = str2qstr(page_rec->get_hypenated_line(local_line_no));
                     prefix_length = page_rec->get_line_prefix_length(local_line_no);
+                    std::cout <<"new line:  " <<qstr2str(line) <<"\n";
                 }
                 
                 if(fromy==toy){
@@ -515,11 +518,11 @@ int main(int argc, char **argv) {
                 }
                 if(flag_ruleid && ruleid=="MORFOLOGIK_RULE_EN_US"){
                     annotation->setHighlightType(Okular::HighlightAnnotation::Squiggly);
-                    annotation->style().setColor(QColor(255,100,100));
+                    annotation->style().setColor(QColor(255,128,128));
                     annotation->style().setOpacity(1.0);
                 } else {
                     annotation->setHighlightType(Okular::HighlightAnnotation::Highlight);
-                    annotation->style().setColor(QColor(255,255,200));
+                    annotation->style().setColor(QColor(128,128,255));
                     annotation->style().setOpacity(1.0);
                 }
                 
