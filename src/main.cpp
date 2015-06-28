@@ -59,14 +59,26 @@ regex_ns::basic_regex<std::string::iterator> regex_hypen_word = regex_ns::basic_
 
 class page_record {
 public:
-    page_record(const Okular::Page * p) : page(p),
-            page_text(qstr2str(p->text(NULL))) {
+    page_record(const Okular::Page * p) {
+        page = p;
+        page_text = qstr2str(p->text(NULL));
         filter_hyphens();
     }
     
     const Okular::Page* getPage() const { return page; }
     std::string get_text() const { return page_text; }
     const std::vector<size_t> get_lines() const { return lines; }
+    const std::vector<std::shared_ptr<Okular::RegularAreaRect> > get_line_rectangles() const { return line_rectangles; }
+    const size_t get_line_prefix_length(size_t line_no) const {
+        if(line_no==0){
+            return 0;
+        }
+        auto itr = hypens.find(line_no-1);
+        if(itr==hypens.end()){
+            return 0;
+        }
+        return lines[line_no]-itr->second-1;
+    }
     const std::string get_hypenated_line(size_t line_no) const {
         assert(line_no+1>=lines.size());
         std::string line;
@@ -94,6 +106,7 @@ public:
 private:
     const Okular::Page * page;
     std::vector<size_t> lines; //starts from zero
+    std::vector<std::shared_ptr<Okular::RegularAreaRect> > line_rectangles;
     std::map<size_t,size_t> hypens; //starts from zero
     std::string page_text;
     
@@ -104,16 +117,34 @@ private:
         std::string result;
         size_t line=0;
         size_t col;
+        std::shared_ptr<Okular::RegularAreaRect> last_line;
+        QString toFind;
         while(regex_ns::regex_search(begin,end, sm, regex_hypen_word)){
             lines.push_back(result.size());
             result.append(sm.prefix());
             if (*(sm.begin()+3)=="\n"){
+                toFind = str2qstr(sm.prefix());
                 result.append(*sm.begin());
             } else {
+                toFind = str2qstr(sm.prefix()+*(sm.begin()+1));
                 col=sm.prefix().length()+(*(sm.begin()+1)).length();
                 hypens.insert(std::make_pair(line,col));
                 result.append(*(sm.begin()+1)+*(sm.begin()+2)+"\n");
             }
+            if(toFind.size()>0) {
+                Okular::RegularAreaRect* found;
+                if(last_line){
+                    found = page->findText(0,toFind,Okular::FromTop,Qt::CaseInsensitive,last_line.get());
+                } else {
+                    found = page->findText(0,toFind,Okular::FromTop,Qt::CaseInsensitive);
+                }
+                if(found==NULL){
+                    std::cerr <<"WARNING: unable to find line: " <<line <<") " <<sm.prefix() <<"\n";
+                } else {
+                    last_line.reset(found);
+                }
+            }
+            line_rectangles.push_back(last_line);
             
             begin = sm.suffix().first;
             //page_text.replace(sm.position()+(begin-page_text.begin()),(*sm.begin()).length(),*(sm.begin()+1)+*(sm.begin()+2)+"\n");
@@ -363,12 +394,45 @@ int main(int argc, char **argv) {
                 auto page = page_rec->getPage();
                 
                 QString line = str2qstr(page_rec->get_hypenated_line(local_line_no));
-                Okular::RegularAreaRect* found = page->findText(0,line,Okular::FromTop,Qt::CaseInsensitive);
+                
+                size_t prefix_length = page_rec->get_line_prefix_length(local_line_no);
+                fromx += prefix_length;
+                
+                if(fromx>line.length()-1){
+                    fromx-=line.length()-1;
+                    fromy+=1;
+                    local_line_no+=1;
+                    line = str2qstr(page_rec->get_hypenated_line(local_line_no));
+                    prefix_length = page_rec->get_line_prefix_length(local_line_no);
+                }
+                
+                if(fromy==toy){
+                    tox += prefix_length;
+                    if(((int)tox)>line.length()-1){
+                        tox-=line.length()-1;
+                        toy+=1;
+                    } else {
+                        assert(tox>fromx);
+                        line = line.mid(fromx,tox-fromx);
+                    }
+                }
+                if(fromy!=toy){
+                    line = line.right(fromx);
+                }
+                
+                Okular::RegularAreaRect* found = NULL;
+                if(local_line_no>0){
+                    std::shared_ptr<Okular::RegularAreaRect> last_line = page_rec->get_line_rectangles()[local_line_no-1];
+                    if(last_line) {
+                        found = last_line.get();
+                    }
+                }
+                found = page->findText(0,line,Okular::FromTop,Qt::CaseInsensitive,found);
                 if(found==NULL || found->size()<1){
-                    std::cout <<"-- " <<context <<"\n";
+                    std::cout <<"-- " <<qstr2str(line) <<": " <<context <<"\n";
                     continue;
                 } else {
-                    std::cout <<"++ " <<context <<"\n";
+                    std::cout <<"++ " <<qstr2str(line) <<": " <<context <<"\n";
                 }
                 
                 //std::cout <<fromy <<" " <<itr_page_rec->first <<" " <<local_line_no <<" " <<page_rec->line_count() <<"\n";
@@ -376,7 +440,6 @@ int main(int argc, char **argv) {
                 //std::cout <<"-- " <<context <<"\n";
                 
                 Okular::HighlightAnnotation * annotation = new Okular::HighlightAnnotation;
-                annotation->setHighlightType(Okular::HighlightAnnotation::Highlight);
                 
                 //Okular::NormalizedRect bounds(found->front());
                 for ( const Okular::NormalizedRect & r : *found ) {
@@ -392,9 +455,15 @@ int main(int argc, char **argv) {
                     annotation->highlightQuads().append( q );
                     std::cout <<r.left <<" " <<r.right <<" " <<r.top <<" " <<r.bottom <<"\n";
                 }
-                annotation->style().setColor(QColor(255,255,200));
-                annotation->style().setOpacity(1.0);
-                //annotation->setBoundingRectangle(bounds);
+                if(flag_ruleid && ruleid=="MORFOLOGIK_RULE_EN_US"){
+                    annotation->setHighlightType(Okular::HighlightAnnotation::Squiggly);
+                    annotation->style().setColor(QColor(255,100,100));
+                    annotation->style().setOpacity(1.0);
+                } else {
+                    annotation->setHighlightType(Okular::HighlightAnnotation::Highlight);
+                    annotation->style().setColor(QColor(255,255,200));
+                    annotation->style().setOpacity(1.0);
+                }
                 
                 
                 QString contents;
