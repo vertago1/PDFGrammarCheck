@@ -51,6 +51,13 @@ inline std::string qstr2str(const QString& qstr) {
     return std::string(qstr.toAscii().constData());
 }
 
+inline QString filter_qstr(const QString& qstr) {
+    QString result(qstr);
+    result.replace(QString::fromUtf8("\xe2\x80\x9c"),"\"",Qt::CaseSensitive);
+    result.replace(QString::fromUtf8("\xe2\x80\x9d"),"\"",Qt::CaseSensitive);
+    return result;
+}
+
 inline QString str2qstr(const std::string& str) {
     return QString(str.c_str());
 }
@@ -66,11 +73,11 @@ inline Okular::RegularAreaRect * find_in_page(const Okular::Page* page, QString 
         start=at;
     }
     while(at!=end){
-        while(at!=end && text.at(at)!='?'){ ++at; }
+        while(at!=end && text.at(at)!='?' && text.at(at)!='"'){ ++at; }
         if(at!=end){
             if(at!=start){
                 QString search = text.mid(start,at-start);
-                Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseInsensitive,last_found);
+                Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseSensitive,last_found);
                 
                 if(found==NULL){
                     delete result;
@@ -100,7 +107,7 @@ inline Okular::RegularAreaRect * find_in_page(const Okular::Page* page, QString 
         }
         if(at!=start){
             QString search = text.mid(start,at-start);
-            Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseInsensitive,last_found);
+            Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseSensitive,last_found);
             
             if(found==NULL){
                 std::cerr <<"ERR: " <<start <<", " <<at <<", " <<end <<", " <<(last_found==NULL?0:last_found->size()) <<": " <<qstr2str(search) <<"\n";
@@ -124,7 +131,7 @@ class page_record {
 public:
     page_record(const Okular::Page * p) {
         page = p;
-        page_text = qstr2str(p->text(NULL));
+        page_text = qstr2str(filter_qstr(p->text(NULL)));
         filter_hyphens();
     }
     
@@ -529,7 +536,7 @@ int main(int argc, char **argv) {
                 
                 QString contents;
                 if((flags & flag_msg)!=0){
-                    contents.append(msg.c_str());
+                    contents.append(QString::fromUtf8(msg.c_str()));
                 }
                 if((flags & flag_replacements)!=0){
                     if(contents.length()>0){
@@ -540,18 +547,18 @@ int main(int argc, char **argv) {
                     auto start = itr;
                     while(itr!=replacements.end()){
                         if(*itr=='#'){
-                            contents.append(std::string(start,itr).c_str());
+                            contents.append(QString::fromUtf8(std::string(start,itr).c_str()));
                             contents.append(", ");
                             start=itr+1;
                         }
                         ++itr;
                     }
-                    contents.append(std::string(start,itr).c_str());
+                    contents.append(QString::fromUtf8(std::string(start,itr).c_str()));
                 }
                 annotation->setAuthor(author);
                 annotation->setCreationDate( QDateTime::currentDateTime() );
                 annotation->setModificationDate( QDateTime::currentDateTime() );
-                annotation->setContents(contents);
+                annotation->setContents(filter_qstr(contents));
                 doc.addPageAnnotation(page->number(),annotation);
             }
         }
