@@ -55,6 +55,69 @@ inline QString str2qstr(const std::string& str) {
     return QString(str.c_str());
 }
 
+inline Okular::RegularAreaRect * find_in_page(const Okular::Page* page, QString text, Okular::RegularAreaRect * rar=NULL){
+    Okular::RegularAreaRect * result = NULL;
+    Okular::RegularAreaRect * last_found = rar;
+    bool retry = rar!=NULL;
+    int start = 0, at = 0;
+    auto end = text.size();
+    while(at!=end && !text.at(at).isLetter()){
+        ++at;
+        start=at;
+    }
+    while(at!=end){
+        while(at!=end && text.at(at)!='?'){ ++at; }
+        if(at!=end){
+            if(at!=start){
+                QString search = text.mid(start,at-start);
+                Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseInsensitive,last_found);
+                
+                if(found==NULL){
+                    delete result;
+                    std::cerr <<"ERR: " <<start <<", " <<at <<", " <<end <<": " <<qstr2str(search) <<"\n";
+                    return retry?find_in_page(page,text):NULL;
+                } else if(result!=NULL) {
+                    result->appendArea(found);
+                    delete found;
+                } else {
+                    result = found;
+                    last_found = result;
+                }
+                ++at;
+                start=at;
+            } else {
+                ++at;
+            }
+            while(at!=end && !text.at(at).isLetter()){
+                ++at;
+                start=at;
+            }
+        }
+    }
+    if(at==end && at!=start){
+        if(text.at(at-1)=='-'){
+            --at;
+        }
+        if(at!=start){
+            QString search = text.mid(start,at-start);
+            Okular::RegularAreaRect * found = page->findText(0,search,(last_found==NULL||last_found->size()==0?Okular::FromTop:Okular::NextResult),Qt::CaseInsensitive,last_found);
+            
+            if(found==NULL){
+                std::cerr <<"ERR: " <<start <<", " <<at <<", " <<end <<", " <<(last_found==NULL?0:last_found->size()) <<": " <<qstr2str(search) <<"\n";
+                delete result;
+                return retry?find_in_page(page,text):NULL;
+            } else if(result!=NULL) {
+                result->appendArea(found);
+                delete found;
+            } else {
+                result = found;
+                last_found = result;
+            }
+        }
+    }
+    return result;
+}
+
 regex_ns::basic_regex<std::string::iterator> regex_hypen_word = regex_ns::basic_regex<std::string::iterator>::compile("([A-Z]?[a-z]*)-$\n([a-z]+[,.?;]?)|(\n)");
 
 class page_record {
@@ -133,11 +196,7 @@ private:
             }
             if(toFind.size()>0) {
                 Okular::RegularAreaRect* found;
-                if(last_line){
-                    found = page->findText(0,toFind,Okular::FromTop,Qt::CaseInsensitive,last_line.get());
-                } else {
-                    found = page->findText(0,toFind,Okular::FromTop,Qt::CaseInsensitive);
-                }
+                found = find_in_page(page,toFind,last_line.get());
                 if(found==NULL){
                     std::cerr <<"WARNING: unable to find line: " <<line <<") " <<sm.prefix() <<"\n";
                 } else {
@@ -417,17 +476,16 @@ int main(int argc, char **argv) {
                     }
                 }
                 if(fromy!=toy){
-                    line = line.right(fromx);
+                    line = line.right(line.size()-fromx);
                 }
                 
                 Okular::RegularAreaRect* found = NULL;
                 if(local_line_no>0){
                     std::shared_ptr<Okular::RegularAreaRect> last_line = page_rec->get_line_rectangles()[local_line_no-1];
-                    if(last_line) {
-                        found = last_line.get();
-                    }
+                    found = last_line.get();
                 }
-                found = page->findText(0,line,Okular::FromTop,Qt::CaseInsensitive,found);
+                found = find_in_page(page,line,found);
+                
                 if(found==NULL || found->size()<1){
                     std::cout <<"-- " <<qstr2str(line) <<": " <<context <<"\n";
                     continue;
