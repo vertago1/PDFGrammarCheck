@@ -58,6 +58,12 @@ inline QString filter_qstr(const QString& qstr) {
     return result;
 }
 
+inline int effective_length(const QString& qstr) {
+    int result = qstr.size();
+    if(result>0 && qstr.at(result-1)=='-') { --result; }
+    return result;
+}
+
 inline QString str2qstr(const std::string& str) {
     return QString(str.c_str());
 }
@@ -464,9 +470,12 @@ int main(int argc, char **argv) {
                 size_t prefix_length = page_rec->get_line_prefix_length(local_line_no);
                 std::cout <<"fromx: " << fromx <<" prefix_length: " <<prefix_length <<"\n";
                 fromx += prefix_length;
+                bool wrap=true;
                 
-                if(((int)fromx)>line.length()-1){
-                    fromx-=line.length()-1;
+                int e_length = effective_length(line);
+                
+                if(((int)fromx)>e_length){
+                    fromx-=e_length;
                     fromy+=1;
                     local_line_no+=1;
                     std::cout <<"fromx: " << fromx <<" old line: " <<qstr2str(line) <<"\n";
@@ -477,13 +486,14 @@ int main(int argc, char **argv) {
                 
                 if(fromy==toy){
                     tox += prefix_length;
-                    if(((int)tox)>line.length()-1){
-                        tox-=line.length()-1;
+                    if(((int)tox)>e_length){
+                        tox-=e_length;
                         toy+=1;
                     } else {
                         assert(tox>fromx);
                         line = line.mid(fromx,tox-fromx);
                     }
+                    wrap=false;
                 }
                 if(fromy!=toy){
                     line = line.right(line.size()-fromx);
@@ -500,6 +510,37 @@ int main(int argc, char **argv) {
                     std::cout <<"-- " <<qstr2str(line) <<": " <<context <<"\n";
                     continue;
                 } else {
+                    Okular::RegularAreaRect* last = found;
+                    while(fromy<toy){
+                        ++fromy;
+                        ++local_line_no;
+                        Okular::RegularAreaRect* also = NULL;
+                        line = str2qstr(page_rec->get_hypenated_line(local_line_no));
+                        if(fromy==toy){
+                            if(wrap){
+                                tox += page_rec->get_line_prefix_length(local_line_no);
+                                e_length = effective_length(line);
+                                if(((int)tox)>e_length){
+                                    tox-=e_length;
+                                    toy+=1;
+                                } else {
+                                    line = line.left(tox);
+                                }
+                                wrap=false;
+                            } else {
+                                line = line.left(tox);
+                            }
+                        }
+                        also=find_in_page(page,line,last);
+                        if(last!=NULL && last!=found) { delete last; }
+                        last=also;
+                        if(also==NULL){
+                            break;
+                        } else {
+                            found->appendArea(also);
+                        }
+                    }
+                    if(last!=NULL && last!=found) { delete last; }
                     std::cout <<"++ " <<qstr2str(line) <<": " <<context <<"\n";
                 }
                 
