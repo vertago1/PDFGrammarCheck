@@ -1,4 +1,0 @@
-Scanning dependencies of target langtool_pdf
-[100%] Building CXX object src/CMakeFiles/langtool_pdf.dir/main.cpp.o
-Linking CXX executable langtool_pdf
-[100%] Built target langtool_pdf
