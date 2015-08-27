@@ -27,8 +27,6 @@
 #include <okular/core/page.h>
 #include <okular/core/settings_core.h>
 
-#define RUN_PATH "/home/vertago1/Documents/unison/SourceCode/LanguageToolPDFCPP/"
-
 #include <boost/xpressive/xpressive.hpp>
 #define regex_ns boost::xpressive
 
@@ -36,6 +34,9 @@
 // http://localhost:8080/source/xref/okular-14.12.3/ui/pageview.cpp#869
 // http://localhost:8080/source/xref/okular-14.12.3/generators/poppler/generator_pdf.cpp#541
 // http://localhost:8080/source/xref/okular-14.12.3/generators/poppler/generator_pdf.cpp#1292
+
+QString parent_path;
+std::string parent_path_std;
 
 namespace boost{
     void throw_exception( std::exception const & e ){
@@ -145,7 +146,7 @@ public:
     std::string get_text() const { return page_text; }
     const std::vector<size_t> get_lines() const { return lines; }
     const std::vector<std::shared_ptr<Okular::RegularAreaRect> > get_line_rectangles() const { return line_rectangles; }
-    const size_t get_line_prefix_length(size_t line_no) const {
+    size_t get_line_prefix_length(size_t line_no) const {
         if(line_no==0){
             return 0;
         }
@@ -240,7 +241,7 @@ std::string check_spelling_and_grammar(std::string text){
     outfile << text;
     outfile.close();
     
-    int ret_val = system((std::string("java -jar " RUN_PATH "LanguageTool-2.8/languagetool-commandline.jar --api -l en-US ")+std::string(temp_file_name)+std::string(" > ")+std::string(temp_file_name2)).c_str());
+    int ret_val = system((std::string("java -jar $HOME/LanguageTool/languagetool-commandline.jar --api -l en-US ")+std::string(temp_file_name)+std::string(" > ")+std::string(temp_file_name2)).c_str());
     if(ret_val!=0){
         exit(ret_val);
     }
@@ -258,19 +259,19 @@ std::string check_spelling_and_grammar(std::string text){
 }
 
 void write_total_text(std::string text){
-    std::ofstream outfile(RUN_PATH "pdf.txt");
+    std::ofstream outfile(parent_path_std+"pdf.txt");
     outfile << text;
     outfile.close();
 }
 
 void write_sample_result(std::string result){
-    std::ofstream outfile(RUN_PATH "checked.xml");
+    std::ofstream outfile(parent_path_std+"checked.xml");
     outfile << result;
     outfile.close();
 }
 
 std::string get_sample_result(){
-    std::ifstream ifs(RUN_PATH "checked.xml");
+    std::ifstream ifs(parent_path_std+"checked.xml");
     std::string result((std::istreambuf_iterator<char>(ifs)),
                  std::istreambuf_iterator<char>());
     ifs.close();
@@ -278,15 +279,27 @@ std::string get_sample_result(){
 }
 
 int main(int argc, char **argv) {
+    parent_path = QString(argv[0]);
+    parent_path_std = std::string(argv[0]);
     QApplication qa(argc, argv);
     QWidget window;
-
+    
     window.resize(250, 150);
     window.setWindowTitle("Simple example");
     
     Okular::SettingsCore::instance("LanguageTool");
-    QString path(RUN_PATH "sample.pdf");
-    QString out_path(RUN_PATH "sample.chkd.pdf");
+    QString path;
+    if(argc>1){
+        path = QString(argv[argc-1]);
+    } else {
+        path = QString(parent_path+"sample.pdf");
+    }
+    
+    QString out_path(path);
+    if(out_path.endsWith(".pdf",Qt::CaseInsensitive)){
+        out_path = out_path.left(out_path.size()-4);
+    }
+    out_path+=".chkd.pdf";
     const KMimeType::Ptr mime = KMimeType::findByPath(path);
     QString pswd;
     Okular::Document doc(&window);
@@ -326,10 +339,10 @@ int main(int argc, char **argv) {
 //    }
 //    exit(0);
     
-    //write_total_text(text);
-    //std::string result = check_spelling_and_grammar(text);
+    write_total_text(text);
+    std::string result = check_spelling_and_grammar(text);
     //write_sample_result(result);
-    std::string result = get_sample_result();
+    //std::string result = get_sample_result();
     
     //https://github.com/languagetool-org/languagetool/blob/master/languagetool-core/src/main/resources/org/languagetool/resource/api-output.dtd
     enum : int {
