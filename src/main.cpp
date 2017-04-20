@@ -161,7 +161,7 @@ public:
         return lines[line_no]-lines[line_no-1]-itr->second-1;
     }
     const std::string get_hypenated_line(size_t line_no) const {
-        assert(line_no+1>=lines.size());
+        assert((line_no+1) < lines.size());
         std::string line;
         if(line_no>0){
             auto itr = hypens.find(line_no-1);
@@ -500,8 +500,12 @@ int main(int argc, char **argv) {
                         continue;
                     }
                 } else {
-                
-                    QString line = str2qstr(page_rec->get_hypenated_line(local_line_no));
+                    QString line;
+                    if (local_line_no >= page_rec->line_count()) {
+                      line = ""; //TODO handle cross page hyphens
+                    } else {
+                      line = str2qstr(page_rec->get_hypenated_line(local_line_no));
+                    }
 
                     size_t prefix_length = page_rec->get_line_prefix_length(local_line_no);
                     std::cout <<"fromx: " << fromx <<" prefix_length: " <<prefix_length <<"\n";

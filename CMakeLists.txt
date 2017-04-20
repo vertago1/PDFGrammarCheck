@@ -58,7 +58,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR} "/usr/include/KF5/KConfigCore/" 
 
 #set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -O2 -Wall -Wextra")
 #set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -O3 -Wall -Wextra")
-set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -g -Wall -Wextra")
+#set(CMAKE_CXX_FLAGS "-pthread -std=c++11 -g -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS} -pthread -std=c++11 -g -Wall -Wextra")
 
 add_definitions(${Qt5Core_DEFINITIONS})
