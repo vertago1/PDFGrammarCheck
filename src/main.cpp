@@ -12,20 +12,22 @@
 #include <set>
 #include <vector>
 
-#include <QtGui/QApplication>
-#include <QtGui/QPalette>
-#include <QtGui/QWidget>
-
-#include <QtCore/QDebug>
-#include <QtCore/QDateTime>
-#include <QtCore/QXmlStreamReader>
-
 #include <okular/core/global.h>
 #include <okular/core/annotations.h>
 #include <okular/core/area.h>
 #include <okular/core/document.h>
 #include <okular/core/page.h>
 #include <okular/core/settings_core.h>
+
+#include <QtWidgets/QApplication>
+#include <QtGui/QPalette>
+#include <QtWidgets/QWidget>
+
+#include <QtCore/QDebug>
+#include <QtCore/QDateTime>
+#include <QtCore/QMimeDatabase>
+#include <QtCore/QMimeType>
+#include <QtCore/QXmlStreamReader>
 
 #include <boost/xpressive/xpressive.hpp>
 #define regex_ns boost::xpressive
@@ -45,11 +47,13 @@ namespace boost{
 }
 
 inline std::string qstrr2str(const QStringRef& qstr) {
-    return std::string(qstr.toAscii().constData());
+    //return std::string(qstr.toAscii().constData());
+    return std::string(qstr.toUtf8().constData());
 }
 
 inline std::string qstr2str(const QString& qstr) {
-    return std::string(qstr.toAscii().constData());
+    //return std::string(qstr.toAscii().constData());
+    return std::string(qstr.toUtf8().constData());
 }
 
 inline QString filter_qstr(const QString& qstr) {
@@ -300,10 +304,11 @@ int main(int argc, char **argv) {
         out_path = out_path.left(out_path.size()-4);
     }
     out_path+=".chkd.pdf";
-    const KMimeType::Ptr mime = KMimeType::findByPath(path);
+    const QMimeDatabase db;
+    const QMimeType mime = db.mimeTypeForFile(path);
     QString pswd;
     Okular::Document doc(&window);
-    doc.openDocument(path,KUrl(),mime,pswd);
+    doc.openDocument(path,QUrl(),mime,pswd);
     
     std::string text;
     std::vector<page_record *> pages;
